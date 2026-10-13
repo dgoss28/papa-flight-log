@@ -1,0 +1,121 @@
+{
+ "N2S": {
+  "src": "aircraft/N2S.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Stearman_N2S-3s_at_training_base_c1944.jpeg",
+  "caption": "Stearman N2S-3 trainers, c. 1944",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "Stearman N2S-3 trainers, c. 1944"
+ },
+ "SNV": {
+  "src": "aircraft/SNV.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:SNV-1_at_NAS_Corpus_Christi_1941.jpeg",
+  "caption": "SNV-1 Valiant at NAS Corpus Christi, 1941",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "SNV-1 Valiant at NAS Corpus Christi, 1941"
+ },
+ "SNJ": {
+  "src": "aircraft/SNJ.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:SNJ_over_Gulf_of_Mexico_1943.jpeg",
+  "caption": "SNJ over the Gulf of Mexico near Pensacola, 1943",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "SNJ over the Gulf of Mexico near Pensacola, 1943"
+ },
+ "SBD": {
+  "src": "aircraft/SBD.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Douglas_SBD-5_Dauntless_of_VMS-3_in_flight_over_the_Caribbean,_circa_in_1943_(80-G-K-14312).jpg",
+  "caption": "SBD-5 Dauntless of Marine squadron VMS-3, c. 1943",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "SBD-5 Dauntless of Marine squadron VMS-3, c. 1943"
+ },
+ "SBD-6": {
+  "src": "aircraft/SBD-6.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Douglas_SBD-6_Dauntless_-_DPLA_-_71028774a9a6be0f49ca47ea7eb15f28_(page_1).jpg",
+  "caption": "SBD-6 Dauntless, the model he flew in combat",
+  "credit": "Douglas Aircraft Company, CC0",
+  "alt": "SBD-6 Dauntless, the model he flew in combat"
+ },
+ "SB2C": {
+  "src": "aircraft/SB2C.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:SB2C-4E_Helldiver_of_VB-6_in_flight_in_1945.jpg",
+  "caption": "SB2C-4E Helldiver in flight, 1945",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "SB2C-4E Helldiver in flight, 1945"
+ },
+ "F4U": {
+  "src": "aircraft/F4U.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:F4U-4_Corsair_of_VMF-323_in_flight_over_Korea,_circa_in_1950.jpg",
+  "caption": "F4U-4 Corsair of Marine squadron VMF-323 over Korea, c. 1950",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "F4U-4 Corsair of Marine squadron VMF-323 over Korea, c. 1950"
+ },
+ "SNB": {
+  "src": "aircraft/SNB.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Beechcraft_SNB.jpg",
+  "caption": "Beechcraft SNB at NAS San Diego",
+  "credit": "NAS San Diego, Public domain",
+  "alt": "Beechcraft SNB at NAS San Diego"
+ },
+ "OE": {
+  "src": "aircraft/OE.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:L-19A_Bird_Dog_3863_(2076805024).jpg",
+  "caption": "Army L-19A Bird Dog, the same aircraft the Marines designated OE-1",
+  "credit": "James Emery from Douglasville, United States, CC BY 2.0",
+  "alt": "Army L-19A Bird Dog, the same aircraft the Marines designated OE-1"
+ },
+ "OY": {
+  "src": "aircraft/OY.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:VMO-6_OY-1_over_Korea_c1950.jpg",
+  "caption": "OY-1 Sentinel of VMO-6, his Korea squadron, c. 1950",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "OY-1 Sentinel of VMO-6, his Korea squadron, c. 1950"
+ },
+ "AD": {
+  "src": "aircraft/AD.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:AD-3W_Skyraider_in_flight_ca_1950.jpg",
+  "caption": "AD-3W Skyraider in flight, c. 1950",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "AD-3W Skyraider in flight, c. 1950"
+ },
+ "AD-4N": {
+  "src": "aircraft/AD-4N.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Douglas_AD-4N_Skyraider_(21142296479).jpg",
+  "caption": "AD-4N Skyraider, preserved warbird",
+  "credit": "Falcon® Photography from France, France, CC BY-SA 2.0",
+  "alt": "AD-4N Skyraider, preserved warbird"
+ },
+ "AD-4W": {
+  "src": "aircraft/AD-4W.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:AD-4W_Skyraider_of_VC-11_Det.I_in_flight_off_Korea,_circa_in_1952.jpg",
+  "caption": "AD-4W Skyraider off Korea, c. 1952",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "AD-4W Skyraider off Korea, c. 1952"
+ },
+ "AD-3W": {
+  "src": "aircraft/AD-3W.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:AD-3W_Skyraider_in_flight_ca_1950.jpg",
+  "caption": "AD-3W Skyraider in flight, c. 1950",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "AD-3W Skyraider in flight, c. 1950"
+ },
+ "R4D": {
+  "src": "aircraft/R4D.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:R4D_Marine_Paras_NAN1-1-44.jpg",
+  "caption": "Marine R4D Skytrain",
+  "credit": "U.S. Navy photo, public domain",
+  "alt": "Marine R4D Skytrain"
+ },
+ "bureau:126935": {
+  "src": "aircraft/bureau_126935.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Douglas_A-1D_Skyraider_(AD-4NA)_NX2088G_126935_HB-14_(cn_7735)_(4683511503).jpg",
+  "caption": "photographed decades later as warbird NX2088G in Marine markings. It went to the French Air Force in 1961 and was lost in a 2011 crash in Idaho.",
+  "credit": "Tomás Del Coro from Fabulous Las Vegas, Nevada, USA, CC BY-SA 4.0",
+  "alt": "photographed decades later as warbird NX2088G in Marine markings. It went to the French Air Force in 1961 and was lost in a 2011 crash in Idaho."
+ },
+ "L-19": {
+  "src": "aircraft/OE.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:L-19A_Bird_Dog_3863_(2076805024).jpg",
+  "caption": "Army L-19A Bird Dog, the same aircraft the Marines designated OE-1",
+  "credit": "James Emery from Douglasville, United States, CC BY 2.0",
+  "alt": "Army L-19A Bird Dog, the same aircraft the Marines designated OE-1"
+ }
+}

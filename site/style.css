@@ -1,0 +1,207 @@
+/* Palette drawn from a 1940s aeronautical chart and a Navy logbook */
+:root {
+  --sea: #b9cfcc;          /* chart water */
+  --land: #e4dab4;         /* chart land tint */
+  --page: #efe6cc;         /* logbook paper */
+  --ink: #23314f;          /* printed Navy-blue ruling and type */
+  --rule: #9fb0b6;         /* faint column rules */
+  --route: #a8326e;        /* aero-chart magenta */
+  --combat: #b5382a;       /* red pencil */
+  --flight: #2f6db5;       /* chart blue, for ordinary flights on the map */
+  --pencil: #5d5a4c;
+
+  --chart: "Jost", "Futura", "Trebuchet MS", sans-serif;
+  --type: "Courier Prime", "Courier New", monospace;
+
+  --panel: min(440px, 40vw);
+  --bar: 64px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: var(--chart);
+  color: var(--ink);
+  background: var(--sea);
+  overflow: hidden;
+}
+
+#map { position: fixed; inset: 0 0 var(--bar) var(--panel); }
+
+/* ---- Logbook panel ---- */
+#log {
+  position: fixed; top: 0; left: 0; bottom: var(--bar); width: var(--panel);
+  overflow-y: auto;
+  background:
+    linear-gradient(90deg, transparent 2.6rem, rgba(181, 56, 42, .35) 2.6rem, rgba(181, 56, 42, .35) calc(2.6rem + 1px), transparent calc(2.6rem + 1px)),
+    var(--page);
+  box-shadow: 1px 0 0 rgba(35, 49, 79, .25), 6px 0 18px rgba(35, 49, 79, .12);
+  scroll-behavior: smooth;
+}
+.cover { padding: 3rem 1.5rem 2rem 3.4rem; border-bottom: 2px solid var(--ink); }
+.owner { font-family: var(--type); font-size: .95rem; line-height: 1.4; margin: 0 0 1.5rem; color: var(--pencil); }
+h1 {
+  font-weight: 500; font-size: 2.6rem; line-height: 1; letter-spacing: -.01em; margin: 0 0 1.25rem;
+}
+.lede { font-size: 1rem; line-height: 1.55; margin: 0 0 1.25rem; max-width: 34em; }
+.legend { font-size: .82rem; color: var(--pencil); display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: center; margin: 0; }
+.legend > span { white-space: nowrap; }
+.key { display: inline-block; vertical-align: middle; margin-right: .35rem; }
+.key-route, .key-combat, .key-est { width: 22px; height: 0; border-top: 2.5px solid var(--flight); }
+.key-est { border-top-style: dashed; border-color: var(--pencil); }
+.key-combat { border-color: var(--combat); }
+.key-solid, .key-hollow { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
+.key-hollow { background: transparent; border: 2px solid var(--ink); }
+
+.chapter { padding: 2.25rem 1.5rem 1rem 3.4rem; border-bottom: 1px solid var(--rule); min-height: 70vh; }
+.chapter h2 { font-weight: 500; font-size: 1.75rem; line-height: 1.1; margin: 0 0 .3rem; }
+.chapter .when { font-style: italic; font-family: var(--type); color: var(--pencil); margin: 0 0 1rem; font-size: .95rem; }
+.chapter .rank { font-size: .85rem; margin: -.6rem 0 .9rem; }
+.chapter .rank span { color: var(--pencil); }
+.chapter .unit { font-size: .92rem; font-weight: 500; margin: -.5rem 0 1rem; }
+.chapter .story { line-height: 1.6; margin: 0 0 1.25rem; max-width: 34em; }
+.chapter.active h2 { color: var(--route); }
+.chapter-title { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
+.chapter-title:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.chapter-title:focus-visible { outline: 2px solid var(--route); outline-offset: 3px; }
+.chapter .patch { float: right; width: 84px; height: auto; margin: -.4rem 0 .5rem 1rem; }
+.card-body { position: relative; }
+.card-patch { float: right; width: 52px; height: auto; margin: 0 0 .3rem .6rem; }
+.chapter .summary { font-size: .85rem; color: var(--pencil); margin: 0 0 .5rem; }
+
+/* Ruled log rows, like the printed columns in the book */
+.entries { width: 100%; border-collapse: collapse; font-family: var(--type); font-size: .82rem; }
+.entries th { font-family: var(--chart); font-weight: 500; font-size: .72rem; text-align: left; color: var(--pencil);
+  border-bottom: 1.5px solid var(--ink); padding: .2rem .35rem; }
+.entries td { border-bottom: 1px solid var(--rule); padding: .28rem .35rem; vertical-align: top; }
+.entries td + td, .entries th + th { border-left: 1px solid var(--rule); }
+.entries td.hrs { text-align: right; white-space: nowrap; }
+.entries td.date, .entries td.ac { white-space: nowrap; }
+.entries tr.flight { cursor: pointer; }
+.entries tr.flight:hover td, .entries tr.flight:focus-visible td { background: rgba(168, 50, 110, .08); }
+.entries tr.flight:focus-visible { outline: 2px solid var(--route); outline-offset: -2px; }
+.entries tr.combat td.rem { color: var(--combat); }
+.entries tr.selected td { background: rgba(168, 50, 110, .18); }
+.entries tr.selected td:first-child { box-shadow: inset 3px 0 0 var(--route); }
+.entries .q { color: var(--pencil); }
+
+.colophon { padding: 1.5rem 1.5rem 3rem 3.4rem; font-size: .8rem; line-height: 1.5; color: var(--pencil); }
+.colophon h2 { font-weight: 500; font-size: 1.25rem; color: var(--ink); margin: 1.8rem 0 .2rem; }
+.colophon h3 { font-weight: 600; font-size: .85rem; color: var(--ink); margin: 1rem 0 .3rem; }
+.colophon ul { margin: 0; padding-left: 1.1rem; }
+.colophon li { margin: 0 0 .35rem; }
+.colophon a { color: var(--ink); }
+.totals { width: 100%; border-collapse: collapse; margin: .4rem 0 .6rem; font-size: .8rem; color: var(--ink); }
+.totals th, .totals td { text-align: left; vertical-align: top; padding: .3rem .35rem; border-bottom: 1px solid var(--rule); }
+.totals tbody th { font-weight: 500; white-space: nowrap; }
+.totals .num { font-family: var(--type); text-align: right; white-space: nowrap; }
+.totals td:last-child { color: var(--pencil); }
+.totals thead th { font-weight: 500; font-size: .72rem; color: var(--pencil); border-bottom: 1.5px solid var(--ink); }
+.by-type tbody th { white-space: normal; }
+.by-type small { display: block; font-weight: 400; color: var(--pencil); font-size: .72rem; }
+.by-type td:last-child { color: var(--ink); }
+
+/* ---- Timeline bar, styled like a chart scale ---- */
+#timeline {
+  position: fixed; left: 0; right: 0; bottom: 0; height: var(--bar);
+  display: flex; align-items: center; gap: 1rem; padding: 0 1.25rem;
+  background: var(--ink); color: var(--page);
+}
+#speed {
+  font: 500 .85rem var(--type); color: var(--page); background: none; border: 1px solid rgba(239, 230, 204, .5);
+  border-radius: 2px; padding: .4rem .55rem; cursor: pointer;
+}
+#speed:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+#play {
+  font: 500 .9rem var(--chart); color: var(--ink); background: var(--page);
+  border: 0; border-radius: 2px; padding: .45rem .9rem; cursor: pointer; min-width: 4.5rem;
+}
+#play:focus-visible, #scrub:focus-visible, .close:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+#scrub { flex: 1; accent-color: var(--route); }
+#when { font-family: var(--type); min-width: 8.5rem; }
+#totals { display: flex; gap: 1.1rem; margin: 0; }
+#totals div { text-align: right; }
+#totals dt { font-size: .68rem; opacity: .7; }
+#totals dd { margin: 0; font-family: var(--type); font-size: 1rem; }
+
+/* ---- Map popups ---- */
+.maplibregl-popup-content {
+  background: var(--page); color: var(--ink); border-radius: 2px; padding: .8rem .9rem;
+  box-shadow: 0 2px 10px rgba(35, 49, 79, .25); font-family: var(--chart); max-width: 320px;
+}
+.maplibregl-popup-tip { border-top-color: var(--page) !important; border-bottom-color: var(--page) !important; }
+.pop h3 { margin: 0 0 .2rem; font-weight: 500; font-size: 1.05rem; }
+.pop .rec { font-family: var(--type); font-size: .82rem; line-height: 1.45; margin: .4rem 0; }
+.pop .note { font-size: .78rem; color: var(--pencil); line-height: 1.4; margin: .35rem 0 0; }
+.pop button.page {
+  display: block; margin-top: .6rem; padding: 0; border: 1px solid var(--rule); background: none; cursor: pointer; width: 100%;
+}
+.pop button.page img { display: block; width: 100%; height: 90px; object-fit: cover; object-position: top; }
+.pop button.page span { display: block; font-size: .75rem; padding: .25rem; color: var(--ink); }
+.pop ul { margin: .4rem 0 0; padding: 0; list-style: none; font-family: var(--type); font-size: .78rem; max-height: 160px; overflow: auto; }
+.pop li { border-bottom: 1px solid var(--rule); padding: .15rem 0; cursor: pointer; }
+
+/* ---- Flight card: the track log for the selected entry ---- */
+#card {
+  position: fixed; right: 14px; bottom: calc(var(--bar) + 14px); width: min(360px, 30vw); max-height: calc(100vh - var(--bar) - 80px);
+  overflow-y: auto; background: var(--page); color: var(--ink);
+  box-shadow: 0 0 0 1px rgba(35, 49, 79, .3), 0 6px 22px rgba(35, 49, 79, .25);
+}
+#card[hidden] { display: none; }
+#card figure { margin: 0; background: var(--ink); }
+#card figure img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+#card figcaption { font-size: .72rem; line-height: 1.35; padding: .4rem .7rem; color: var(--page); }
+#card figcaption a { color: inherit; opacity: .75; margin-left: .25rem; }
+#card figcaption strong { font-weight: 600; }
+.card-body { padding: .8rem .95rem 1rem; }
+.card-date { font-family: var(--type); margin: 0; color: var(--pencil); font-size: .85rem; }
+#card h3 { margin: .15rem 0 .1rem; font-weight: 500; font-size: 1.2rem; line-height: 1.2; }
+.card-type { margin: 0 0 .5rem; font-size: .85rem; color: var(--pencil); }
+#card .rec { font-family: var(--type); font-size: .8rem; line-height: 1.5; margin: 0 0 .5rem; }
+#card .note { font-size: .78rem; color: var(--pencil); line-height: 1.4; margin: .3rem 0 0; }
+.card-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.card-actions button, .card-close {
+  font: 500 .8rem var(--chart); border: 1px solid var(--ink); background: none; color: var(--ink);
+  padding: .35rem .6rem; border-radius: 2px; cursor: pointer;
+}
+.card-actions .replay { background: var(--ink); color: var(--page); }
+.card-close { position: absolute; top: .45rem; right: .45rem; background: var(--page); font-size: .75rem; padding: .2rem .5rem; z-index: 1; }
+.card-actions button:focus-visible, .card-close:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+
+/* People who signed the page or flew with him */
+.people { list-style: none; margin: .7rem 0 0; padding: .6rem 0 0; border-top: 1px solid var(--rule); display: grid; gap: .55rem; }
+.people li { display: grid; grid-template-columns: 44px 1fr; gap: .6rem; align-items: start; font-size: .78rem; line-height: 1.35; }
+.people img, .people .initials { width: 44px; height: 54px; object-fit: cover; border: 1px solid var(--ink); }
+.people .initials { display: grid; place-items: center; font: 500 1rem var(--type); background: var(--land); color: var(--ink); }
+.people strong { font-weight: 600; font-size: .85rem; }
+.people em { color: var(--pencil); }
+.people small { display: block; color: var(--pencil); font-size: .68rem; }
+
+/* ---- Scan viewer ---- */
+#scan { border: 0; padding: 0; max-width: 96vw; max-height: 96vh; background: var(--page); color: var(--ink); }
+#scan::backdrop { background: rgba(35, 49, 79, .75); }
+#scan .close { position: absolute; top: .5rem; right: .5rem; font: 500 .85rem var(--chart); background: var(--ink); color: var(--page); border: 0; padding: .35rem .7rem; cursor: pointer; }
+.scan-caption { margin: 0; padding: .7rem 5rem .5rem 1rem; font-family: var(--type); font-size: .9rem; }
+.scan-frame { overflow: auto; max-height: calc(96vh - 3rem); }
+.scan-frame img { display: block; width: min(1400px, 94vw); cursor: zoom-in; }
+.scan-frame.zoomed img { width: 2400px; cursor: zoom-out; }
+
+/* ---- Small screens: map on top, logbook below ---- */
+@media (max-width: 760px) {
+  :root { --panel: 100vw; --bar: 56px; }
+  #map { inset: 0 0 auto 0; height: 45vh; }
+  #log { top: 45vh; width: 100vw; }
+  .chapter { min-height: 0; }
+  #totals { display: none; }
+  #timeline { gap: .55rem; padding: 0 .7rem; }
+  #when { min-width: 0; font-size: .78rem; white-space: nowrap; }
+  #play { min-width: 3.8rem; padding: .45rem .6rem; }
+  #card { right: 0; left: 0; top: auto; bottom: var(--bar); width: auto; max-height: 50vh; }
+  #card figure img { aspect-ratio: 3 / 1; }
+  .maplibregl-popup-content { max-width: 260px; max-height: 38vh; overflow: auto; }
+  h1 { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #log { scroll-behavior: auto; }
+}

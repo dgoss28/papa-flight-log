@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The flight logs of Capt. Thomas E. Goss, 1943–1953</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div id="map" role="region" aria-label="Map of flights"></div>
+
+  <aside id="log" aria-label="Logbook">
+    <header class="cover">
+      <p class="owner">Captain Thomas Edward Goss, USMCR<br>File no. 036705</p>
+      <h1>Papa's Flight Log</h1>
+      <p class="lede">Two logbooks, ten years, two wars. Every line below was transcribed from his handwritten
+        entries. I, and Claude, did my best to transcribe them but they may not be perfect. All the flight paths are obviously fabricated, but the general vicinities should all be correct. Scroll to follow him from his first solo in 1943 to his last flight in 1953. Click or tap any
+        entry to see where the flight, the plane Papa flew in, and the logbook page it was written on.</p>
+      <p class="legend">
+        <span><span class="key key-route"></span>flight</span>
+        <span><span class="key key-combat"></span>combat mission</span>
+        <span><span class="key key-est"></span>to an estimated place</span>
+        <span><span class="key key-solid"></span>place located</span>
+        <span><span class="key key-hollow"></span>place estimated</span>
+      </p>
+    </header>
+    <div id="chapters"></div>
+    <footer class="colophon">
+      <p>Places marked as estimated were matched from his spellings and checked against flight times; the
+        evidence for each is in the project's <code>data/places.csv</code>. Flight tracks are illustrations:
+        the logbooks record where he flew, not the path. Battles shown with approximate positions are marked so.</p>
+
+      <section id="totals-section" aria-labelledby="totals-h"></section>
+
+      <h2>Sources</h2>
+      <h3>The record</h3>
+      <ul>
+        <li>Thomas E. Goss, pilot's flight logbooks, 1943–1945 and 1951–1953. Family collection, transcribed for this site.</li>
+      </ul>
+      <h3>Places and units</h3>
+      <ul>
+        <li>Canzona, Hubbard et al., <a href="https://www.gutenberg.org/ebooks/65011"><cite>U.S. Marine Operations in Korea, 1950–1953, Vol. V: Operations in West Korea</cite></a> (USMC Historical Branch; Project Gutenberg). Location of airstrip A-9, VMO-6, K-16, Ascom City.</li>
+        <li><a href="https://www.koreanwar.org/html/units/usmc/vmo6.htm">Korean War Project: VMO-6</a>.</li>
+        <li><a href="https://www.geonames.org/">GeoNames</a> gazetteer for North and South Korea (CC BY 4.0). Village name matching.</li>
+        <li><a href="https://ko.wikipedia.org/wiki/장단군">장단군 (Changdan County)</a>, Korean Wikipedia. The 1950 townships Changdo-myŏn and Taegang-myŏn.</li>
+        <li><a href="https://seabees93.net/GI%20VMSB%20341%20history%20defective.htm">Marine Scout Bombing Squadron 341 history</a>, Green Island Seabees veterans' site. Squadron dates at Green Island, Mangaldan and Moret Field; missions at Wawa-Lobac, Tarlac, Corregidor, Jolo, Malabang and Davao.</li>
+        <li><a href="https://en.wikipedia.org/wiki/VMTB-341">VMTB-341 (VMSB-341, "Torrid Turtles")</a>, Wikipedia, and <a href="https://pacificwrecks.com/unit/usmc/VMSB-341.html">Pacific Wrecks: VMSB-341</a>. MAG-24's move from the Solomons to Luzon.</li>
+        <li><a href="https://www.history.navy.mil/research/histories/ship-histories/danfs/b/bennington-ii.html">USS Bennington</a>, Dictionary of American Naval Fighting Ships (NHHC), and <a href="https://pacificwrecks.com/ship/usn/CV-20.html">Pacific Wrecks: CV-20</a>. Spring 1953 shakedown at Guantánamo.</li>
+        <li><a href="https://www.navalcovermuseum.org/wiki/OtherUS_US_Marine_Corps_Air_Station_Miami_FL">Naval Cover Museum: MCAS Miami</a> and <a href="https://en.wikipedia.org/wiki/Miami%E2%80%93Opa_Locka_Executive_Airport">Miami–Opa Locka Executive Airport</a>, Wikipedia.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Naval_Air_Station_Glenview">Naval Air Station Glenview</a>, Wikipedia.</li>
+        <li><a href="https://archive.wvculture.org/history/transportation/kanawhaairport02.html">Kanawha Airport history</a>, West Virginia Archives and History.</li>
+        <li><a href="https://blog.gitmomemory.org/?p=3017">Guantánamo Public Memory Project</a>. McCalla Field.</li>
+        <li><a href="https://www.airnav.com/airport/KNHU">AirNav: KNHU</a>. Present-day use of the NHU identifier.</li>
+        <li><a href="https://mocat.library.unt.edu/catalog/671-24874">CAA <cite>Location Identifiers</cite>, 1950–53</a>, Monthly Catalog of U.S. Government Publications (UNT). Catalog entries only; no digitized copy was found.</li>
+      </ul>
+      <h3>Aircraft</h3>
+      <ul id="photo-credits">
+        <li><a href="https://warbirdregistry.org/a1registry/a1-126935.html">Warbird Registry: Skyraider 126935</a>. Later history of the AD-4N he flew in 1953.</li>
+      </ul>
+      <h3>Maps</h3>
+      <ul>
+        <li>Borders: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> by André Ourednik (world 1938 and 1960, GPL-3.0).</li>
+        <li>Terrain: <a href="https://www.arcgis.com/home/item.html?id=9c5370d0b54f4de1b48a3792d7377ff2">Esri World Shaded Relief</a>.</li>
+        <li>Map rendering: <a href="https://maplibre.org/">MapLibre GL JS</a>; label glyphs from the MapLibre demo tile server.</li>
+        <li>Marine front line, autumn 1952: hand-drawn and approximate, after the maps in <cite>U.S. Marine Operations in Korea, Vol. V</cite>.</li>
+        <li>Battle and event dates: standard published histories of the Philippines and Korea campaigns. Positions are approximate where marked.</li>
+      </ul>
+      <h3>Type</h3>
+      <ul>
+        <li>Jost and Courier Prime, via Google Fonts (SIL Open Font License).</li>
+      </ul>
+    </footer>
+  </aside>
+
+  <div id="timeline">
+    <button id="play" type="button" aria-label="Play all flights">Play</button>
+    <button id="speed" type="button" aria-label="Playback speed">1×</button>
+    <input id="scrub" type="range" min="0" value="0" aria-label="Flights through date">
+    <output id="when" for="scrub"></output>
+    <dl id="totals">
+      <div><dt>Hours</dt><dd id="t-hours">0</dd></div>
+      <div><dt>Flights</dt><dd id="t-flights">0</dd></div>
+      <div><dt>Combat</dt><dd id="t-combat">0</dd></div>
+    </dl>
+  </div>
+
+  <article id="card" aria-live="polite" hidden></article>
+
+  <dialog id="scan">
+    <form method="dialog"><button class="close" aria-label="Close scan">Close</button></form>
+    <p class="scan-caption"></p>
+    <div class="scan-frame"><img alt=""></div>
+  </dialog>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="aircraft.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

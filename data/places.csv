@@ -1,0 +1,91 @@
+code,kind,name_then,today,lat,lon,confidence,evidence
+NKT,airfield,MCAS Cherry Point NC,MCAS Cherry Point,34.9009,-76.8807,confirmed,Still the current identifier; his home base 1951-53
+NCO,airfield,NAS Quonset Point RI,Quonset State Airport (OQU),41.5971,-71.4121,confirmed,Historic Navy code for Quonset Point; NKT-NCO legs are 2.8-3.0 hr
+NTU,airfield,NAS Oceana VA,NAS Oceana,36.8207,-76.0335,confirmed,Current identifier; 1.0-1.7 hr from Cherry Point
+NGU,airfield,NAS Norfolk (Chambers Field) VA,Naval Station Norfolk,36.9376,-76.2893,confirmed,Current identifier
+NIP,airfield,NAS Jacksonville FL,NAS Jacksonville,30.2358,-81.6806,confirmed,Current identifier
+NBU,airfield,NAS Glenview IL,closed 1995,42.0889,-87.8186,confirmed,Code used 1937-1995 (appears in the May 1953 log)
+NBV,airfield,NAS Glenview IL (probably NBU),closed 1995,42.0889,-87.8186,likely,"Logged 0.5 hr from Milwaukee; Glenview is ~45 nm away; the handwritten V is likely his U, or an older form of the code; family confirmed in Wisconsin, so Aug & Dec 1951 cross-country trips were likely visits home"
+DCA,airfield,Washington National,Reagan National,38.8521,-77.0377,confirmed,Civil code unchanged
+CMH,airfield,Columbus OH (Port Columbus),John Glenn Columbus Intl,39.998,-82.8919,confirmed,Civil code unchanged
+MSN,airfield,Madison WI (Truax Field),Dane County Regional,43.1399,-89.3375,confirmed,"Civil code unchanged; family confirmed in Wisconsin, so Aug & Dec 1951 cross-country trips were likely visits home"
+MKE,airfield,Milwaukee WI (General Mitchell Field),Milwaukee Mitchell Intl,42.9472,-87.8966,confirmed,"Civil code unchanged; family confirmed in Wisconsin, so Aug & Dec 1951 cross-country trips were likely visits home"
+SAV,airfield,Savannah GA (Chatham Field),Savannah/Hilton Head Intl,32.1276,-81.2021,confirmed,Civil code; 1.7 hr to Cherry Point (~270 nm) fits
+CHW,airfield,Charleston WV (Kanawha Airport),Yeager Airport (CRW),38.3731,-81.5932,likely,"Legs fit: Glenview->here 2.5 hr (~360 nm) and here->Cherry Point 2.2 hr (~305 nm) at SNB cruise; Kanawha opened 1947; modern code CRW. No 1951 code list found to confirm; family confirmed in Wisconsin, so Aug & Dec 1951 cross-country trips were likely visits home"
+NAW,airfield,NAS Guantanamo Bay Cuba (McCalla Field),closed c.1970; Leeward Point Field is NBW,19.9050,-75.1450,likely,USS Bennington did shakedown at Guantanamo in spring 1953 and he carrier-qualified on CVA-20 from NAW on 13 Apr; the trip home NAW-MMN-SAV-NKT (3.0/2.5/1.7 hr) is a consistent ~155 kt for Guantanamo-Miami-Savannah-Cherry Point. Handwriting clearly reads NAW
+MMN,airfield,MCAS Miami (Opa-locka) FL,Miami-Opa Locka Executive (OPF),25.907,-80.278,likely,Marine air station Feb 1952-1958; 3.0 hr from Guantanamo (~455 nm) and 2.5 hr to Savannah (~375 nm). Second mention may read MAN
+MIAMI,airfield,Miami (field not specified; probably NAS/MCAS Miami Opa-locka),Miami-Opa Locka Executive (OPF),25.907,-80.278,likely,"Nov 1951 SNB-3N trip NKT-Miami-NKT, 5.0 hr each way"
+NHU,airfield,unresolved - outlying field near Cherry Point,,,,unknown,"9 Mar 1953: NKT->NHU 1.2 hr including 8 field carrier landings, NHU->NKT 0.5 hr, so within roughly 100 nm. NHU today is a Norfolk Naval Station heliport (reassigned). Candidates: MCALF Bogue, MCAF New River, MCAAS Edenton (but he writes Edenton by name elsewhere)"
+SHAW,airfield,Shaw AFB SC,Shaw AFB,33.9727,-80.4706,confirmed,Written out by name
+EDENTON,airfield,MCAAS Edenton NC,Northeastern Regional Airport (EDE),36.0277,-76.5671,confirmed,Written out by name; site of the 24 Jun 1953 crash entry
+CVA-20,ship,USS Bennington (at sea off Guantanamo),,19.7,-75.2,approximate,Carrier qualification 13 Apr 1953; ship position estimated from shakedown area
+K-16,airfield,Seoul Airfield (Yeouido),Yeouido Park (closed),37.5277,126.9285,confirmed,Korean War K-site; Marine airhead per USMC history
+K-13,airfield,Suwon Air Base,Suwon Air Base,37.2394,127.0070,confirmed,Korean War K-site
+ASCOM,base,ASCOM City (Bupyeong),Incheon Bupyeong district,37.4900,126.7200,approximate,Former Army Service Command depot; 1st MarDiv rear area and VMO-6 rear echelon (A-33) nearby
+A-9,airfield,Airstrip A-9 - VMO-6 home field,,37.784,126.830,approximate,"USMC history Vol. V: old strip about 2.5 mi south of A-17, which was 3.5 mi SE of Munsan-ni. Coordinates derived from those distances"
+Taedoksan,korea_target,Taedŏk-san (hill),North Korea (Kaepung/Changpung),37.99207,126.73319,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); his most-used target (5 missions); a hill just N of Panmunjom
+Chung-ni,korea_target,Taedŏksal-li (alt. name Chung-ni),North Korea,38.011,126.7299,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); GeoNames lists Chung-ni as a variant name; beside Taedŏk-san
+Kouptung,korea_target,Koŭp-tong (area of Koŭp-ch'ŏn stream),North Korea,38.027,126.767,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); several Koŭp-tong variants cluster here
+Hong Nung,korea_target,Hongnŭng,North Korea,38.01105,126.74586,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Kar-hyon,korea_target,Kar-hyŏn (pass),North Korea,37.98333,126.75,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); Galhyeon-ri also nearby
+Chansan-dong,korea_target,Changsan-dong,North Korea,38.03438,126.73864,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Paektongum-ni,korea_target,Panmunjŏm (old name Paektongŭm-ni),Joint Security Area,37.94704,126.65565,likely,"GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); GeoNames lists baegdong-eumli as a variant of P'anmunjŏm-ni, site of the truce talks"
+Tae Song-dong,korea_target,Taesŏng-dong,DMZ (South Korean village),37.94207,126.67836,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Yul-tong,korea_target,Ryul-tong,North Korea,37.94501,126.6383,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); nearest of 3 same-name villages to the front
+Taeryong-ni,korea_target,Taeryong-ni,North Korea (Kaepung),37.85417,126.65056,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); north bank of the Han/Imjin estuary
+Samilgtong,korea_target,Samil-dong,South Korea (DMZ edge),37.95036,126.81465,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Hang Dong-ni,korea_target,Hangdong-ni,North Korea,38.02028,126.80167,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Sambok-tong,korea_target,Sambok-dong,North Korea,38.014,126.8416,likely,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Changnam-myon,korea_target,Changnam-myŏn (township),"Yeoncheon, South Korea",37.99279,126.8495,likely,Changdan County township in 1950 (ko.wikipedia 장단군); GeoNames ADM3 centroid
+Changdo-myon,korea_target,"Changdo-myŏn (township, 장도면)",North Korea (Changpung),38.03,126.66,approximate,"Changdan County township that went to North Korea (ko.wikipedia 장단군); position estimated as just N of Jinseo-myeon/Panmunjom. Log also abbreviates it as ""Chand-myon"""
+Chand-myon,korea_target,"Changdo-myŏn (township, 장도면)",North Korea (Changpung),38.03,126.66,approximate,Read as an abbreviation of Changdo-myon (same TAO mission type 5 days later)
+Taegang-myon,korea_target,"Taegang-myŏn (township, 대강면)",North Korea (Changpung),38.07,126.86,approximate,"Changdan County township that went to North Korea; part recovered to Yeoncheon in 1954 (ko.wikipedia 장단군), so placed N of Changnam-myon. Needs a 1950s map to refine"
+Pongdonyan,korea_target,Pongdong-yŏk (Pongdong rail station),North Korea (Kaesong),37.9463,126.6224,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); reading Pongdonyan as Pongdong-yŏk (station) is a guess
+Saemal,korea_target,Sae-mal,North Korea,38.0196,126.7305,possible,"Very common name; chose the Sae-mal beside Taedŏk-san, his main target area"
+Changae-dong,korea_target,Changjae-dong,North Korea,38.07109,126.77845,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Chinch-on,korea_target,Chinch'on,North Korea,38.07058,126.87563,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Tongmal,korea_target,Tŏng-mal,North Korea,38.0271,126.8192,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Nong Gok,korea_target,Non-gol,North Korea,38.03115,126.96611,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Chuck-tong,korea_target,Chuk-tong,North Korea (Kaepung),37.89425,126.60926,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Kojan-dong,korea_target,near Kojan-ch'ŏn stream,North Korea,38.1131,126.9405,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Masan-gok,korea_target,P'yŏngma-dong (alt. Masang-ni),North Korea,38.12615,126.81262,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Sajang-ni,korea_target,Chajang-ni,North Korea,37.96222,126.885,possible,GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py)
+Irwon-dong,korea_target,Irwŏn-dong,North Korea,38.22706,126.78609,possible,"GeoNames fuzzy match within the 1st MarDiv sector (scripts/match_korea_places.py); deep behind the line, plausible for TAO strike control"
+Chung-myon,korea_target,Jung-myeon (township),Yeoncheon,38.1675,126.99809,possible,"Only Chung-myon in the area; east of the Marine sector, so doubtful"
+Munsan-ni,korea_target,Munsan-ni,Paju,37.85944,126.785,confirmed,Division railhead; familiarization flight
+Koji,korea_target,unresolved,,,,unknown,"Also logged as ""Kogi"". Candidates: Kŏjin-dong 37.914,126.600 or Kojinpo-ri 37.987,126.844"
+Kogi,korea_target,unresolved,,,,unknown,"Probably the same place as ""Koji"""
+Panggi-dong,korea_target,unresolved,,,,unknown,No match near the front
+Wandong,korea_target,unresolved,,,,unknown,"Weak candidate Andong 37.925,126.794"
+Songuch-on,korea_target,unresolved,,,,unknown,Also a photo-mission target 16 Oct 1952
+Sinch-ori,korea_target,unresolved,,,,unknown,
+Sagae-dong,korea_target,unresolved,,,,unknown,
+Ungor,korea_target,unresolved,,,,unknown,Reading uncertain
+Joryon-ni,korea_target,unresolved,,,,unknown,Reading uncertain
+Green Is.,pacific_place,Green Island airfield (Nissan Island),Papua New Guinea,-4.49,154.21,confirmed,"Written by name, Nov 1944"
+Piva,pacific_place,"Piva airfields, Torokina (Bougainville)",Papua New Guinea,-6.24,155.08,confirmed,"Written by name, Nov 1944"
+Rosario,pacific_place,"Rosario, La Union (Luzon)",Philippines,16.23,120.49,likely,Strike 8 Feb 1945; Marine SBDs flew from Mangaldan in support of Sixth Army in N Luzon
+Corregidor,pacific_place,Corregidor Island,Philippines,14.38,120.58,confirmed,Strike 9 Feb 1945
+Wawa,pacific_place,"Wawa Dam area, Montalban (Rizal)",Philippines,14.73,121.19,likely,Strikes 11 and 14 Feb 1945 (Shimbu Line)
+Area south of O'Donnell,pacific_place,"S of Camp O'Donnell, Capas (Tarlac)",Philippines,15.33,120.52,likely,Strike 12 Feb 1945
+Fort McKinley,pacific_place,Fort William McKinley (Taguig),Philippines,14.54,121.05,confirmed,"Strike 15 Feb 1945, Battle of Manila"
+Marikina Field,pacific_place,Marikina airfield,Philippines,14.65,121.1,likely,Strike 16 Feb 1945
+Putlan Bridge,pacific_place,Putlan bridge (Nueva Ecija),Philippines,15.95,121.0,approximate,"Strike 17 Feb 1945; location estimated, needs confirmation"
+Calamba,pacific_place,Calamba (Laguna),Philippines,14.21,121.17,confirmed,Strike 18 Feb 1945
+Mangaldan,pacific_place,Mangaldan airfield (Lingayen Gulf),Philippines,16.07,120.4,confirmed,"Not named in his log, but his squadron VMSB-341 operated from Mangaldan 30 Jan-25 Mar 1945 (squadron history)"
+Zamboanga,pacific_place,"Moret Field, Zamboanga",Philippines,6.92,122.06,confirmed,"""Return to Zamboanga""; base Apr-Jul 1945; VMSB-341 at Moret Field from 25 Mar 1945"
+Jolo,pacific_place,Jolo Island,Philippines,6.05,121.0,confirmed,Strikes Apr 1945
+Malabang,pacific_place,Malabang airstrip (Mindanao),Philippines,7.59,124.07,confirmed,Strikes and landings Apr-Jul 1945
+Tomalabang,pacific_place,unresolved (near Malabang?),Philippines,,,unknown,"8 Apr 1945, flown just before the Malabang strike"
+Santa Cruz,pacific_place,Santa Cruz (Davao del Sur),Philippines,6.83,125.41,likely,Strike 28 Apr 1945
+Davao,pacific_place,Davao,Philippines,7.07,125.61,confirmed,"Many strikes NW/N of Davao, Apr-Jun 1945"
+Oyster Bay,pacific_place,unresolved,Philippines,,,unknown,Patrol 30 Apr 1945
+Dalirig,pacific_place,Dalirig (Bukidnon),Philippines,8.37,124.9,likely,"Strike 2 May 1945, Sayre Highway campaign"
+Santa Ana,pacific_place,Santa Ana (Davao City),Philippines,7.08,125.63,likely,Strike 4 May 1945
+Libby A/D,pacific_place,Libby Airdrome (Davao),Philippines,7.12,125.64,approximate,Strikes May 1945; exact field position to confirm
+Dalwangan,pacific_place,"Dalwangan (Malaybalay, Bukidnon)",Philippines,8.2,125.06,likely,Strike 20 May 1945
+Malaybalay,pacific_place,Malaybalay (Bukidnon),Philippines,8.15,125.13,confirmed,Strike E of Malaybalay 28 May 1945
+Salak,pacific_place,unresolved,Philippines,,,unknown,"""Strike SE of Salak?"" 3 Jun 1945; reading uncertain"
+NAS Minneapolis,training_base,NAS Minneapolis (Wold-Chamberlain),MSP airport,44.88,-93.22,confirmed,Primary training Aug-Oct 1943
+NAS Pensacola,training_base,NAS Pensacola,NAS Pensacola,30.35,-87.32,confirmed,Monthly stamps Nov 1943-Mar 1944
+NAS Miami,training_base,NAS Miami (Opa-locka),Opa-locka Executive,25.907,-80.278,confirmed,Monthly stamps Apr-May 1944

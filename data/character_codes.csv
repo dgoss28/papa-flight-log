@@ -1,0 +1,27 @@
+code,meaning
+A,Training and instruction (students)
+B-2,Combat mission resulting in engagement with enemy
+C,Training and instruction (qualified pilots)
+D,All flying performed by reserve personnel not on extended active duty
+E,Familiarization and practice
+F,Gunnery
+G,Bombing
+H,Torpedo
+I,Observation
+J,Scouting / search / reconnaissance / patrol
+K,Tactical
+L,Navigation
+M,Transportation of personnel
+N,Ferrying of aircraft
+O,Utility (towing targets etc.)
+P,Photography and mapping
+Q,Aerological
+R,Tests of aircraft / engines / radio
+S,Experimental
+T,Administration
+U,Extended flight training
+V,Instrument flying
+W,Emergency or relief work
+X,Communication training
+Y,Night flying
+Z,Special

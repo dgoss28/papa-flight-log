@@ -1,0 +1,276 @@
+page,date,aircraft_type,aircraft_no,duration_hr,character,pilot,passengers,dual_cum,solo_cum,pass_cum,remarks,station,notes
+1,1943-08-12/1943-10-23,N2S,,100.8,,,,34.2,59.5,,"Primary training stages A-F summary: Dual 34.2, Solo 59.5, Check 7.1, Total 100.8. Started 12 Aug 1943, completed 23 Oct 1943, type plane N2S",NAS Minneapolis,"Stage table: A 12.2/-/1.1/13.3; B 7.5/25.5/1.5/34.5; C 6.0/16.5/1.5/24.0; D 3.0/6.0/1.5/10.5; E 4.5/7.5/1.5/13.5; F 1.0/4.0/-/5.0. Signed Thomas Edward Goss"
+2,1943-11-15,SNV-1,12636,1.5,B,Blank,inst.,1.5,,,,NAS Pensacola,
+2,1943-11-16,SNV-1,05720,1.5,B,Blank,inst.,3.0,,,,NAS Pensacola,
+2,1943-11-17,SNV-1,12602,1.5,B,Blank,inst.,4.5,,,,NAS Pensacola,
+2,1943-11-17,SNV-1,12603,1.0,B,Ingram,inst.,5.5,,,,NAS Pensacola,
+2,1943-11-18,SNV-1,12643,1.5,B,Self,train,,1.5,,,NAS Pensacola,
+2,1943-11-19,SNV-1,12712,1.5,B,Self,train,,3.0,,,NAS Pensacola,
+2,1943-11-19,SNV-1,12712,1.5,B,Self,train,,4.5,,,NAS Pensacola,
+2,1943-11-20,SNV-1,12712,1.5,B,Self,train,,6.0,,,NAS Pensacola,
+2,1943-11-20,SNV-1,12712,1.0,B,Bregan,inst.,6.5,,,,NAS Pensacola,pilot name uncertain
+2,1943-11-21,SNV-1,12592,1.5,B,Self,train,,7.5,,,NAS Pensacola,
+2,1943-11-22,SNV-1,03134,1.5,B,Self,train,,9.0,,,NAS Pensacola,
+2,1943-11-22,SNV-1,03135,1.5,B,Self,train,,10.5,,,NAS Pensacola,
+2,1943-11-24,SNV-1,03133,1.5,B,Self,train,,12.0,,,NAS Pensacola,
+2,1943-11-24,SNV-1,03139,1.5,B,Self,train,,13.5,,,NAS Pensacola,
+2,1943-11-24,SNV-1,12755,1.0,BY,Castle,inst.,7.5,,,,NAS Pensacola,written in red ink
+2,1943-11-25,SNV-1,05679,1.5,B,Self,train,,15.0,,,NAS Pensacola,
+2,1943-11-25,SNV-1,05692,1.5,B,Self,train,,16.5,,,NAS Pensacola,
+2,1943-11-26,SNV-1,03134,0.6,B,Self,train,,17.1,,,NAS Pensacola,
+2,1943-11-27,SNV-1,03133,1.5,B,Self,train,,18.6,,,NAS Pensacola,
+2,1943-11-28,SNV-1,05768,1.5,B,Self,train,,20.1,,,NAS Pensacola,
+3,1943-11-29,SNV-1,12459,1.0,BY,Self,train,,21.1,,,NAS Pensacola,"red ink. Month stamp NAS Pensacola Nov 30 1943: brought fwd 41.3/59.5/100.8, this month 7.5/21.1/28.6, to date 48.8/80.6/129.4"
+4,1943-12-11,SNJ-4,10023,1.5,BV,Self +1,train,,1.5,,,NAS Pensacola,
+4,1943-12-13,SNJ-4,10025,1.5,BV,Self +1,train,,3.0,,,NAS Pensacola,
+4,1943-12-17,SNJ-4,10029,1.6,BV,Self +1,train,,4.6,,,NAS Pensacola,
+4,1943-12-18,SNJ-4,10022,1.5,BV,Self +1,train,,6.1,,,NAS Pensacola,
+4,1943-12-19,SNJ-4,10369,1.4,BV,Self +1,train,,7.5,,,NAS Pensacola,
+4,1943-12-20,SNJ-4,10023,1.3,BV,Self +1,train,,8.8,,,NAS Pensacola,
+4,1943-12-22,SNJ-4,10023,1.5,BV,Self +1,train,,10.3,,,NAS Pensacola,
+4,1943-12-27,SNJ-4,10026,1.4,BV,Self +1,train,,11.7,,,NAS Pensacola,"Month stamp NAS Pensacola Dec 31 1943: to date 48.8/92.3/141.1. Approved W.E. Rasmus Lieut A-V(S) USNR"
+5,1944-01-03,SNJ-4,10023,1.1,BV,Self +1,train,,1.1,,,NAS Pensacola,
+5,1944-01-04,SNJ-4,10023,1.3,BV,Self +1,train,,2.4,,,NAS Pensacola,
+5,1944-01-05,SNJ-4,10029,1.2,BV,Self +1,train,,3.6,,"Certified 19 hours Link trainer time (W.E. Rasmus)",NAS Pensacola,
+5,1944-01-17,SNV-1,34186,2.5,B,Harford,inst.,2.5,,,,NAS Pensacola,
+5,1944-01-20,SNJ-4,27246,1.0,B,Self,,,4.6,,,NAS Pensacola,
+5,1944-01-21,SNJ-4,26968,2.0,B,Clark,inst.,4.5,,,,NAS Pensacola,pilot name uncertain
+5,1944-01-21,SNJ-4,26968,1.0,B,Self,,,5.6,,,NAS Pensacola,
+5,1944-01-22,N2S-3,3420,0.6,B,Brown,inst.,5.1,,,,NAS Pensacola,
+5,1944-01-22,SNJ-4,26929,2.0,B,Self,,,7.6,,,NAS Pensacola,
+5,1944-01-24,SNJ-4,10095,1.1,B,Self,,,8.7,,,NAS Pensacola,
+5,1944-01-24,SNJ-4,10095,1.1,B,Self,,,9.8,,,NAS Pensacola,
+5,1944-01-24,SNJ-4,10095,1.0,B,Self,,,10.8,,,NAS Pensacola,
+5,1944-01-25,SNJ-4,09966,1.2,B,Self,,,12.0,,,NAS Pensacola,
+5,1944-01-26,SNJ-4,27240,1.0,B,Self,,,13.0,,,NAS Pensacola,
+5,1944-01-26,SNJ-4,10042,1.0,B,Self,,,14.0,,,NAS Pensacola,
+6,1944-01-28,SNJ-4,10082,1.0,B,Self,,,15.0,,,NAS Pensacola,
+6,1944-01-28,SNJ-4,27332,1.1,B,Self,,,16.1,,,NAS Pensacola,
+6,1944-01-28,SNJ-4,10082,1.0,B,Self,,,17.1,,,NAS Pensacola,
+6,1944-01-30,SNJ-5,51998,1.6,B,Self,,,18.7,,,NAS Pensacola,
+6,1944-01-30,SNJ-5,51996,1.5,B,Barrett,inst.,6.6,,,,NAS Pensacola,
+6,1944-01-30,SNJ-5,51996,1.0,B,Self,,,19.7,,,NAS Pensacola,
+6,1944-01-31,SNJ-5,51856,1.2,B,Self,,,20.9,,,NAS Pensacola,
+6,1944-01-31,SNJ-5,51856,1.5,B,Self,,,22.4,,,NAS Pensacola,
+6,1944-01-31,SNJ-5,51856,1.0,B,Self,,,23.4,,,NAS Pensacola,"Month stamp NAS Pensacola Jan 31 1944: this month 6.6/23.4/30.0, to date 55.4/115.7/171.1"
+7,1944-02-01,SNJ-5,51939,1.0,B,Self,,,1.0,,,NAS Pensacola,
+7,1944-02-01,SNJ-5,51939,1.5,B,Self,,,2.5,,,NAS Pensacola,
+7,1944-02-01,SNJ-5,51939,1.5,B,Self,,,4.0,,,NAS Pensacola,
+7,1944-02-03,SNJ-5,51932,0.3,B,Self,,,4.3,,,NAS Pensacola,
+7,1944-02-05,SNJ-4,10078,1.5,B,Self,,,5.8,,,NAS Pensacola,
+7,1944-02-09,SNJ-4,27707,1.0,B,Self,,,6.8,,,NAS Pensacola,
+7,1944-02-09,SNJ-4,27431,1.0,B,Self,,,7.8,,,NAS Pensacola,
+7,1944-02-11,SNJ-4,26804,1.0,B,Self,,,8.8,,,NAS Pensacola,
+7,1944-02-11,SNJ-5,51654,1.0,B,Wise,inst.,1.0,,,,NAS Pensacola,
+7,1944-02-13,SNJ-4,27146,1.1,B,Self,,,9.9,,,NAS Pensacola,
+7,1944-02-13,SNJ-4,27148,1.0,B,Self,,,10.9,,,NAS Pensacola,
+7,1944-02-15,SNJ-4,27148,1.2,B,Self,,,12.1,,,NAS Pensacola,
+7,1944-02-15,SNJ-4,27212,1.5,B,Self,,,13.6,,,NAS Pensacola,
+7,1944-02-15,SNJ-4,26619,1.0,B,Self,,,14.6,,,NAS Pensacola,
+7,1944-02-15,SNJ-4,27210,1.1,B,Self,,,15.7,,,NAS Pensacola,
+7,1944-02-20,SNJ-5,51921,1.0,B,Self,,,16.7,,,NAS Pensacola,
+7,1944-02-21,SNJ-4,26473,1.0,B,Self,,,17.7,,,NAS Pensacola,
+7,1944-02-21,SNJ-4,26810,1.3,B,Self,,,19.0,,,NAS Pensacola,
+7,1944-02-21,SNJ-4,27146,1.5,B,Self,,,20.5,,,NAS Pensacola,
+7,1944-02-22,SNJ-4,27499,1.0,B,Self,,,21.5,,,NAS Pensacola,
+8,1944-02-22,SNJ-4,27247,1.0,B,Self,,,22.5,,,NAS Pensacola,
+8,1944-02-23,SNJ-4,26861,1.2,B,Self,,,23.7,,,NAS Pensacola,
+8,1944-02-23,SNJ-4,26859,1.2,B,Self,,,24.9,,,NAS Pensacola,
+8,1944-02-24,SNJ-4,27754,1.5,B,Self,,,26.4,,,NAS Pensacola,
+8,1944-02-24,SNJ-4,51655,0.7,B,Self,,,27.1,,,NAS Pensacola,
+8,1944-02-24,SNJ-4,51855,1.5,B,Self,,,28.6,,,NAS Pensacola,
+8,1944-02-25,SNJ-4,27500,1.2,B,Self,,,29.8,,,NAS Pensacola,
+8,1944-02-25,SNJ-5,51930,1.5,B,Self,,,31.3,,,NAS Pensacola,
+8,1944-02-25,SNJ-4,26808,1.2,B,Self,,,32.5,,,NAS Pensacola,
+8,1944-02-26,SNJ-4,27146,1.5,B,Self,,,34.0,,,NAS Pensacola,
+8,1944-02-26,SNJ-4,27148,1.2,B,Self,,,35.2,,,NAS Pensacola,
+8,1944-02-27,SNJ-5,43721,1.5,B,Kulkoski,inst.,2.5,,,,NAS Pensacola,pilot name uncertain
+8,1944-02-29,SNJ-4,27703,1.0,B,Self,,,36.2,,,NAS Pensacola,"Month stamp NAS Pensacola Feb 29 1944: this month 2.5/36.2/38.7, to date 57.9/151.9/209.8"
+9,1944-03-20,SNJ-5,51868,1.2,BY,Self,,,23.6,,,NAS Pensacola,red ink
+9,1944-03-21,SNJ-4,10095,1.0,BY,Self,,,24.6,,,NAS Pensacola,red ink
+9,1944-03-21,SNJ-4,27215,1.0,BY,Self,,,25.6,,,NAS Pensacola,red ink
+9,1944-03-21,SNJ-5,51844,1.0,BY,Chapman,inst.,2.5,,,"Rating as instrument pilot issued in accordance Secretary of Navy letter of 22 Nov 1938 (W.E. Rasmus)",NAS Pensacola,"red ink. Month stamp NAS Pensacola Mar 24 1944: this month 2.5/25.6/28.1, to date 60.4/177.5/237.9"
+10,1944-04-09,SBD-5,36919,1.1,CE,"Hannah, J. Ens",self,1.1,,,,NAS Miami,
+10,1944-04-10,SBD-5,36876,1.5,CE,Self,,,1.5,,,NAS Miami,
+10,1944-04-10,SBD-5,36876,1.0,CE,Self,,,2.5,,,NAS Miami,
+10,1944-04-11,SNJ-3,01966,1.4,V,Self,"McMillian, ARM",,3.9,,,NAS Miami,passenger name uncertain
+10,1944-04-11,SBD-5,36569,1.0,CE,Self,,,4.9,,,NAS Miami,
+10,1944-04-11,SBD-5,36851,1.5,CE,Self,,,6.4,,,NAS Miami,
+10,1944-04-12,SBD-5,36851,1.4,CE,Self,"Debfley, ARM",,7.8,,,NAS Miami,passenger name uncertain
+10,1944-04-12,SBD-5,36569,1.0,CK,Self,,,8.8,,,NAS Miami,
+10,1944-04-14,SBD-5,36748,1.4,CK,Self,,,10.2,,,NAS Miami,
+10,1944-04-14,SBD-5,54053,1.0,CK,Self,,,11.2,,,NAS Miami,
+10,1944-04-14,SBD-5,36865,1.4,CK,Self,,,12.6,,,NAS Miami,aircraft no. uncertain
+10,1944-04-16,SBD-5,54076,1.3,CF,Self,,,13.9,,,NAS Miami,
+10,1944-04-18,SBD-5,36859,3.2,CL,Self,"Prades, ARM",,17.1,,,NAS Miami,passenger name uncertain
+10,1944-04-20,SBD-5,36868,1.1,CE,Self,"Cross, J., ARM",,18.2,,,NAS Miami,passenger name uncertain
+10,1944-04-20,SBD-5,36866,3.0,CK,Self,"Thurell, E.J.",,21.2,,,NAS Miami,passenger name uncertain
+10,1944-04-21,SBD-5,36866,1.6,CF,Self,,,22.8,,,NAS Miami,
+10,1944-04-22,SBD-5,36543,1.5,CF,Self,,,24.3,,,NAS Miami,
+10,1944-04-23,SBD-5,54066,1.0,CF,Self,,,25.3,,,NAS Miami,
+10,1944-04-21,Link trainer,286,0.8,,Self,"Well, 2nd?",,,,Link 0.8,NAS Miami,simulator session; out of date order in log
+10,1944-04-26,SBD-5,36819,1.2,CF,Self,,,26.5,,,NAS Miami,
+11,1944-04-27,SBD-5,36726,1.3,CF,Self,,,27.8,,,NAS Miami,
+11,1944-04-29,SBD-5,36750,1.4,CG,Self,,,29.2,,,NAS Miami,
+11,1944-04-30,SBD-5,36446,1.4,CF,Self,,,30.6,,,NAS Miami,"Month stamp NAS Miami Apr 30 1944: this month 1.1/30.6/31.7, to date 61.5/208.1/269.6"
+12,1944-05-03,SNJ-3,6965,1.5,V,Self,"Monroe, L.L., Ens",,1.5,,,NAS Miami,
+12,1944-05-03,SBD-5,54066,1.6,CG,Self,,,3.1,,,NAS Miami,
+12,1944-05-04,SBD-5,36420,1.7,CG,Self,,,4.8,,,NAS Miami,
+12,1944-05-03,Link trainer,282,0.8,,Self,"Hampel, Ens?",,,,Link 0.8,NAS Miami,simulator
+12,1944-05-05,SNJ-3,6925,1.9,V,Self,"Monroe, L.L., Ens",,6.7,,,NAS Miami,
+12,1944-05-05,SBD-5,36552,1.5,CG,Self,,,8.2,,,NAS Miami,red ink
+12,1944-05-05,SBD-5,36552,1.5,CG,Self,,,9.7,,,NAS Miami,
+12,1944-05-06,SBD-5,36592,1.1,CG,Self,,,10.8,,,NAS Miami,
+12,1944-05-08,SBD-5,36875,1.5,CG,Self,,,12.3,,,NAS Miami,red ink
+12,1944-05-08,SBD-5,36868,1.5,CG,Self,,,13.8,,,NAS Miami,red ink
+12,1944-05-08,SBD-5,36552,1.3,CG,Self,,,15.1,,,NAS Miami,
+12,1944-05-09,SBD-5,54076,1.6,CG,Self,,,16.7,,,NAS Miami,
+12,1944-05-09,SBD-5,28990,1.5,CG,Self,,,18.2,,,NAS Miami,red ink
+12,1944-05-09,SBD-5,36592,1.5,CG,Self,,,19.7,,,NAS Miami,red ink
+12,1944-05-10,SBD-5,36552,1.4,CG,Self,,,21.1,,,NAS Miami,
+12,1944-05-10,SBD-5,36543,1.3,CF,Self,,,22.4,,,NAS Miami,
+12,1944-05-11,SNJ-5,43986,1.4,V,Self,"Hazzard?, Lt",,23.8,,,NAS Miami,passenger name uncertain
+12,1944-05-11,SBD-5,36535,1.5,CG,Self,,,25.3,,,NAS Miami,
+12,1944-05-11,SBD-5,54064,1.5,CG,Self,,,26.8,,,NAS Miami,
+12,1944-05-12,SBD-5,54084,1.5,CG,Self,,,28.3,,,NAS Miami,
+13,1944-05-14,SBD-5,36876,1.6,CG,Self,,,29.9,,,NAS Miami,
+13,1944-05-15,SBD-5,36875,1.5,CG,Self,,,31.4,,,NAS Miami,
+13,1944-05-15,SBD-5,36876,1.5,CG,Self,,,32.9,,,NAS Miami,
+13,1944-05-15,SBD-5,36876,1.5,CG,Self,,,34.4,,,NAS Miami,
+13,1944-05-16,SNJ-5,43894,1.5,V,Self,"Blackwell, H., Lt",,35.9,,,NAS Miami,
+13,1944-05-17,SNJ-5,43952,1.0,V,Self,"Hazzard?, Lt",,36.9,,,NAS Miami,passenger name uncertain
+13,1944-05-17,SBD-5,54059,1.2,CG,Self,,,38.1,,,NAS Miami,
+13,1944-05-17,SBD-5,36124,1.5,CG,Self,,,39.6,,,NAS Miami,red ink
+13,1944-05-18,SBD-5,36481,1.3,CG,Self,,,40.9,,,NAS Miami,
+13,1944-05-18,SBD-5,36868,1.6,CG,Self,,,42.5,,,NAS Miami,
+13,1944-05-20,SNJ-5,43898,1.2,V,Self,"Hazzard?, Lt",,43.7,,,NAS Miami,passenger name uncertain
+13,1944-05-20,SBD-5,36866,1.4,CG,Self,,,45.1,,,NAS Miami,
+13,1944-05-20,SBD-5,54060,1.5,CG,Self,,,46.6,,,NAS Miami,red ink
+13,1944-05-20,SBD-5,54064,1.5,CG,Self,,,48.1,,,NAS Miami,red ink
+13,1944-05-21,SBD-5,28990,1.3,FCL,Self,,,49.4,,,NAS Miami,
+13,1944-05-22,SBD-5,54076,1.5,CG,Self,,,50.9,,,NAS Miami,red ink
+13,1944-05-22,SBD-5,54060,1.5,FCL,Self,,,52.4,,,NAS Miami,
+13,1944-05-23,SBD-5,54059,0.8,FCL,Self,,,53.2,,,NAS Miami,
+13,1944-05-24,SBD-5,36535,1.5,FCL,Self,,,54.7,,,NAS Miami,
+13,1944-05-24,SNJ-5,43898,1.4,V,Self,"Johnson, L.L., Lt(jg)",,56.1,,,NAS Miami,
+14,1944-05-21,Link trainer,348,0.8,,Self,"Chance, Insts",,,,Link 0.8 (cum 1.6),NAS Miami,simulator
+14,1944-05-26,SBD-5,54059,3.0,CG,Self,"Davis, J.D., ARM",,59.1,,,NAS Miami,red ink
+14,1944-05-26,SNJ-5,43986,1.6,V,Self,"Baden, J.P., Lt(jg)",,60.7,,,NAS Miami,
+14,1944-05-27,SBD-5,54078,0.8,FCL,Self,,,61.5,,,NAS Miami,
+14,1944-05-28,SBD-5,36517,0.9,FCL,Self,,,62.4,,,NAS Miami,
+14,1944-05-29,SBD-5,54068,1.4,FCL,Self,,,63.8,,,NAS Miami,
+14,1944-05-29,SBD-5,54095,0.6,FCL,Self,,,64.4,,,NAS Miami,
+14,1944-05-28,SNJ-5,43894,1.5,V,Self,"Roche, G.G., Lt(jg)",,65.9,,,NAS Miami,
+14,1944-05-30,SBD-5,54064,0.8,FCL,Self,,,66.7,,,NAS Miami,
+14,1944-05-30,SNJ-3,6925,1.5,V,Self,"Dresser?, R.E., Ens",,68.2,,,NAS Miami,
+14,1944-05-31,SBD-5,28994,2.4,CL,Self,,,70.6,,,NAS Miami,
+15,1944-05-31,,,,,,,,,,"Month stamp NAS Miami May 31 1944: this month 70.6 solo, to date 61.5/278.7/340.2. Approved by direction",NAS Miami,summary only; no entries Jun-Jul 1944
+16,1944-08-14,SBD,29038,2.0,E,Goss,Lollar,,,,Famil.,,familiarization; station unknown
+16,1944-08-14,SBD,28158,2.7,E,Goss,,,,,Famil.,,
+16,1944-08-15,SBD,36392,1.8,E,Goss,,,,,Famil.,,
+16,1944-08-16,SBD,36329,1.7,K,Goss,,,,,Sec. Tac.,,section tactics
+16,1944-08-16,SBD,36140,2.0,R,Goss,,,,,Engine time,,
+16,1944-08-18,SBD,28306,2.1,K,Goss,,,,,Div. Tac.,,division tactics
+16,1944-08-19,SBD,36600,1.2,G,Goss,,,,,Dive Bombing,,
+16,1944-08-21,SBD,28226,2.6,L,Goss,,,,,Navigation,,
+16,1944-08-21,SBD,36339,1.8,R,Goss,Hamacher,,,,Engine time,,
+16,1944-08-22,SBD,36354,2.1,G,Goss,Biryra?,,,,Dive Bombing,,passenger name uncertain
+16,1944-08-23,SBD,28332,1.8,G,Goss,Bryanson?,,,,Dive Bombing,,passenger name uncertain
+16,1944-08-23,SBD,29015,0.9,Y,Goss,,,,,Night Flying,,red ink
+16,1944-08-23,SNJ,27352,1.0,V,Schade,Goss,,,,Instrument,,Goss as passenger
+16,1944-08-24,SBD,36401,2.5,G,Goss,Buffa,,,,Dive Bombing,,
+16,1944-08-24,SBD,28226,2.1,G,Goss,Farr?,,,,Dive Bombing,,
+16,1944-08-28,SBD,28272,1.8,G,Goss,,,,,Dive Bombing,,
+16,1944-08-28,SBD,28306,1.5,G,Goss,,,,,Dive Bombing,,
+16,1944-08-29,SBD,28306,2.0,G,Goss,,,,,Dive Bombing,,
+16,1944-08-29,SBD,36329,2.3,K,Goss,,,,,Div. Tac.,,
+16,1944-08-30,SBD,29054,2.1,G,Goss,,,,,Dive Bomb.,,
+17,1944-08-30,SBD,36379,1.8,G,Goss,,,,,Dive Bomb.,VMSB-474,
+17,1944-08-31,SBD,28271,1.9,K,Goss,,,,,Battle Prob.,VMSB-474,battle problem
+17,1944-08-31,SBD,36401,1.8,Y,Goss,Dunn,,,,Night flying,VMSB-474,red ink. Stamp SEP 1 1944: this period 43.5 pilot; brought fwd 340.2; to date 383.7. Signed Thomas E. Goss 2nd Lt USMCR; approved Wm J. Barr Capt USMCR Flight Officer VMSB-474
+18,1944-09-23,SBD,36329,2.5,K,Goss,Lang?,,,,Battle Prob.,VMSB-474,month inferred from Oct 1 stamp
+18,1944-09-23,SBD,28271,1.6,R,Goss,Smith,,,,Radar & ZB,VMSB-474,ZB = homing beacon
+18,1944-09-25,SBD,36655,2.0,G,Goss,,,,,Dive Bomb.,VMSB-474,
+18,1944-09-27,SBD,36140,1.2,R,Goss,Cooper,,,,Radar & ZB,VMSB-474,
+18,1944-09-29,SBD,36359,1.6,Z,Goss,Hamacher,,,,Oxygen Hop,VMSB-474,"Stamp OCT 1 1944: this period 48.5 pilot + 1.0 pass = 49.5; to date 432.2/1.0/433.2. NOTE: only ~8.9 hrs listed for Sept - earlier Sept page(s) likely missing from scan"
+19,1944-10-01,SBD,29015,1.9,G,Goss,Reiser,,,,Dive Bomb.,VMSB-474,
+19,1944-10-01,SBD,36401,1.8,F,Goss,Gillis?,,,,Strafing,VMSB-474,
+19,1944-10-01,SBD,28306,2.2,GK,Goss,Van Note,,,,Glide Bomb.,VMSB-474,
+19,1944-10-02,SBD,10960,2.0,F,Goss,Camodeca?,,,,Strafing,VMSB-474,
+19,1944-10-02,SBD,28226,2.0,GK,Goss,Cooper,,,,Glide Bomb.,VMSB-474,
+19,1944-10-03,SBD,36356,1.9,GK,Goss,Cooper,,,,Glide Bomb.,VMSB-474,
+19,1944-10-04,SBD,36392,2.1,K,Goss,Hamacher,,,,Sqdn. Tac.,VMSB-474,
+19,1944-10-05,SBD,36392,1.8,F,Goss,Klawhaw?,,,,Gunnery,VMSB-474,passenger name uncertain
+19,1944-10-05,SBD,10879,2.2,Y,Goss,Cooper,,,,Nite flying,VMSB-474,red ink
+19,1944-10-06,SBD,36600,1.7,K,Goss,Hamacher,,,,Sqdn. Tac.,VMSB-474,
+19,1944-10-07,SBD,36634,1.5,K,Goss,Cooper,,,,Battle Problem,VMSB-474,"Stamp OCT 7 1944: this period 21.1; to date 453.3/1.0/454.3. Approved LeRoy Smith?, Flight Officer VMSB-474. No more flights until late Nov - likely shipping out to the Pacific"
+20,1944-11-28,SBD-6,54648,1.3,E,Goss,,,,,FAM - Green Is.,,familiarization flight at Green Island
+20,1944-11-28,SBD-6,54634,1.3,TE,Goss,,,,,Green - Piva - Fam.,,Green Island to Piva (Bougainville)
+20,1944-11-28,SBD-6,54634,1.0,TE,Goss,,,,,Piva - Green - Fam.,,Piva back to Green Island
+20,1944-11-29,SBD-6,54886,0.8,K,Goss,Matson,,,,Division Tactics,,"Month total 4.4; to date 457.7/1.0/458.7. Signed Thomas Edward Goss; approved J.M. McDevitt Capt USMCR, flight and operations officer"
+21,1944-12/1945-01,,,,,,,,,,NO FLIGHTS (December 1944 and January 1945),,no flying for two months - transit from Solomons to Philippines?
+22,1945-02-08,SBD-6,54796,1.0,G,Goss,Matson,,,,Strike - Rosario,,combat strike Luzon
+22,1945-02-09,SBD-6,54798,3.2,G,Goss,Matson,,,,Strike - Corregidor,,
+22,1945-02-10,SBD-6,54634,3.0,G,Goss,Matson,,,,Mission incomplete,,
+22,1945-02-11,SBD-6,54635,2.5,G,Goss,Matson,,,,Strike - Wawa,,
+22,1945-02-12,SBD-6,54790,1.0,G,Goss,Matson,,,,Strike - Area south of O'Donnell,,
+22,1945-02-14,SBD-6,54634,2.4,G,Goss,Matson,,,,Strike - Wawa-Lobac,,"second word hard to read; VMSB-341 history confirms a close-support mission near Wawa-Lobac"
+22,1945-02-15,SBD-6,54634,3.2,G,Goss,Matson,,,,Strike - Fort McKinley,,
+22,1945-02-16,SBD-6,54634,2.5,G,Goss,Matson,,,,Strike - Marikina Field,,
+22,1945-02-17,SBD-6,54732,3.4,G,Goss,Matson,,,,Strike - Putlan Bridge,,
+22,1945-02-18,SBD-6,54634,2.5,G,Goss,Matson,,,,Strike - Calamba,,"Month total 24.7; to date 482.4/1.0/483.4. Approved W.A. Leonard? Capt, Flight Officer"
+23,1945-04-05,SBD-6,54742,2.0,G,Goss,Matson,,,,Strike - Jolo,,no March 1945 flights (Apr brought-forward = Feb total)
+23,1945-04-06,SBD-6,54640,2.0,G,Goss,Matson,,,,Strike - Jolo,,
+23,1945-04-09,SBD-6,54743,4.3,G,Goss,Matson,,,,Strike - Malabang,,
+23,1945-04-10,SBD-6,54886,2.3,G,Goss,Matson,,,,Strike - Jolo,,
+23,1945-04-08,SBD-6,54635,1.4,G,Goss,Matson,,,,Tomalabang?,,out of date order in log; place name uncertain
+23,1945-04-08,SBD-6,54635,0.5,G,Goss,Matson,,,,Strike - Malabang,,
+23,1945-04-08,SBD-6,54635,1.3,G,Goss,Matson,,,,Return to Zamboanga,,
+23,1945-04-12,SBD-6,54732,2.2,G,Goss,Matson,,,,Incompleted strike - Jolo,,
+23,1945-04-24,SBD-6,54764,2.0,G,Goss,Matson,,,,Strike - Jolo,,
+23,1945-04-28,SBD-6,54766,4.0,G,Goss,Matson,,,,Strike - Santa Cruz,,
+23,1945-04-28,SBD-6,54732,1.9,R,Goss,,,,,Engine time,,
+23,1945-04-29,SBD-6,54747,3.4,G,Goss,Matson,,,,Strike - Davao,,
+23,1945-04-30,SBD-6,54798,3.5,G,Goss,Matson,,,,Patrol - Oyster Bay,,"Stamp 30 APR 1945: month 30.8; to date 513.2/1.0/514.2. Approved W.A. Leonard? Capt USMCR, flight and operations officer"
+24,1945-05-02,SBD-6,54787,3.0,G,Goss,Matson,,,,Strike - Dalirig,,
+24,1945-05-04,SBD-6,54886,4.5,G,Goss,Matson,,,,Strike - Santa Ana (landed at Malabang),,
+24,1945-05-04,SBD-6,54886,1.0,,Goss,Matson,,,,Malabang to Zamboanga,,
+24,1945-05-07,SBD-6,54695,4.0,G,Goss,Matson,,,,Strike - N.W. of Davao,,
+24,1945-05-09,SBD-6,54764,4.2,G,Goss,Matson,,,,Strike - N.E. of Libby A/D,,Libby airdrome (Davao)
+24,1945-05-10,SBD-6,54764,4.0,G,Goss,Matson,,,,Incomplete,,
+24,1945-05-12,SBD-6,54648,4.0,G,Goss,Matson,,,,Strike - Libby A/D,,
+24,1945-05-13,SBD-6,54612,3.5,G,Goss,Matson,,,,Strike - N. of Davao,,
+24,1945-05-15,SBD-6,54764,3.8,G,Goss,Matson,,,,Strike - NW of Davao,,
+24,1945-05-18,SBD-6,54764,4.0,G,Goss,Matson,,,,Strike - N.W. of Davao,,
+24,1945-05-20,SBD-6,54764,4.0,G,Goss,Matson,,,,Strike - E. of Dalwangan (landed at Malabang),,
+24,1945-05-20,SBD-6,54764,1.3,G,Goss,Matson,,,,Malabang to Zamboanga,,
+24,1945-05-24,SBD-6,54764,4.4,G,Goss,Matson,,,,Incomplete - no target (landed at Malabang),,
+24,1945-05-24,SBD-6,54764,1.0,G,Goss,Matson,,,,Malabang to Zamboanga,,
+24,1945-05-28,SBD-6,54764,4.0,G,Goss,Matson,,,,Strike - E. of Malaybalay,,
+24,1945-05-28,SBD-6,54764,,,,,,,,,,row started but left incomplete in log
+25,1945-05-31,,,,,,,,,,"Stamp 31 May 1945: month 50.7; to date 563.9/1.0/564.9. Approved W.A. Lamont? Capt USMC",,summary only
+26,1945-06-03,SBD-6,54764,4.2,G,Goss,Matson,,,,Strike - SE of Salak?,,place name uncertain
+26,1945-06-06,SBD-6,54764,1.0,G,Goss,Matson,,,,Incomplete,,
+26,1945-06-07,SBD-6,54764,4.2,G,Goss,Matson,,,,Strike - N.W. of Davao,,
+26,1945-06-10,SBD-6,54764,3.8,G,Goss,Matson,,,,Strike - N.W. of Davao,,
+26,1945-06-19,SBD-6,54043,4.0,G,Goss,Matson,,,,Strike - N.W. of Davao,,
+26,1945-06-23,SBD-6,54043,1.5,G,Goss,Matson,,,,Incomplete,,"Stamp 30 JUN 1945: month 18.7; to date 582.6/1.0/583.6"
+27,1945-07-01,SBD-6,54764,2.2,T,Goss,Matson,,,,To Malabang & return,,
+27,1945-07-02,SBD-6,54764,3.6,T,Goss,Matson,,,,To Libby & return,,"Combat tally: 31 completed strikes, 6 incomplete strikes. Stamp 6 July 1945: month 5.8; to date 588.4/1.0/589.4"
+28,1945-07-10,R4D,,,,,,,,,,,"Only date + aircraft type written (R4D transport) - likely a passenger flight, possibly the start of the trip home"
+29,1945-10-08,SB2C,65051,1.5,E,Goss,,,,,Fam.,VMSB-932,duration first digit overwritten
+29,1945-10-09,SB2C,65066,1.4,E,Goss,,,,,Fam.,VMSB-932,
+29,1945-10-10,SB2C,83066,1.0,G,Goss,Lang,,,,Dive tact.,VMSB-932,
+29,1945-10-16,SB2C,83047,2.0,E,Goss,Sheffield,,,,IBP,VMSB-932,"original remark (Fam.) and passenger struck through"
+29,1945-10-16,SB2C,83047,1.6,E,Goss,,,,,Cherry Point & Ret.,VMSB-932,
+29,1945-10-17,SB2C,83109,2.0,G,Goss,Sheffield,,,,Dive Bomb,VMSB-932,
+29,1945-10-18,SB2C,83006,0.5,G,Goss,Hawthorne,,,,Dive Bomb,VMSB-932,
+29,1945-10-18,SB2C,65240,1.4,G,Goss,Hawthorne,,,,Dive Bomb,VMSB-932,
+29,1945-10-19,SB2C,21135,1.8,G,Goss,Sheffield,,,,Dive Bomb,VMSB-932,
+29,1945-10-23,SB2C,82870,2.0,E,Goss,DeBoissiere?,,,,Div. tacts,VMSB-932,
+29,1945-10-31,SB2C,82894,1.1,K,Goss,Gonzales,,,,Practice Parade,VMSB-932,"VMSB-932 stamp: month 16.3; brought fwd 588.4/1.1; to date 604.7/1.1/605.7. Approved Allan R. Walker? 1st Lt, flight officer"
+30,1945-11-01,SB2C,65283,1.6,K,Goss,Sheffield,,,,Practice Parade,VMSB-932,
+30,1945-11-05,SB2C,82889,1.7,K,Goss,Knapp,,,,Div. Tact.,VMSB-932,
+30,1945-11-06,SB2C,83102,1.6,K,Goss,Yeager,,,,Div. Tact.,VMSB-932,
+30,1945-11-08,SB2C,65024,2.0,K,Goss,Foss,,,,Parade,VMSB-932,
+30,1945-11-10,SB2C,65014,1.8,K,Goss,Beecroft?,,,,Parade Ch. Pt.,VMSB-932,parade at Cherry Point. VMSB-932 stamp: month 8.7; to date 613.4/1.1/614.5

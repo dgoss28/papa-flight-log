@@ -1,0 +1,6 @@
+{"type":"FeatureCollection","features":[
+{"type":"Feature","properties":{"id":"jamestown","label":"Marine main line, autumn 1952 (approximate)","era":"korea"},
+ "geometry":{"type":"LineString","coordinates":[[126.60,37.76],[126.66,37.84],[126.69,37.90],[126.72,37.925],[126.76,37.935],[126.80,37.945],[126.85,37.965],[126.90,37.99],[126.94,38.02],[127.00,38.05],[127.10,38.08]]}},
+{"type":"Feature","properties":{"id":"38th","label":"38th parallel","era":"korea"},
+ "geometry":{"type":"LineString","coordinates":[[124.5,38.0],[129.5,38.0]]}}
+]}

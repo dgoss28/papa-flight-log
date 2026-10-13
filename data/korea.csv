@@ -1,0 +1,241 @@
+page,date,aircraft_type,aircraft_no,character,flight_time,pilot_time,passenger_time,instrument,night,carrier_landings,remarks,station,notes
+1,1943-08-17,,,,,,,,,,"Logbook cover: Thomas E. Goss USMCR, File No. 036705, date effective 17 Aug 1943",,cover page
+2,1953-02-10,,,,,,,,,,Indoctrination in Dilbert Dunker Trainer,MCAS Cherry Point NC,special qualifications page
+2,1953-04-13,,,,,,,,,,Carrier qualified (day) - USS Bennington,USS Bennington (CV-20),"signed G.E. Wasson, Maj USMC"
+3,1951-07-14,SNJ-4,27615,1A1,1.1,1.1,,,,,D-1,,
+3,1951-07-14,SNJ-5,90942,1A1,1.5,,1.5,,,,I-2,,as passenger
+3,1951-07-16,SNJ-4,51489,1A1,1.3,1.3,,,,,D-2,,
+3,1951-07-17,SNJ-5,90595,1A1,1.1,1.1,,,,,D-2,,
+3,1951-07-18,SNJ-4,27692,1A1,1.3,1.3,,,,,F-1,,
+3,1951-07-18,SNJ-4,27011,1A1,1.3,1.3,,,,,F-1,,
+3,1951-07-19,SNJ-4,27615,1A1,1.5,1.5,,,,,C-1,,
+3,1951-07-19,SNJ-4,27011,1A1,1.3,1.3,,,,,F-2,,
+3,1951-07-20,SNJ-4,27615,1A2,0.9,,0.9,,,,V-1,,as passenger (instrument hop)
+3,1951-07-21,F4U-4,81678,1A1,1.5,1.5,,,,,Fam I,,first Corsair flight
+3,1951-07-21,F4U-4,82037,1A1,2.0,2.0,,,,,Fam II,,
+3,1951-07-21,SNJ-4,27615,1A2,1.5,,1.5,1.5,,,V-1,,
+3,1951-07-23,F4U-4,81636,1A1,1.7,1.7,,,,,Sec. Tac. I,,
+3,1951-07-23,F4U-4,82039,1A1,1.5,1.5,,,,,F. II,,
+3,1951-07-23,SNJ-5,90595,1A1,1.5,1.5,,,,,Solo,,
+3,1951-07-24,F4U-4,81193,1A1,1.5,1.5,,,,,Sec Tacs,,
+3,1951-07-24,F4U-4,81193,1A1,1.8,1.8,,,,,Sec Tacs,,
+3,1951-07-24,SNJ-4,27615,1A2,1.4,,1.4,,,,V-1,,
+3,1951-07-26,F4U-4,82114,1A1,2.0,2.0,,,,,Div Tacs,,"Page total 26.7 (21.4 pilot, 5.3 pass); brought fwd 614.5; grand total 641.2. Approved W.L. Hall"
+4,1951-07-27,F4U-4,81193,1A1,1.5,1.5,,,,,Div Tacs,,
+4,1951-07-27,F4U-4,80773,1A1,1.5,1.5,,,,,Div Tacs,,
+4,1951-07-30,F4U-4,80798,1A1,1.5,1.5,,,,,Aero I,,
+4,1951-07-30,F4U-4,82114,1A1,0.5,0.5,,,,,Aero II,,
+4,1951-07-31,F4U-4,80773,1A7,1.6,1.6,,,,,B. & R. II,,bombing & rocketry
+4,1951-07-31,F4U-4,80861,1A7,1.5,1.5,,,,,B. & R.,,"Page total 8.1; grand total 649.3"
+5,1951-08-01,F4U-4,80861,1A7,1.3,1.3,,,,,Scars 4 Min,,remark uncertain
+5,1951-08-01,F4U-4,97112,1A7,1.6,1.6,,,,,Scars 4 Min,,
+5,1951-08-02,F4U-4,97138,1A1,1.1,1.1,,,,,A-2,,
+5,1951-08-18,SNB-5,51180,1C1,6.6,,6.6,,,,NKT-CMH-MSN,,"route Cherry Point - Columbus OH - Madison WI; as passenger/student"
+5,1951-08-19,SNB-5,51180,3C1,5.0,,5.0,2.6,,,MSN-CMH-NKT,,"Madison - Columbus - Cherry Point. Page total 15.6; grand total 664.9. Approved W.R. Hartley?"
+6,1951-09-07,F4U-4,80984,1J1,3.0,3.0,,,,,NKT-NCO,,Cherry Point to NAS Quonset Point RI
+6,1951-09-08,F4U-4,81916,1J1,3.0,3.0,,,,,NCO-NKT,,Quonset Point back to Cherry Point
+6,1951-09-12,SNB-5,39827,1B1,2.0,,1.0,,,,Fam,,"1.0 student + 1.0 in last column. A second Sept 12 row has only the date. Page total 8.0; grand total 672.9"
+7,1951-10-08,OY-2,03983,1A9,1.2,1.2,,,,,TAO,,OY-2 = observation/liaison plane (Sentinel). TAO = tactical air observer?
+7,1951-10-16,OY-2,03937,1A9,1.4,1.4,,,,,AO,,aerial observation
+7,1951-10-16,OY-2,120467,1A9,1.5,1.5,,,,,AO,,"aircraft type ditto; Page total 4.6; grand total 677.5"
+8,1951-11-08,F4U-4,80798,1B1,1.0,1.0,,,,,Local,,
+8,1951-11-08,F4U-4,81277,1B1,1.0,1.0,,,,,Local,,
+8,1951-11-08,F4U-4,81403,1B1,1.0,1.0,,,,,Local,,
+8,1951-11-11,SNB-5,39804,1C1,1.7,,1.7,,,,DCA-NKT,,Washington National to Cherry Point (as co-pilot)
+8,1951-11-06,F4U-4,96967,1B1,1.5,1.5,,,,,Fam,,out of date order
+8,1951-11-23,SNB-3N,67210,1C1,5.0,,5.0,,,,NKT-Miami,,Cherry Point to Miami (co-pilot)
+8,1951-11-25,SNB-3N,67210,1C1,5.2,,5.2,3.2,,,Miami-NKT,,"2.0 multi-engine day. Page total 16.4 (4.5 AC, 11.9 CP); grand total 693.9"
+9,1951-12-03,F4U-4,96951,1A1,1.5,1.5,,,,,Local,,
+9,1951-12-05,F4U-4,96982,1A1,1.75,1.75,,,,,Local,,
+9,1951-12-22,SNB-5,51229,1C1,3.5,,3.5,,,,NKT-CMH,,"'Local' struck through; Cherry Point to Columbus"
+9,1951-12-22,SNB-5,51229,1C1,3.0,,3.0,,,,CMH-MKE,,Columbus to Milwaukee - Christmas trip home?
+9,1951-12-23,SNB-5,51229,1C1,0.5,,0.5,,,,MKE-NBV,,NBV code unidentified (maybe NAS Glenview area)
+9,1951-12-24,SNB-5,51229,1C1,2.5,1.2,1.3,,,,NBV-CHW,,CHW code unidentified
+9,1951-12-24,SNB-5,51229,3C1,2.2,1.1,1.1,,2.2,,CHW-NKT,,back to Cherry Point
+9,1951-12-27,SNB-5,67187,1A2,3.0,1.4,0.1,1.4,,,Local - Instrument,,1.5 in last column
+9,1951-12-28,SNB-5,39810,1A2,3.4,3.4,,2.7,,,A-3,,
+9,1951-12-29,SNB-5,39827,1A2,1.6,,1.6,,,,Passenger,,"Page totals corrected by hand: 19.8 / grand total 713.7"
+10,1952-01-02,SNB-5,67187,1A2,2.9,1.2,0.3,1.2,,,A-5,,1.4 in last column; multi-engine instrument syllabus
+10,1952-01-07,SNB-5,67187,1A2,3.0,1.5,,,,,A-4,,
+10,1952-01-09,SNB-5,39928,1A2,2.8,,0.8,,,,A-5,,
+10,1952-01-11,SNB-5,51071,1A2,3.5,1.5,,1.5,,,B-1,,
+10,1952-01-14,SNB-5,67322,1A2,3.2,1.5,,1.0,,,B-2,,
+10,1952-01-16,SNB-5,29637,1A1,3.0,1.5,,1.5,,,B-3,,
+10,1952-01-16,SNB-5,51071,1A2,1.2,1.0,0.2,0.7,,,GCA,,ground-controlled approach
+10,1952-01-16,SNB-5,51071,1A2,0.8,0.8,,0.5,,,Local,,
+10,1952-01-17,SNB-5,29637,1A2,3.2,1.7,,1.6,,,B-4,,
+10,1952-01-18,SNB-5,51053,1A2,3.1,1.4,0.1,1.4,,,B-5,,
+10,1952-01-19,SNB-5,29637,1A2,3.1,1.5,,1.5,,,C-1,,
+10,1952-01-21,SNB-5,67298,1A2,3.3,1.6,,1.5,,,C-2,,
+10,1952-01-23,SNB-5,67190,1B2,3.0,1.5,,1.0,,,C-3,,
+10,1952-01-24,SNB-5,39928,1A2,3.0,3.0,,2.5,,,C-4,,
+10,1952-01-25,SNB-5,29637,1C2,1.9,1.9,,1.9,,,NKT-Shaw AFB,,Cherry Point to Shaw AFB SC
+10,1952-01-25,SNB-5,29637,2C1,2.0,2.0,,2.0,,,Shaw AFB-NIP,,Shaw to NAS Jacksonville
+10,1952-01-25,SNB-5,29637,4C1,3.0,1.0,2.0,3.0,,,NIP-NKT,,"Jacksonville back to Cherry Point. Page total 28.0; grand total 741.7"
+11,1952-02,,,,,,,,,,NO FLIGHTS,,
+12,1952-03-04,OE-1,133811,1A1,1.5,1.5,,,,,Local,,"OE-1 Bird Dog (observation). Page total 1.5; grand total 743.2"
+13,1952-05-25,OE-1,133784,1B3,1.3,1.3,,,,,Local Fam,VMO-6,"VMO-6 stamped at top. Page total 1.3; grand total 744.5 (written 744.5; 'brought fwd' miswritten 743.2)"
+14,1952-09-12,OE-1,133792,1V3,1.5,,,,,,Recon R+L Sector,VMO-6,"1.5 as student/DP. Korea combat begins. A/S = artillery spotting"
+14,1952-09-15,OE-1,133790,1V3,2.4,2.4,,,,,A/S Kouptung?,VMO-6,Korean place names transcribed as written; spelling uncertain
+14,1952-09-16,OE-1,133790,1V3,2.1,2.1,,,,,A/S Nong Gok,VMO-6,
+14,1952-09-17,OE-1,133790,1V3,2.5,2.5,,,,,A/S Tongmal?,VMO-6,
+14,1952-09-18,OE-1,133792,1V3,2.5,2.5,,,,,A/S Changnam-myon,VMO-6,
+14,1952-09-19,OE-1,133786,1V3,3.0,3.0,,,,,A/S Sambok-tong,VMO-6,
+14,1952-09-20,OE-1,133789,1V3,2.4,2.4,,,,,A/S Panggi-dong,VMO-6,
+14,1952-09-21,OE-1,133786,1V3,2.4,2.4,,,,,A/S Chuck-tong?,VMO-6,
+14,1952-09-22,OE-1,133789,1V3,2.4,2.4,,,,,A/S Taedoksan,VMO-6,
+14,1952-09-23,OE-1,133787,1B3,1.0,1.0,,,,,Fam Munsan-ni,VMO-6,
+14,1952-09-23,OE-1,133790,1V3,1.4,1.4,,,,,A/S Chung-myon,VMO-6,
+14,1952-09-23,OE-1,133790,1R2,0.9,0.9,,,,,K-16,VMO-6,K-16 = Seoul Airport
+14,1952-09-24,OE-1,133787,1R2,1.1,1.1,,,,,Taxi ASCOM #1 - K-16,VMO-6,ASCOM City (near Bupyeong/Incheon)
+14,1952-09-26,OE-1,133792,1V3,2.5,2.5,,,,,A/S Koji,VMO-6,
+14,1952-09-27,OE-1,133786,1V3,2.5,2.5,,,,,A/S Tae Song-dong,VMO-6,
+14,1952-09-28,OE-1,133789,1V3,2.4,2.4,,,,,A/S Taedoksan,VMO-6,
+14,1952-09-29,OE-1,133790,1V3,2.5,2.5,,,,,A/S Taeryong-ni,VMO-6,
+14,1952-09-30,OE-1,133787,1V3,2.4,2.4,,,,,A/S Taedoksan,VMO-6,
+14,1952-09-30,OE-1,50-1364,1J,0.5,0.5,,,,,(Ferry) ASCOM - A-9,VMO-6,"Army serial aircraft. Page total 38.4; grand total 782.9. Note: 'OPNAV Instruction 3764.2 complied with'. Approved Capt USMC, VMO-6"
+15,1952-10-01,OE-1,133790,1V3,1.3,1.3,,,,,Recon: Right & Left Sector,VMO-6,
+15,1952-10-01,OE-1,133786,1V3,1.4,1.4,,,,,Recon: Right & Left Sector,VMO-6,
+15,1952-10-02,L-19A,50-1364,1R2,0.6,0.6,,,,,Taxi K-16,VMO-6,
+15,1952-10-02,OE-1,133782,1V3,1.5,1.5,,,,,A/S Wandong,VMO-6,
+15,1952-10-03,OE-1,133789,1V3,2.7,2.7,,,,,A/S Taegang-myon,VMO-6,
+15,1952-10-03,OE-1,133786,1V3,1.0,1.0,,,,,Recon: Right & Left Sector,VMO-6,
+15,1952-10-04,L-19A,50-1592,1V3,2.4,2.4,,,,,A/S Taedoksan,VMO-6,
+15,1952-10-04,OE-1,133789,1V3,1.9,1.9,,,,,A/S Kogi,VMO-6,
+15,1952-10-05,OE-1,133786,1V3,2.0,2.0,,,,,A/S Hong Nung,VMO-6,
+15,1952-10-06,OE-1,133796,1V3,1.9,1.9,,,,,A/S Taedoksan,VMO-6,
+15,1952-10-07,OE-1,133789,1V3,2.1,2.1,,,,,TAO Changdo-myon,VMO-6,TAO = tactical air observation/control
+15,1952-10-07,OE-1,133792,1R2,0.8,0.8,,,,,Taxi K-16,VMO-6,
+15,1952-10-08,OE-1,,1V3,2.1,2.1,,,,,TAO Masan-gok,VMO-6,bureau no. blotted out by ink
+15,1952-10-08,OE-1,133786,1L,0.5,0.5,,,,,Test A-9,VMO-6,
+15,1952-10-09,OE-1,133792?,1V3,1.8,1.8,,,,,TAO - Rt Sector Taedoksan,VMO-6,
+15,1952-10-09,L-19A,50-1606,1R2,1.2,1.2,,,,,Mail,VMO-6,
+15,1952-10-09,OE-1,133813,1V3,2.1,2.1,,,,,TAO Paektongum-ni,VMO-6,
+15,1952-10-11,OE-1,133790,1R2,1.4,1.4,,,,,K-16 ASCOM Mail run,VMO-6,
+15,1952-10-11,OE-1,133789,1V3,2.3,2.3,,,,,A/S Samilgtong?,VMO-6,
+15,1952-10-11,OE-1,133790,1V3,1.3,1.3,,,,,Hang Dong-ni,VMO-6,running total 32.4 for month
+16,1952-10-12,OE-1,133782,1V3,2.5,2.5,,,,,TAO Chand-myon,VMO-6,"day written 12 (first row may be 12 or 13)"
+16,1952-10-12,OE-1,133789,3V3,1.0,1.0,,,1.0,,A/S Chung-ni,VMO-6,night
+16,1952-10-13,L-19A,50-1606,1V3,2.4,2.4,,,,,A/S Saemal,VMO-6,
+16,1952-10-14,OE-1,133792,1V3,2.4,2.4,,,,,TAO - Changae-dong,VMO-6,
+16,1952-10-14,OE-1,133786,3V3,1.3,1.3,,,1.3,,A/S - Pongdonyan?,VMO-6,night
+16,1952-10-16,OE-1,133789,1V3,2.1,2.1,,,,,TAO - Songuch-on,VMO-6,
+16,1952-10-16,OE-1,133782,1V1,2.3,2.3,,,,,Songuch-on - Photo Mission LS,VMO-6,
+16,1952-10-16,OE-1,133787,1V3,2.5,2.5,,,,,A/S Taegang-myon,VMO-6,
+16,1952-10-17,L-19A,50-1606,3V3,1.1,1.1,,,,,TAO - Yul-tong,VMO-6,
+16,1952-10-17,OE-1,133812,1V3,0.5,0.5,,,,,TAO - Chinch-on,VMO-6,
+16,1952-10-17,OE-1,133792,1V3,1.8,1.8,,,,,TAO - Kojan-dong,VMO-6,
+16,1952-10-18,L-19A,50-1606,1J,0.8,0.8,,,,,Taxi K-16,VMO-6,
+16,1952-10-19,OE-1,133792,3V3,1.0,1.0,,,1.0,,TAO - Yul-tong,VMO-6,night
+16,1952-10-20,L-19A,50-1364,1R2,1.5,1.5,,,,,Taxi - K-16,VMO-6,
+16,1952-10-20,OE-1,133813,3V3,2.0,2.0,,,2.0,,TAO - Irwon-dong,VMO-6,night
+16,1952-10-22,OE-1,133790,1R2,1.0,1.0,,,,,Taxi - K-16 & Ret,VMO-6,
+16,1952-10-22,OE-1,133812,1V3,2.1,2.1,,,,,TAO - Chansan-dong?,VMO-6,
+16,1952-10-30,OE-1,133787,1V3,2.5,2.5,,,,,A/S - Kar-hyon,VMO-6,
+16,1952-10-31,OE-1,133813,1V3,2.4,2.4,,,,,TAO - Sajang-ni,VMO-6,"Oct total 65.5; grand total 848.4"
+17,1952-11-01,OE-1,133787?,1V3,2.4,2.4,,,,,AGRCA? Checkout,VMO-6,remark partly illegible
+17,1952-11-02,OE-1,133787,3V3,2.0,2.0,,,2.0,,A/S - Sinch-ori?,VMO-6,night
+17,1952-11-03,OE-1,133813,3V3,1.9,1.9,,,1.9,,TAO - Sagae-dong,VMO-6,night
+17,1952-11-04,OE-1,133782,1V3,2.3,2.3,,,,,TAO - Ungor?,VMO-6,
+17,1952-11-05,OE-1,133792?,1V3,2.5,2.5,,,,,TAO - Joryon-ni?,VMO-6,
+17,1952-11-06,OE-1,133789?,1V3,2.1,2.1,,,,,TAO - Irwon-dong,VMO-6,
+17,1952-11-13,OE-1,133812,1R2,1.8,1.8,,,,,Taxi K-16 - K-13,VMO-6,K-13 = Suwon
+17,1952-11-18,OE-1,133813,1R2,0.6,0.6,,,,,Taxi - K-16 & Ret,VMO-6,"Page total 15.6; grand total 864.0. 'OPNAV 3760.2 instruction complied with Oct 1 - Nov 19'. Last Korea combat flight"
+18,1953-01-20,AD-4N,126935,1A1,1.1,1.1,,,,,Fam,VMC-2,AD Skyraider - back stateside; squadron stamp illegible
+18,1953-01-21,AD-4N,126935,1A1,2.3,2.3,,,,,Fam,VMC-2,
+18,1953-01-22,AD-4N,126978,1A1,2.3,2.3,,,,,Fam,VMC-2,
+18,1953-01-23,AD-4N,126978,1A1,2.3,2.3,,,,,Fam,VMC-2,
+18,1953-01-26,AD-4W,127926,1A1,1.2,1.2,,,,,Fam,VMC-2,"Page total 9.2; grand total 873.2. Approved H.W. Hamilton?"
+19,1953-02-02,AD-3W,122889,1A1,2.5,2.5,,,,,,VMC-2,"VMC-2 = Marine Composite Squadron 2 (AD Skyraider early-warning/ASW, Cherry Point)"
+19,1953-02-05,AD-4W,127926,1A2,2.3,2.3,,1.5,,,,VMC-2,
+19,1953-02-05,AD-4W,127932,3A1,2.4,2.4,,,2.4,,,VMC-2,night
+19,1953-02-06,AD-4W,126867,1A1,2.5,2.5,,,,,,VMC-2,
+19,1953-02-09,AD-4N,126983,1A2,2.3,2.3,,1.1,,,,VMC-2,
+19,1953-02-09,AD-4W,126867,3A1,2.1,2.1,,,2.1,,,VMC-2,night
+19,1953-02-13,AD-4N,126935,1A7,1.0,1.0,,,,,Rockets & Gunnery,VMC-2,
+19,1953-02-16,AD-4N,126935,3A1,2.3,2.3,,,2.3,,,VMC-2,night
+19,1953-02-17,AD-4W,126867,1A1,1.8,1.8,,,,,Sect Tac,VMC-2,
+19,1953-02-18,AD-3W,122889,1A1,1.3,1.3,,,,,,VMC-2,
+19,1953-02-19,AD-3W,122893,1A9,2.0,2.0,,,,,,VMC-2,
+19,1953-02-20,AD-4N,126978,1A2,2.7,2.7,,1.0,,,,VMC-2,
+19,1953-02-24,AD-4W,127932,1A1,1.8,1.8,,,,,,VMC-2,
+19,1953-02-24,AD-4W,126867,1A1,1.0,1.0,,,,,Slow Flight,VMC-2,
+19,1953-02-25,AD-3W,127932,1A9,2.8,2.8,,1.0,,,Killer,VMC-2,hunter-killer ASW exercise
+19,1953-02-25,AD-4N,126983,3A1,1.2,1.2,,,1.2,,,VMC-2,night
+19,1953-02-27,AD-4N,126983,1A3,0.8,0.8,,,,,,VMC-2,8 field carrier landing practice (FCL)
+19,1953-02-27,AD-4W,127931,1A9,2.0,2.0,,,,,Killer,VMC-2,
+19,1953-02-27,AD-3W,122879,1A9,2.5,2.5,,,,,Hunter,VMC-2,"Page total 37.3; grand total 910.5. Approved H.W. Hamilton"
+20,1953-02-28,AD-4N,126978,1A3,1.2,1.2,,,,,,VMC-2,"16 FCL. Grand total 911.7"
+21,1953-03-05,AD-3W,122879,1C1,1.7,1.7,,,,,NKT-NTU,VMC-2,Cherry Point to NAS Oceana VA
+21,1953-03-06,AD-3W,122879,1A3,0.8,0.8,,,,,,VMC-2,8 FCL
+21,1953-03-06,AD-4W,127932,1A3,0.8,0.8,,,,,,VMC-2,8 FCL
+21,1953-03-06,AD-3W,122879,1C1,1.0,1.0,,,,,NTU-NKT,VMC-2,
+21,1953-03-07,AD-4N,126984,1A1,2.4,2.4,,,,,,VMC-2,
+21,1953-03-09,AD-4W,126867,1A1,2.5,2.5,,,,,,VMC-2,
+21,1953-03-09,AD-3W,122900,1C1,1.2,1.2,,,,,NKT-NHU,VMC-2,"8 FCL; NHU code unidentified"
+21,1953-03-09,AD-3W,122900,1C1,0.5,0.5,,,,,NHU-NKT,VMC-2,
+21,1953-03-10,AD-3W,122901,3A9,1.8,1.8,,,1.8,,,VMC-2,night
+21,1953-03-21,AD-4N,126983,1A9,1.8,1.8,,,,,,VMC-2,
+21,1953-03-24,AD-3W,122879,1A9,1.0,1.0,,,,,,VMC-2,
+21,1953-03-26,AD-3W,122885,1A9,2.4,2.4,,,,,,VMC-2,
+21,1953-03-27,AD-3W,122879,1A9,3.3,3.3,,,,,,VMC-2,
+21,1953-03-28,AD-4W,127931,1A9,1.1,1.1,,,,,,VMC-2,
+21,1953-03-28,AD-3W,122879,1A9,0.8,0.8,,,,,,VMC-2,
+21,1953-03-29,AD-4W,127927,1A9,2.0,2.0,,,,,,VMC-2,"Page total 25.1; grand total 936.8. OPNAV Instruction 3760.2 complied with 1 April 1953. Approved R.D. Shipman?"
+22,1953-04-01,AD-4W,127927,1A3,1.5,1.5,,,,,NKT - Edenton,VMC-2,MCAAS Edenton NC; 7 FCL
+22,1953-04-01,AD-4W,127927,1A3,0.7,0.7,,,,,,VMC-2,7 FCL
+22,1953-04-01,AD-4W,127927,1C1,0.7,0.7,,,,,Edenton - NKT,VMC-2,
+22,1953-04-02,AD-3W,122879,1C1,0.6,,,,,,NKT - Edenton,VMC-2,0.6 in last column
+22,1953-04-02,AD-3W,122879,1A3,0.5,0.5,,,,,,VMC-2,8 FCL
+22,1953-04-02,AD-3W,122879,1A3,0.7,0.7,,,,,,VMC-2,8 FCL
+22,1953-04-02,AD-4N,126984,1C1,0.5,0.5,,,,,Edenton - NKT,VMC-2,
+22,1953-04-03,AD-3W,122879,1A3,0.7,0.7,,,,,,VMC-2,9 FCL
+22,1953-04-07,AD-3W,122893,1A3,0.9,0.9,,,,,NAW,VMC-2,11 FCL; NAW code unidentified (Navy field near Norfolk?)
+22,1953-04-08,AD-4W,126867,1A9,3.5,3.5,,,,,,VMC-2,
+22,1953-04-09,AD-3W,122893,1A3,2.5,2.5,,,,,,VMC-2,14 FCL
+22,1953-04-10,AD-3W,122889,1A9,3.5,3.5,,,,,,VMC-2,
+22,1953-04-13,AD-4W,126867,1A4,2.3,2.3,,,,8,Carrier Qualification NAW - CVA-20,VMC-2,8 carrier landings aboard USS Bennington (CVA-20)
+22,1953-04-16,AD-4W,126867,1A9,3.0,3.0,,,,,,VMC-2,
+22,1953-04-17,AD-3W,122905,1C1,1.0,1.0,,0.4,,,NAW,VMC-2,
+22,1953-04-18,AD-3W,122905,1C1,3.0,3.0,,,,,NAW - MMN,VMC-2,MMN code unidentified
+22,1953-04-18,AD-3W,122905,1C1,2.5,2.5,,,,,MMN - SAV,VMC-2,SAV = Savannah GA
+22,1953-04-18,AD-3W,122905,1C1,1.7,1.7,,,,,SAV - NKT,VMC-2,
+22,1953-04-20,AD-3W,122879,1A2,2.4,2.4,,1.0,,,,VMC-2,"Page total 31.6; grand total 968.4"
+23,1953-04-21,AD-4W,124091,1A2,1.5,1.5,,1.3,,,6 GCA runs,VMC-2,
+23,1953-04-22,AD-4W,127931,3A1,2.5,2.5,,,2.5,,,VMC-2,night
+23,1953-04-23,AD-3W,122893,3A9,2.3,2.3,,,2.3,,,VMC-2,night
+23,1953-04-24,AD-4W,124091,1A9,2.8,2.8,,1.0,,,,VMC-2,
+23,1953-04-27,AD-4N,126981,1A9,1.5,1.5,,,,,,VMC-2,
+23,1953-04-28,AD-4W,124091,1C1,1.7,1.7,,,,,NKT-NGU-NKT,VMC-2,NGU = NAS Norfolk VA
+23,1953-04-28,AD-3W,122901,3A1,1.0,1.0,,,1.0,,,VMC-2,night
+23,1953-04-29,AD-4W,127927,1A2,1.8,1.8,,1.0,,,,VMC-2,"Page total 15.1; grand total 983.5. Partly-obscured stamp mentions '25 April', GCA, '1 Special', '5 Combat'"
+24,1953-05-04,AD-4W,126868,1A2,1.7,1.7,,1.0,,,,VMC-2,
+24,1953-05-04,AD-3W,122879,1A9,1.5,1.5,,,,,,VMC-2,
+24,1953-05-14,AD-4W,127927,1M1,0.5,0.5,,,,,,VMC-2,
+24,1953-05-15,AD-4N,126984,1A9,2.5,2.5,,,,,,VMC-2,
+24,1953-05-15,AD-3W,122889,1A3,1.0,1.0,,,,,,VMC-2,
+24,1953-05-19,AD-3W,122900,1A2,2.5,2.5,,1.0,,,,VMC-2,
+24,1953-05-20,AD-4W,127926,1A1,2.0,2.0,,,,,,VMC-2,
+24,1953-05-26,AD-4N,126981,1B1,4.0,,,,,,NKT - NBU,VMC-2,4.0 in last column (SC); NBU = NAS Glenview IL
+24,1953-05-26,AD-4N,126984,1C1,3.5,,,,,,NBU - NKT,VMC-2,"date column blotted; 3.5 in SC column. Page total 11.7; grand total 995.2"
+25,1953-06-02,AD-4N,126978,1A1,2.0,2.0,,,,,,VMC-2,
+25,1953-06-02,AD-4W,127927,1A9,1.5,1.5,,,,,,VMC-2,
+25,1953-06-03,AD-3W,122893,1A9,1.6,1.6,,,,,,VMC-2,
+25,1953-06-03,AD-3W,122905,1A9,2.5,2.5,,,,,,VMC-2,
+25,1953-06-04,AD-4W,127932,1A2,2.7,2.7,,2.5,,,,VMC-2,
+25,1953-06-06,AD-4N,126935,1A9,2.3,2.3,,,,,,VMC-2,
+25,1953-06-08,AD-4W,127932,1A2,1.0,1.0,,0.7,,,,VMC-2,
+25,1953-06-08,AD-4W,127932,1A3,0.8,0.8,,,,,,VMC-2,4 FCL
+25,1953-06-09,AD-4N,126978,1A1,2.4,2.4,,,,,,VMC-2,
+25,1953-06-09,AD-4N,126978,1A1,0.5,0.5,,,,,,VMC-2,
+25,1953-06-10,AD-4N,126983,1A4,1.6,1.6,,,,,Div. Tact.,VMC-2,
+25,1953-06-15,AD-4W,127932,1A2,2.2,2.2,,1.3,,,,VMC-2,
+25,1953-06-16,AD-3W,122889,4J,2.8,2.8,,,,,NKT - NCO,VMC-2,Cherry Point to Quonset Point
+25,1953-06-16,AD-4N,126978,1C1,2.5,,,,,,NCO - NKT,VMC-2,2.5 in SC column
+25,1953-06-17,AD-4N,126978,1A9,0.5,0.5,,,,,,VMC-2,
+25,1953-06-18,AD-4N,126981,3A9,2.3,2.3,,,1.2,,,VMC-2,night
+25,1953-06-18,AD-4W,127927,1A1,2.0,,,,,,Radar checkout,VMC-2,2.0 in SC column
+25,1953-06-23,AD-4W,124091,1A9,2.5,2.5,,,,,,VMC-2,
+25,1953-06-23,AD-4N,126984,1A1,1.9,1.9,,0.5,,,,VMC-2,"Page total 31.1; grand total 1026.3"
+26,1953-06-24,AD-4W,127932,1C1,0.5,0.5,,,,,NKT - Edenton,VMC-2,
+26,1953-06-24,AD-4W,127932,1A3,0.5,0.5,,,,,CRASH!,VMC-2,"Final logged flight. 10 FCL recorded. Grand total 1027.3. OPNAV Instruction 3760.2 complied with 7 Jul 53. Approved R.D. Shipman"
