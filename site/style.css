@@ -121,6 +121,7 @@ h1 {
 #timeline button:disabled { opacity: .35; cursor: default; }
 #timeline button:focus-visible, .close:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
 #next-chapter { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.nc-label::after { content: ":"; }
 #when { font-family: var(--type); flex: 1; }
 #totals { display: flex; gap: 1.1rem; margin: 0; }
 #totals div { text-align: right; }
@@ -272,10 +273,16 @@ img.zoom:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
   }
 
   #totals { display: none; }
-  #timeline { gap: .55rem; padding: 0 .7rem; z-index: 3; }
-  #when { display: none; }
+  #timeline { gap: .4rem; padding: 0 .6rem; z-index: 3; }
   #timeline button { font-size: .82rem; padding: .55rem .6rem; }
-  #next-chapter { flex: 1; text-align: right; }
+  #prev-flight { padding: .35rem .6rem !important; }
+  #when { flex: 1; min-width: 0; font-size: .72rem; text-align: center; white-space: nowrap; }
+  /* Stacked so the date fits beside it */
+  #next-chapter { flex: none; max-width: 40%; display: flex; flex-direction: column; align-items: flex-end;
+    line-height: 1.15; padding: .3rem .6rem !important; }
+  .nc-label { font-size: .66rem; opacity: .75; }
+  .nc-label::after { content: none; }
+  .nc-name { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .maplibregl-popup-content { max-width: 260px; max-height: 38vh; overflow: auto; }
 
   #scan { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; }

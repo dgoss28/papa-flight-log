@@ -604,9 +604,9 @@ function nextChapter() {
 
 function updateStepper() {
   const next = nextChapter(), at = state.flight?.id;
-  $('#next-chapter-name').textContent = next ? next.title : '';
-  $('#next-chapter').firstChild.textContent = next ? 'Next chapter: ' : 'Last chapter';
-  $('#next-chapter').lastChild.textContent = next ? ' ›' : '';
+  $('#next-chapter').innerHTML = next
+    ? `<span class="nc-label">Next chapter</span> <span class="nc-name">${esc(next.title)} ›</span>`
+    : '<span class="nc-name">Last chapter</span>';
   $('#next-chapter').disabled = !next;
   $('#prev-flight').disabled = at === 0 || (at == null && !state.chapter);
   $('#next-flight').disabled = at === J.flights.length - 1;
