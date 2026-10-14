@@ -780,7 +780,7 @@ function showCard(f) {
       ${f.gloss ? `<p class="gloss">${esc(f.gloss)}</p>` : ''}
       <div class="card-type">
         ${photo ? `<img class="ac-thumb zoom" src="${esc(photo.src)}" alt="${esc(photo.alt || AIRCRAFT[fam].name)}" ${zoomAttrs(`${exact ? `His aircraft, bureau no. ${f.bureau}, ` : ''}${photo.caption}`, photo.page, photo.credit)}>` : ''}
-        <p>${esc(AIRCRAFT[fam].name)}${exact ? '<span class="ac-exact">His actual plane: tap the photo</span>' : ''}${J.squadrons?.[f.squadron] ? `<span class="ac-sq">${esc(J.squadrons[f.squadron].name)}</span>` : ''}</p>
+      <p>${esc(AIRCRAFT[fam].name)}${exact ? '<span class="ac-exact">HIS ACTUAL PLANE!! tap the photo</span>' : ''}${J.squadrons?.[f.squadron] ? `<span class="ac-sq">${esc(J.squadrons[f.squadron].name)}</span>` : ''}</p>
       </div>
       <p class="rec">${rec.map(esc).join('<br>')}</p>
       <p class="note">${esc(route)}</p>
