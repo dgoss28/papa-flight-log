@@ -67,6 +67,7 @@ const $ = (s, el = document) => el.querySelector(s);
 const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const INTRO = 'intro'; // the cover counts as the first chapter
+const HOME = [-87.91, 43.04]; // Milwaukee: the map opens on home
 const emptyFC = () => ({ type: 'FeatureCollection', features: [] });
 
 let J, map, popup;
@@ -223,6 +224,7 @@ function setSheet(snap) {
 function initSheet() {
   const sheet = $('#sheet'), head = $('#sheet-head');
   setSheet('half');
+  if (mobile()) map.easeTo({ ...homeView(), duration: 0 });
   addEventListener('resize', () => setSheet(state.sheet));
   const toggle = () => setSheet(state.sheet === 'full' ? 'half' : 'full');
 
@@ -281,7 +283,7 @@ function initMap() {
   map = new maplibregl.Map({
     container: 'map',
     attributionControl: { compact: true },
-    center: [-30, 25], zoom: 1.6, minZoom: 1.2, maxZoom: 13,
+    center: HOME, zoom: 1.6, minZoom: 1.2, maxZoom: 13,
     style: {
       version: 8,
       glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
@@ -497,7 +499,12 @@ function showIntro() {
   markChapter(null);
   setEra('wwii');
   setRange(0, -1);
-  map.flyTo({ center: [-30, 25], zoom: 1.6, duration: REDUCED ? 0 : 2200, essential: false });
+  map.flyTo({ ...homeView(), duration: REDUCED ? 0 : 2200, essential: false });
+}
+
+// On small screens, center home in the part of the map above the logbook sheet
+function homeView() {
+  return { center: HOME, zoom: 1.6, offset: [0, -sheetVisible() / 2] };
 }
 
 function frame(c, fl) {
