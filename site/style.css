@@ -112,18 +112,16 @@ h1 {
   display: flex; align-items: center; gap: 1rem; padding: 0 1.25rem;
   background: var(--ink); color: var(--page);
 }
-#speed {
-  font: 500 .85rem var(--type); color: var(--page); background: none; border: 1px solid rgba(239, 230, 204, .5);
-  border-radius: 2px; padding: .4rem .55rem; cursor: pointer;
+#timeline button {
+  font: 500 .9rem var(--chart); color: var(--page); background: none; cursor: pointer; white-space: nowrap;
+  border: 1px solid rgba(239, 230, 204, .5); border-radius: 2px; padding: .5rem .8rem;
 }
-#speed:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
-#play {
-  font: 500 .9rem var(--chart); color: var(--ink); background: var(--page);
-  border: 0; border-radius: 2px; padding: .45rem .9rem; cursor: pointer; min-width: 4.5rem;
-}
-#play:focus-visible, #scrub:focus-visible, .close:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
-#scrub { flex: 1; accent-color: var(--route); }
-#when { font-family: var(--type); min-width: 8.5rem; }
+#timeline #next-flight { background: var(--page); color: var(--ink); border-color: var(--page); }
+#prev-flight { font-size: 1.2rem !important; line-height: 1; padding: .35rem .75rem !important; }
+#timeline button:disabled { opacity: .35; cursor: default; }
+#timeline button:focus-visible, .close:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+#next-chapter { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+#when { font-family: var(--type); flex: 1; }
 #totals { display: flex; gap: 1.1rem; margin: 0; }
 #totals div { text-align: right; }
 #totals dt { font-size: .68rem; opacity: .7; }
@@ -266,9 +264,9 @@ img.zoom:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
 
   #totals { display: none; }
   #timeline { gap: .55rem; padding: 0 .7rem; z-index: 3; }
-  #when { min-width: 0; font-size: .78rem; white-space: nowrap; }
-  #play { min-width: 3.8rem; padding: .55rem .6rem; }
-  #speed { padding: .5rem .55rem; }
+  #when { display: none; }
+  #timeline button { font-size: .82rem; padding: .55rem .6rem; }
+  #next-chapter { flex: 1; text-align: right; }
   .maplibregl-popup-content { max-width: 260px; max-height: 38vh; overflow: auto; }
 
   #scan { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; }

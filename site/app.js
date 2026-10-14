@@ -4,7 +4,6 @@ const COMBAT = new Set(['strike', 'spotting', 'tao', 'photo']);
 const SOLID = new Set(['confirmed', 'likely']);
 const TYPE_LABEL = { strike: 'Strike', spotting: 'Artillery spotting', tao: 'Air strike control', photo: 'Photo mission',
   route: 'Cross-country', local: 'Local flight', utility: 'Utility flight' };
-const SPEEDS = [1, 4, 16];
 
 // What his shorthand in the remarks column means. First match wins; remarks that are
 // already plain English, place names and routes are left alone.
@@ -70,7 +69,7 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 const emptyFC = () => ({ type: 'FeatureCollection', features: [] });
 
 let J, map, popup;
-const state = { min: 0, max: -1, era: 'wwii', anim: null, chapter: null, playing: false, speed: 0, flight: null, fly: null };
+const state = { min: 0, max: -1, era: 'wwii', anim: null, chapter: null, flight: null, fly: null };
 
 Promise.all(['data/journey.json', 'data/events.json', 'data/aircraft-photos.json'].map(u => fetch(u).then(r => (r.ok ? r.json() : {}))))
   .then(([journey, events, photos]) => { J = journey; J.events = events; J.photos = photos; init(); });
@@ -83,7 +82,7 @@ function init() {
   renderPhotoCredits();
   renderTotals();
   initMap();
-  initTimeline();
+  initStepper();
   initSheet();
   initViewer();
 }
@@ -123,11 +122,11 @@ function renderChapters() {
     const title = e.target.closest('.chapter-title');
     if (title) return goToChapter(title.dataset.id);
     const row = e.target.closest('tr.flight');
-    if (row) { stopPlay(); selectFlight(+row.dataset.id); }
+    if (row) selectFlight(+row.dataset.id);
   });
   root.addEventListener('keydown', e => {
     const row = e.target.closest('tr.flight');
-    if (row && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); stopPlay(); selectFlight(+row.dataset.id); }
+    if (row && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); selectFlight(+row.dataset.id); }
   });
 }
 
@@ -176,7 +175,7 @@ function renderPhotoCredits() {
 function watchChapters() {
   const io = new IntersectionObserver(entries => {
     // On small screens an open flight card covers the logbook, so the log isn't what the reader is looking at
-    if (state.playing || autoScrolling() || (mobile() && !$('#card').hidden)) return;
+    if (autoScrolling() || (mobile() && !$('#card').hidden)) return;
     const hit = entries.filter(e => e.isIntersecting).map(e => e.target.dataset.id)[0];
     if (hit && hit !== state.chapter) activateChapter(hit);
   }, { root: $('#log'), rootMargin: '-30% 0px -65% 0px' });
@@ -184,7 +183,6 @@ function watchChapters() {
 }
 
 function goToChapter(id) {
-  stopPlay();
   closeCard();
   panelScroll(document.querySelector(`.chapter[data-id="${id}"]`), 'start', !REDUCED);
   activateChapter(id);
@@ -198,6 +196,7 @@ function markChapter(id) {
   $('#chapter-pick').value = id || '';
   $('.chap-step[data-step="-1"]').disabled = i <= 0;
   $('.chap-step[data-step="1"]').disabled = i === J.chapters.length - 1;
+  updateStepper();
 }
 
 /* ---------- Bottom sheet (small screens) ---------- */
@@ -365,7 +364,7 @@ function initMap() {
     setRange(0, -1);
     watchChapters();
   });
-  map.on('click', ['flights', 'flights-est'], e => { stopPlay(); selectFlight(e.features[0].properties.id); });
+  map.on('click', ['flights', 'flights-est'], e => selectFlight(e.features[0].properties.id));
   map.on('click', 'places', e => showPlace(e.features[0].properties.code, e.lngLat));
   map.on('click', 'events', e => {
     const p = e.features[0].properties;
@@ -467,7 +466,6 @@ function setRange(min, max) {
   $('#t-hours').textContent = done.reduce((s, f) => s + f.logged, 0).toFixed(1);
   $('#t-flights').textContent = done.length;
   $('#t-combat').textContent = done.filter(f => f.combat).length;
-  $('#scrub').value = Math.max(max, 0);
   $('#when').textContent = max >= 0 ? fmtDate(upto) : 'Aug 1943';
 }
 
@@ -566,67 +564,39 @@ function flyFlight(f, { duration, onDone } = {}) {
 
 const point = (c, icon, brg) => ({ type: 'Feature', properties: { icon, bearing: brg }, geometry: { type: 'Point', coordinates: c } });
 
-/* ---------- Timeline (free exploration) ---------- */
-function initTimeline() {
-  const scrub = $('#scrub');
-  scrub.max = J.flights.length - 1;
-  scrub.addEventListener('input', () => {
-    stopPlay();
-    cancelAnimationFrame(state.anim);
-    const f = J.flights[+scrub.value];
-    showThrough(f.id);
-    highlightRow(f);
-    if (!$('#card').hidden) showCard(f);
+/* ---------- Stepping through flights and chapters ---------- */
+function initStepper() {
+  $('#prev-flight').addEventListener('click', () => stepFlight(-1));
+  $('#next-flight').addEventListener('click', () => stepFlight(1));
+  $('#next-chapter').addEventListener('click', () => { const c = nextChapter(); if (c) goToChapter(c.id); });
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey || $('#scan').open) return;
+    if (e.target.closest?.('input, select, textarea, .maplibregl-canvas-container')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); stepFlight(e.key === 'ArrowRight' ? 1 : -1); }
   });
-  $('#play').addEventListener('click', () => (state.playing ? stopPlay() : startPlay()));
-  $('#speed').addEventListener('click', () => {
-    state.speed = (state.speed + 1) % SPEEDS.length;
-    $('#speed').textContent = `${SPEEDS[state.speed]}×`;
-  });
+  updateStepper();
 }
 
-function showThrough(i) {
-  const f = J.flights[i];
-  setChapterLayers(f.chapter);
-  if (f.chapter !== state.chapter) {
-    state.chapter = f.chapter;
-    markChapter(f.chapter);
-    frame(J.chapters.find(c => c.id === f.chapter), J.byChapter[f.chapter]);
-  }
-  setRange(0, i);
+// From the open flight; otherwise from the start of the chapter being read
+function stepFlight(d) {
+  const fl = J.byChapter[state.chapter] || [];
+  let id = state.flight ? state.flight.id + d : fl.length ? (d > 0 ? fl[0].id : fl[0].id - 1) : 0;
+  id = Math.max(0, Math.min(J.flights.length - 1, id));
+  selectFlight(id);
 }
 
-function startPlay() {
-  cancelAnimationFrame(state.anim);
-  state.playing = true;
-  revealMap();
-  $('#play').textContent = 'Pause';
-  let i = state.flight ? state.flight.id + 1 : Math.max(0, state.max + 1);
-  if (i >= J.flights.length) i = 0;
-  const next = () => {
-    if (!state.playing) return;
-    if (i >= J.flights.length) return stopPlay();
-    const f = J.flights[i++];
-    const speed = SPEEDS[state.speed];
-    showThrough(f.id);
-    showCard(f);
-    const dur = Math.min(12000, Math.max(3000, f.hours * 4000)) / speed;
-    const fly = () => flyFlight(f, { duration: dur, onDone: () => setTimeout(next, 1400 / speed) });
-    // At normal speed, follow along: frame each flight before flying it
-    if (speed === 1 && f.track.length > 1 && !REDUCED) {
-      map.fitBounds(bounds(f.track), { padding: cardPadding(), maxZoom: 10, duration: 900 });
-      map.once('moveend', fly);
-    } else {
-      fly();
-    }
-  };
-  next();
+function nextChapter() {
+  return J.chapters[J.chapters.findIndex(c => c.id === state.chapter) + 1];
 }
 
-function stopPlay() {
-  if (!state.playing) return;
-  state.playing = false;
-  $('#play').textContent = 'Play';
+function updateStepper() {
+  const next = nextChapter(), at = state.flight?.id;
+  $('#next-chapter-name').textContent = next ? next.title : '';
+  $('#next-chapter').firstChild.textContent = next ? 'Next chapter: ' : 'Last chapter';
+  $('#next-chapter').lastChild.textContent = next ? ' ›' : '';
+  $('#next-chapter').disabled = !next;
+  $('#prev-flight').disabled = at === 0 || (at == null && !state.chapter);
+  $('#next-flight').disabled = at === J.flights.length - 1;
 }
 
 /* ---------- Selection and the flight card ---------- */
@@ -665,7 +635,7 @@ function highlightRow(f) {
   row.classList.add('selected');
   // Keep the logbook on the flight being shown: anchor to the chapter heading when the chapter
   // changes, then scroll only when the entry would otherwise leave view
-  const smooth = state.playing && !REDUCED;
+  const smooth = !REDUCED;
   if (state.panelChapter !== f.chapter) {
     state.panelChapter = f.chapter;
     panelScroll(row.closest('.chapter'), 'start', smooth);
@@ -745,14 +715,16 @@ function showCard(f) {
   if (card.hidden || state.cardFor !== f.id) card.scrollTop = 0;
   state.cardFor = f.id;
   card.hidden = false;
+  updateStepper();
   $('.card-close', card).onclick = closeCard;
-  $('.replay', card).onclick = () => { stopPlay(); flyFlight(f); };
+  $('.replay', card).onclick = () => flyFlight(f);
   $('.page', card).onclick = () => openScan(f);
 }
 
 function closeCard() {
   $('#card').hidden = true;
   state.flight = null;
+  updateStepper();
   map.getSource('plane')?.setData(emptyFC());
   map.getSource('flown')?.setData(emptyFC());
 }

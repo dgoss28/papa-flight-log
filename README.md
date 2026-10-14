@@ -73,7 +73,7 @@ cd site && python3 -m http.server 8000     # then open http://localhost:8000
 
 - Scroll the logbook panel to move through 11 chapters. Each one flies the map and replays that period's flights.
 - Click a row or an arc to see its route, how sure each place is, and a link to the scanned page.
-- The bar at the bottom scrubs or plays the whole career.
+- The bar at the bottom steps flight by flight (or with the ← → keys) and jumps to the next chapter.
 
 Borders come from [historical-basemaps](https://github.com/aourednik/historical-basemaps) (1938 for WWII, 1960 for Korea). The Marine front line in `site/data/overlays.geojson` is hand-drawn and approximate. Battles and events are in `site/data/events.json`.
 

@@ -97,10 +97,10 @@
   </div>
 
   <div id="timeline">
-    <button id="play" type="button" aria-label="Play all flights">Play</button>
-    <button id="speed" type="button" aria-label="Playback speed">1×</button>
-    <input id="scrub" type="range" min="0" value="0" aria-label="Flights through date">
-    <output id="when" for="scrub"></output>
+    <button id="prev-flight" type="button" aria-label="Previous flight" title="Previous flight (←)">‹</button>
+    <button id="next-flight" type="button" title="Next flight (→)">Next flight ›</button>
+    <output id="when"></output>
+    <button id="next-chapter" type="button">Next chapter: <span id="next-chapter-name">First Wings</span> ›</button>
     <dl id="totals">
       <div><dt>Hours</dt><dd id="t-hours">0</dd></div>
       <div><dt>Flights</dt><dd id="t-flights">0</dd></div>
