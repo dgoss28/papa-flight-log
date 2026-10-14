@@ -37,11 +37,12 @@ CHAPTERS = [
          start='1944-04-01', end='1944-05-31', base='NAS Miami', center=[-80.28, 25.9], zoom=6,
          text='Operational training in the SBD-5 Dauntless with radioman-gunners in the rear seat: '
               'bombing runs, tactics, field carrier landing practice, and long navigation flights over the Florida Straits.'),
-    dict(id='vmsb474', title='Stateside', subtitle='VMSB-474 workups, Aug–Oct 1944',
-         start='1944-06-01', end='1944-10-31', base=None, center=[-98, 37], zoom=3.2,
+    dict(id='vmsb474', title='Stateside', subtitle='VMSB-474, likely El Toro, Aug–Oct 1944',
+         start='1944-06-01', end='1944-10-31', base='El Toro', center=[-117.73, 33.68], zoom=8,
          text='Now a Marine second lieutenant, he joined scout-bomber squadron VMSB-474: dive and glide bombing, '
-              'strafing, radar and homing-beacon hops, oxygen flights, battle problems. The log never names the base, '
-              'so these flights are counted but not placed on the map. Most of September is missing from the scan.'),
+              'strafing, radar and homing-beacon hops, oxygen flights, battle problems. The log never names the base; '
+              'the map places these flights at MCAS El Toro, California, the Marines\' West Coast dive-bomber training '
+              'center that year, as an estimate. Most of September is missing from the scan.'),
     dict(id='solomons', title='The Solomons', subtitle='Green Island & Piva, Nov 1944',
          start='1944-11-01', end='1945-01-31', base='Green Is.', center=[154.7, -5.4], zoom=6.3,
          text='By late November 1944 he had joined VMSB-341, the "Torrid Turtles," flying the SBD-6 from Green '

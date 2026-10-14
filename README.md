@@ -19,7 +19,7 @@ The `page` column in each CSV points to the matching `pages/.../p-NN.png`, so an
 | Aug–Oct 1943 | NAS Minneapolis | Primary flight training, N2S |
 | Nov 1943–Mar 1944 | NAS Pensacola | Intermediate training, SNV/SNJ |
 | Apr–May 1944 | NAS Miami | Operational training, SBD-5 Dauntless |
-| Aug–Oct 1944 | (stateside) | VMSB-474, SBD |
+| Aug–Oct 1944 | Stateside, probably MCAS El Toro, CA (estimated) | VMSB-474, SBD |
 | Nov 1944 | Green Island / Piva (Bougainville), Solomons | VMSB-341 "Torrid Turtles", SBD-6 |
 | Feb 1945 | Luzon, from Mangaldan: Corregidor, Wawa-Lobac, Fort McKinley, Marikina, Calamba | VMSB-341, SBD-6 strikes |
 | Apr–Jul 1945 | Moret Field, Zamboanga, Mindanao: strikes on Jolo, Malabang, Davao, Libby A/D | SBD-6. His tally: 31 completed / 6 incomplete strikes |

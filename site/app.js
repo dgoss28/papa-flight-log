@@ -511,7 +511,7 @@ function homeView() {
 function frame(c, fl) {
   const pts = fl.flatMap(f => f.coords);
   const opts = { duration: REDUCED ? 0 : 2200, essential: false };
-  if (pts.length > 1 && c.id !== 'vmsb474') {
+  if (pts.length > 1) {
     map.fitBounds(bounds(pts), { ...opts, padding: mobile() ? mobilePadding() : 70, maxZoom: Math.max(c.zoom, 6) });
   } else {
     map.flyTo({ ...opts, center: c.center, zoom: c.zoom });
