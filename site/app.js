@@ -344,6 +344,7 @@ function initMap() {
         l1960: { type: 'geojson', data: 'data/labels-1960.geojson' },
         overlays: { type: 'geojson', data: 'data/overlays.geojson' },
         flights: { type: 'geojson', data: trackLines() },
+        journey: { type: 'geojson', data: journeyLegs() },
         places: { type: 'geojson', data: emptyFC() },
         events: { type: 'geojson', data: eventPoints() },
         flown: { type: 'geojson', data: emptyFC() },
@@ -365,6 +366,17 @@ function initMap() {
         { id: 'parallel', type: 'line', source: 'overlays', filter: ['==', ['get', 'id'], '38th'],
           layout: { visibility: 'none' }, minzoom: 5,
           paint: { 'line-color': '#5d5a4c', 'line-width': 1, 'line-dasharray': [4, 3] } },
+        { id: 'journey', type: 'line', source: 'journey', filter: ['==', ['get', 'index'], -1],
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+          paint: { 'line-color': '#23314f', 'line-width': 1.6, 'line-opacity': 0.55, 'line-dasharray': [0.1, 2.2] } },
+        // Earlier chapters stay on the map as a faint trail
+        { id: 'flights-past', type: 'line', source: 'flights', filter: ['==', ['get', 'id'], -1],
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+          paint: {
+            'line-color': ['case', ['get', 'combat'], '#b5382a', '#2f6db5'],
+            'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.6, 10, 1.2],
+            'line-opacity': ['case', ['get', 'local'], 0.07, 0.22],
+          } },
         ...['flights', 'flights-est'].map(id => ({ id, type: 'line', source: 'flights',
           filter: ['==', ['get', 'solid'], id === 'flights'],
           layout: { 'line-cap': 'round', 'line-join': 'round' },
@@ -413,7 +425,7 @@ function initMap() {
     setRange(0, -1);
     watchChapters();
   });
-  map.on('click', ['flights', 'flights-est'], e => selectFlight(e.features[0].properties.id));
+  map.on('click', ['flights', 'flights-est', 'flights-past'], e => selectFlight(e.features[0].properties.id));
   map.on('click', 'places', e => showPlace(e.features[0].properties.code, e.lngLat));
   map.on('click', 'events', e => {
     const p = e.features[0].properties;
@@ -421,7 +433,7 @@ function initMap() {
     popup.setLngLat(e.lngLat).setHTML(`<div class="pop"><h3>${esc(p.title)}</h3>
       <p class="rec">${esc(fmtDate(p.date))}</p><p class="note">${esc(p.text)}${p.approximate ? ' Position approximate.' : ''}</p></div>`).addTo(map);
   });
-  for (const l of ['flights', 'flights-est', 'places', 'events']) {
+  for (const l of ['flights', 'flights-est', 'flights-past', 'places', 'events']) {
     map.on('mouseenter', l, () => (map.getCanvas().style.cursor = 'pointer'));
     map.on('mouseleave', l, () => (map.getCanvas().style.cursor = ''));
   }
@@ -467,6 +479,22 @@ function trackLines() {
   };
 }
 
+// His moves between bases, which the logbooks don't record: one leg into each chapter's home field
+function journeyLegs() {
+  const features = [];
+  J.chapters.forEach((c, i) => {
+    const prev = J.chapters[i - 1], a = J.places[prev?.base]?.coord, b = J.places[c.base]?.coord;
+    if (!a || !b || prev.base === c.base) return;
+    // Cross the Pacific the short way, and repeat the leg a world to each side so it shows from either end
+    const bx = b[0] + Math.round((a[0] - b[0]) / 360) * 360;
+    for (const shift of [-360, 0, 360]) {
+      const coords = Array.from({ length: 33 }, (_, k) => [a[0] + (bx - a[0]) * k / 32 + shift, a[1] + (b[1] - a[1]) * k / 32]);
+      features.push({ type: 'Feature', properties: { index: i }, geometry: { type: 'LineString', coordinates: coords } });
+    }
+  });
+  return { type: 'FeatureCollection', features };
+}
+
 function eventPoints() {
   return { type: 'FeatureCollection', features: J.events.map(e => ({
     type: 'Feature', properties: { ...e, label: `${e.title}\n${fmtDate(e.date)}` },
@@ -488,11 +516,13 @@ function setRange(min, max) {
   const inRange = ['all', ['>=', ['get', 'id'], min], ['<=', ['get', 'id'], max]];
   map.setFilter('flights', [...inRange, ['==', ['get', 'solid'], true]]);
   map.setFilter('flights-est', [...inRange, ['==', ['get', 'solid'], false]]);
+  map.setFilter('flights-past', ['<', ['get', 'id'], max >= 0 ? min : 0]);
 
   // Places stay on the map once he has been there: every place from the first flight up to now,
   // plus the home base of each chapter reached so far
   const counts = {};
   const reached = J.chapters.findIndex(c => c.id === state.chapter);
+  map.setFilter('journey', ['<=', ['get', 'index'], reached]);
   J.chapters.slice(0, reached + 1).forEach(c => { if (c.base && J.places[c.base]) counts[c.base] ??= 0; });
   for (let i = 0; i <= max; i++) for (const p of new Set(J.flights[i].places)) counts[p] = (counts[p] || 0) + 1;
   map.getSource('places').setData({ type: 'FeatureCollection', features: Object.entries(counts)

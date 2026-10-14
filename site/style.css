@@ -55,6 +55,7 @@ h1 {
 .key-route, .key-combat, .key-est { width: 22px; height: 0; border-top: 2.5px solid var(--flight); }
 .key-est { border-top-style: dashed; }
 .key-combat { border-color: var(--combat); }
+.key-journey { width: 22px; height: 0; border-top: 2.5px dotted var(--ink); opacity: .7; }
 .key-solid, .key-hollow { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
 .key-hollow { background: transparent; border: 2px solid var(--ink); }
 
