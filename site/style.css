@@ -254,10 +254,12 @@ img.zoom:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
   #card { position: absolute; inset: 0; width: auto; max-height: none; box-shadow: none; overscroll-behavior: contain; }
   #card:not([hidden]) { display: flex; flex-direction: column; }
   #card > * { flex: none; }
+  /* Details first; the aircraft photo follows (tap it to see it full size) */
+  #card figure { order: 1; }
   #card figure img { aspect-ratio: 16 / 10; }
-  /* Floats over the photo and stays put while the card scrolls */
+  /* Stays put while the card scrolls */
   .card-close {
-    position: sticky; top: .6rem; align-self: flex-start; z-index: 2; margin: .6rem 0 -2.6rem .6rem;
+    position: sticky; top: .6rem; align-self: flex-start; z-index: 2; margin: .6rem 0 0 .6rem;
     padding: .45rem .8rem; border-radius: 999px; font-size: .85rem;
     background: var(--page); box-shadow: 0 1px 6px rgba(35, 49, 79, .3);
   }
