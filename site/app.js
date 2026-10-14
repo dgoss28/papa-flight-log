@@ -48,6 +48,7 @@ const GLOSSARY = [
   [/gca/i, 'GCA (ground-controlled approach): a radar operator on the ground talks the pilot down to the runway by voice, the way to land in bad weather.'],
   [/^(hunter|killer)$/i, 'Probably hunter-killer practice: antisubmarine teamwork in which a radar plane (the hunter) finds the submarine and an attack plane (the killer) goes after it.'],
   [/carrier qual/i, 'Carrier qualification: the arrested landings aboard USS Bennington that qualified him to fly from a carrier.'],
+  [/crash/i, 'His last logged flight. After touch-and-go practice with his crew, he dropped them off and took off alone. The engine failed right after takeoff and he crashed into a pond. A Catholic chaplain who happened to be out hiking pulled him out.'],
   [/radar checkout/i, 'Checking out the AD-4W\'s search radar, carried in the big radome under the belly.'],
   [/^passenger$/i, 'He rode as a passenger, not the pilot.'],
   [/^local$/i, 'Local flight around the home field.'],

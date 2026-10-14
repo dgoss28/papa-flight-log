@@ -79,8 +79,12 @@ CHAPTERS = [
     dict(id='vmc2', title='Skyraiders', subtitle='VMC-2, Jan–Jun 1953',
          start='1953-01-01', end='1953-12-31', base='NKT', center=[-77.5, 28.5], zoom=4,
          text='Home again, flying AD Skyraiders with VMC-2: night flights, hunter-killer exercises, and on '
-              '13 April 1953 carrier qualification aboard USS Bennington off Guantánamo. The final entry, '
-              '24 June 1953 at Edenton, reads simply: "CRASH!"'),
+              '13 April 1953 carrier qualification aboard USS Bennington off Guantánamo. Two weeks later, on 27 April, '
+              'a boiler explosion aboard Bennington killed eleven of her crew, and the squadron came back to Cherry Point, '
+              'keeping its carrier landings current with touch-and-go practice ashore. The final entry, 24 June 1953 '
+              'at Edenton, reads simply: "CRASH!" After touch-and-goes with his crew, he dropped them off and took off '
+              'alone; the engine failed right after takeoff and he went down in a pond. A Catholic chaplain who happened '
+              'to be out hiking pulled him out.'),
 ]
 
 SQUADRONS = {

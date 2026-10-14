@@ -27,7 +27,8 @@ The `page` column in each CSV points to the matching `pages/.../p-NN.png`, so an
 | Jul 1951–Mar 1952 | MCAS Cherry Point (NKT) | Refresher training, F4U-4 Corsair, SNB-5 |
 | May–Nov 1952 | Korea: K-16 (Seoul), ASCOM City, western front | VMO-6, OE-1 Bird Dog artillery spotting (A/S) and TAO missions |
 | Jan–Jun 1953 | MCAS Cherry Point | VMC-2, AD-3W/4W/4N Skyraider. Carrier qualified on USS Bennington (CVA-20), 13 Apr 1953 |
-| 24 Jun 1953 | Edenton, NC | Last entry: "CRASH!" |
+| 27 Apr 1953 | USS Bennington, off Guantánamo | Boiler explosion kills 11 of the ship's crew; per family, this is why the squadron returned to Cherry Point |
+| 24 Jun 1953 | Edenton, NC | Last entry: "CRASH!" Per family: after touch-and-goes (10 FCL) he dropped off his crew, took off alone, lost the engine right after takeoff and crashed in a pond; a Catholic chaplain out hiking rescued him |
 
 ## Known gaps and discrepancies
 
