@@ -120,12 +120,7 @@ function renderChapters() {
   }
   root.addEventListener('click', e => {
     const title = e.target.closest('.chapter-title');
-    if (title) {
-      stopPlay();
-      panelScroll(title.closest('.chapter'), 'start', !REDUCED);
-      activateChapter(title.dataset.id);
-      return;
-    }
+    if (title) return goToChapter(title.dataset.id);
     const row = e.target.closest('tr.flight');
     if (row) { stopPlay(); selectFlight(+row.dataset.id); }
   });
@@ -187,10 +182,21 @@ function watchChapters() {
   document.querySelectorAll('.chapter').forEach(s => io.observe(s));
 }
 
+function goToChapter(id) {
+  stopPlay();
+  closeCard();
+  panelScroll(document.querySelector(`.chapter[data-id="${id}"]`), 'start', !REDUCED);
+  activateChapter(id);
+}
+
 function markChapter(id) {
   document.querySelectorAll('.chapter').forEach(s => s.classList.toggle('active', s.dataset.id === id));
   const c = J.chapters.find(x => x.id === id);
   if (c) { $('#sheet-title').textContent = c.title; $('#sheet-sub').textContent = c.subtitle; }
+  const i = J.chapters.findIndex(x => x.id === id);
+  $('#chapter-pick').value = id || '';
+  $('.chap-step[data-step="-1"]').disabled = i <= 0;
+  $('.chap-step[data-step="1"]').disabled = i === J.chapters.length - 1;
 }
 
 /* ---------- Bottom sheet (small screens) ---------- */
@@ -217,11 +223,23 @@ function initSheet() {
   setSheet('half');
   addEventListener('resize', () => setSheet(state.sheet));
   const toggle = () => setSheet(state.sheet === 'full' ? 'half' : 'full');
-  head.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+
+  // Chapter picker and previous / next
+  const pick = $('#chapter-pick');
+  pick.innerHTML = `<option value="" disabled>Choose a chapter</option>` +
+    J.chapters.map(c => `<option value="${esc(c.id)}">${esc(c.title)}: ${esc(c.subtitle)}</option>`).join('');
+  pick.value = '';
+  pick.addEventListener('change', () => goToChapter(pick.value));
+  head.querySelectorAll('.chap-step').forEach(b => b.addEventListener('click', () => {
+    const i = J.chapters.findIndex(c => c.id === state.chapter) + +b.dataset.step;
+    goToChapter(J.chapters[Math.max(0, Math.min(J.chapters.length - 1, i))].id);
+  }));
+  $('.chap-step[data-step="-1"]').disabled = true;
+  head.addEventListener('keydown', e => { if (e.target !== head) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 
   let drag = null;
   head.addEventListener('pointerdown', e => {
-    if (!mobile()) return;
+    if (!mobile() || e.target.closest('button, select')) return;
     const s = sheetSnaps();
     drag = { y0: e.clientY, t0: e.timeStamp, start: s.full - s[state.sheet], last: e.clientY, lastT: e.timeStamp, v: 0, s };
     head.setPointerCapture(e.pointerId);
@@ -726,9 +744,16 @@ function showCard(f) {
   if (card.hidden || state.cardFor !== f.id) card.scrollTop = 0;
   state.cardFor = f.id;
   card.hidden = false;
-  $('.card-close', card).onclick = () => { card.hidden = true; state.flight = null; map.getSource('plane').setData(emptyFC()); map.getSource('flown').setData(emptyFC()); };
+  $('.card-close', card).onclick = closeCard;
   $('.replay', card).onclick = () => { stopPlay(); flyFlight(f); };
   $('.page', card).onclick = () => openScan(f);
+}
+
+function closeCard() {
+  $('#card').hidden = true;
+  state.flight = null;
+  map.getSource('plane')?.setData(emptyFC());
+  map.getSource('flown')?.setData(emptyFC());
 }
 
 function peopleHTML(f) {

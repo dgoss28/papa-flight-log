@@ -17,8 +17,15 @@
   <div id="sheet">
   <div id="sheet-head" role="button" tabindex="0" aria-label="Logbook panel: drag or tap to resize">
     <span class="grip" aria-hidden="true"></span>
-    <p id="sheet-title">Papa's Flight Log</p>
-    <p id="sheet-sub">Drag up to read the logbook</p>
+    <div class="sheet-nav">
+      <button type="button" class="chap-step" data-step="-1" aria-label="Previous chapter">‹</button>
+      <div class="sheet-label">
+        <p id="sheet-title">Papa's Flight Log</p>
+        <p id="sheet-sub">Tap to pick a chapter</p>
+        <select id="chapter-pick" aria-label="Go to chapter"></select>
+      </div>
+      <button type="button" class="chap-step" data-step="1" aria-label="Next chapter">›</button>
+    </div>
   </div>
   <div class="sheet-body">
   <aside id="log" aria-label="Logbook">

@@ -220,6 +220,17 @@ h1 {
   }
   #sheet-head:focus-visible { outline: 2px solid var(--route); outline-offset: -2px; }
   .grip { display: block; width: 40px; height: 5px; border-radius: 3px; background: var(--rule); margin: 0 auto .5rem; }
+  .sheet-nav { display: flex; align-items: center; gap: .5rem; }
+  .sheet-label { position: relative; flex: 1; min-width: 0; text-align: center; }
+  /* The native picker sits invisibly over the title, so tapping it opens the phone's own chapter list */
+  #chapter-pick { position: absolute; inset: 0; width: 100%; opacity: 0; font-size: 16px; cursor: pointer; }
+  .chap-step {
+    flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule);
+    background: none; color: var(--ink); font: 400 1.6rem/1 var(--chart); cursor: pointer; padding: 0 0 .15rem;
+  }
+  .chap-step:disabled { opacity: .3; cursor: default; }
+  .chap-step:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+  #sheet-title::after { content: " ▾"; font-size: .7em; color: var(--pencil); }
   #sheet-title { font-weight: 500; font-size: 1.1rem; line-height: 1.2; margin: 0;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #sheet-sub { font-family: var(--type); font-size: .8rem; color: var(--pencil); margin: .15rem 0 0;
