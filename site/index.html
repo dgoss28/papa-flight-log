@@ -14,17 +14,25 @@
 <body>
   <div id="map" role="region" aria-label="Map of flights"></div>
 
+  <div id="sheet">
+  <div id="sheet-head" role="button" tabindex="0" aria-label="Logbook panel: drag or tap to resize">
+    <span class="grip" aria-hidden="true"></span>
+    <p id="sheet-title">Papa's Flight Log</p>
+    <p id="sheet-sub">Drag up to read the logbook</p>
+  </div>
+  <div class="sheet-body">
   <aside id="log" aria-label="Logbook">
     <header class="cover">
+      <figure class="portrait"><img src="people/papa.jpg" alt="Portrait of Thomas E. Goss in his Navy officer's cap and dress whites" onerror="this.parentElement.remove()"></figure>
       <p class="owner">Captain Thomas Edward Goss, USMCR<br>File no. 036705</p>
       <h1>Papa's Flight Log</h1>
       <p class="lede">Two logbooks, ten years, two wars. Every line below was transcribed from his handwritten
         entries. I, and Claude, did my best to transcribe them but they may not be perfect. All the flight paths are obviously fabricated, but the general vicinities should all be correct. Scroll to follow him from his first solo in 1943 to his last flight in 1953. Click or tap any
-        entry to see where the flight, the plane Papa flew in, and the logbook page it was written on.</p>
+        entry to see where the flight, the plane Papa flew in, and the logbook page it was written on. The maps are indicative of geopolitical boundaries at the time.</p>
       <p class="legend">
         <span><span class="key key-route"></span>flight</span>
         <span><span class="key key-combat"></span>combat mission</span>
-        <span><span class="key key-est"></span>to an estimated place</span>
+        <span><span class="key key-est"></span>dashed: to an estimated place</span>
         <span><span class="key key-solid"></span>place located</span>
         <span><span class="key key-hollow"></span>place estimated</span>
       </p>
@@ -77,6 +85,10 @@
     </footer>
   </aside>
 
+  <article id="card" aria-live="polite" hidden></article>
+  </div>
+  </div>
+
   <div id="timeline">
     <button id="play" type="button" aria-label="Play all flights">Play</button>
     <button id="speed" type="button" aria-label="Playback speed">1×</button>
@@ -88,8 +100,6 @@
       <div><dt>Combat</dt><dd id="t-combat">0</dd></div>
     </dl>
   </div>
-
-  <article id="card" aria-live="polite" hidden></article>
 
   <dialog id="scan">
     <form method="dialog"><button class="close" aria-label="Close scan">Close</button></form>

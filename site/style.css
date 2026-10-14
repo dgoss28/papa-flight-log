@@ -43,12 +43,17 @@ body {
 h1 {
   font-weight: 500; font-size: 2.6rem; line-height: 1; letter-spacing: -.01em; margin: 0 0 1.25rem;
 }
+.portrait {
+  float: right; width: 38%; max-width: 150px; margin: .2rem 0 .8rem 1rem; padding: 7px 7px 22px;
+  background: #fff; box-shadow: 0 1px 2px rgba(35, 49, 79, .3), 0 4px 12px rgba(35, 49, 79, .15); transform: rotate(1.5deg);
+}
+.portrait img { display: block; width: 100%; height: auto; filter: grayscale(.2); }
 .lede { font-size: 1rem; line-height: 1.55; margin: 0 0 1.25rem; max-width: 34em; }
 .legend { font-size: .82rem; color: var(--pencil); display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: center; margin: 0; }
 .legend > span { white-space: nowrap; }
 .key { display: inline-block; vertical-align: middle; margin-right: .35rem; }
 .key-route, .key-combat, .key-est { width: 22px; height: 0; border-top: 2.5px solid var(--flight); }
-.key-est { border-top-style: dashed; border-color: var(--pencil); }
+.key-est { border-top-style: dashed; }
 .key-combat { border-color: var(--combat); }
 .key-solid, .key-hollow { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
 .key-hollow { background: transparent; border: 2px solid var(--ink); }
@@ -158,6 +163,8 @@ h1 {
 #card h3 { margin: .15rem 0 .1rem; font-weight: 500; font-size: 1.2rem; line-height: 1.2; }
 .card-type { margin: 0 0 .5rem; font-size: .85rem; color: var(--pencil); }
 #card .rec { font-family: var(--type); font-size: .8rem; line-height: 1.5; margin: 0 0 .5rem; }
+#card .gloss { font-size: .85rem; line-height: 1.45; margin: -.2rem 0 .6rem; padding-left: .6rem; border-left: 2px solid var(--route); }
+.entries td.rem.glossed { text-decoration: underline dotted rgba(35, 49, 79, .45); text-underline-offset: .2em; }
 #card .note { font-size: .78rem; color: var(--pencil); line-height: 1.4; margin: .3rem 0 0; }
 .card-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
 .card-actions button, .card-close {
@@ -186,20 +193,68 @@ h1 {
 .scan-frame img { display: block; width: min(1400px, 94vw); cursor: zoom-in; }
 .scan-frame.zoomed img { width: 2400px; cursor: zoom-out; }
 
-/* ---- Small screens: map on top, logbook below ---- */
+/* ---- Bottom sheet: only used on small screens ---- */
+#sheet, .sheet-body { display: contents; }
+#sheet-head { display: none; }
+
+/* ---- Small screens: full-screen map, logbook in a draggable bottom sheet ---- */
 @media (max-width: 760px) {
-  :root { --panel: 100vw; --bar: 56px; }
-  #map { inset: 0 0 auto 0; height: 45vh; }
-  #log { top: 45vh; width: 100vw; }
-  .chapter { min-height: 0; }
-  #totals { display: none; }
-  #timeline { gap: .55rem; padding: 0 .7rem; }
-  #when { min-width: 0; font-size: .78rem; white-space: nowrap; }
-  #play { min-width: 3.8rem; padding: .45rem .6rem; }
-  #card { right: 0; left: 0; top: auto; bottom: var(--bar); width: auto; max-height: 50vh; }
-  #card figure img { aspect-ratio: 3 / 1; }
-  .maplibregl-popup-content { max-width: 260px; max-height: 38vh; overflow: auto; }
+  :root { --bar: 56px; }
+  #map { inset: 0 0 var(--bar) 0; }
+  .maplibregl-ctrl-top-right { display: none; }
+
+  #sheet {
+    display: flex; flex-direction: column;
+    position: fixed; left: 0; right: 0; bottom: var(--bar); z-index: 2;
+    height: calc(100dvh - var(--bar) - 2.5rem);
+    background: var(--page); border-radius: 12px 12px 0 0; overflow: hidden;
+    box-shadow: 0 -1px 0 rgba(35, 49, 79, .2), 0 -6px 20px rgba(35, 49, 79, .22);
+    transform: translateY(var(--sheet-y, 50%));
+    transition: transform .32s cubic-bezier(.2, .8, .2, 1);
+    will-change: transform;
+  }
+  #sheet.dragging { transition: none; }
+  #sheet-head {
+    display: block; flex: none; padding: .45rem 1rem .65rem; touch-action: none; cursor: grab;
+    border-bottom: 1px solid var(--rule); user-select: none; -webkit-user-select: none;
+  }
+  #sheet-head:focus-visible { outline: 2px solid var(--route); outline-offset: -2px; }
+  .grip { display: block; width: 40px; height: 5px; border-radius: 3px; background: var(--rule); margin: 0 auto .5rem; }
+  #sheet-title { font-weight: 500; font-size: 1.1rem; line-height: 1.2; margin: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #sheet-sub { font-family: var(--type); font-size: .8rem; color: var(--pencil); margin: .15rem 0 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sheet-body { display: block; position: relative; flex: 1; min-height: 0; }
+
+  #log { position: absolute; inset: 0; width: auto; box-shadow: none; overscroll-behavior: contain; }
+  .cover { padding: 1.5rem 1.25rem 1.5rem 3.4rem; }
+  .chapter { min-height: 0; padding-right: 1rem; }
+  .entries td { padding: .6rem .35rem; }
   h1 { font-size: 2rem; }
+
+  /* The flight card covers the logbook inside the sheet; the log keeps its scroll position underneath */
+  #card { position: absolute; inset: 0; width: auto; max-height: none; box-shadow: none; overscroll-behavior: contain; }
+  /* Lead with what the flight was; the photo follows */
+  #card:not([hidden]) { display: flex; flex-direction: column; }
+  #card figure { order: 1; flex: none; }
+  .card-body { flex: none; }
+  #card figure img { aspect-ratio: 2 / 1; }
+  .card-close {
+    position: sticky; top: 0; display: block; width: 100%; text-align: left; z-index: 2;
+    border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; padding: .7rem 1rem; font-size: .9rem;
+  }
+
+  #totals { display: none; }
+  #timeline { gap: .55rem; padding: 0 .7rem; z-index: 3; }
+  #when { min-width: 0; font-size: .78rem; white-space: nowrap; }
+  #play { min-width: 3.8rem; padding: .55rem .6rem; }
+  #speed { padding: .5rem .55rem; }
+  .maplibregl-popup-content { max-width: 260px; max-height: 38vh; overflow: auto; }
+
+  #scan { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; }
+  .scan-frame { max-height: calc(100dvh - 3rem); }
+  .scan-frame img { width: 100%; }
+  .scan-frame.zoomed img { width: 250%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

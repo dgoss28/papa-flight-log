@@ -6,6 +6,64 @@ const TYPE_LABEL = { strike: 'Strike', spotting: 'Artillery spotting', tao: 'Air
   route: 'Cross-country', local: 'Local flight', utility: 'Utility flight' };
 const SPEEDS = [1, 4, 16];
 
+// What his shorthand in the remarks column means. First match wins; remarks that are
+// already plain English, place names and routes are left alone.
+const GLOSSARY = [
+  [/incomplete/i, 'A strike that didn\'t drop its bombs: the target was clouded over, couldn\'t be found, or the flight was recalled. He kept these in a separate tally from completed strikes.'],
+  [/^strike\b/i, 'Combat dive-bombing strike: the squadron dove on the target named here, usually enemy positions supporting the ground troops.'],
+  [/^patrol/i, 'Armed patrol over the area, looking for enemy boats, troops or other targets of opportunity.'],
+  [/\bfam/i, 'Familiarization flight: getting to know a new aircraft, airfield or area before flying it for real.'],
+  [/glide bomb/i, 'Glide-bombing practice: a shallower bombing run than a full dive.'],
+  [/dive bomb/i, 'Dive-bombing practice, the Dauntless\'s specialty: rolling into a near-vertical dive of about 70°, releasing the bomb low and pulling out hard.'],
+  [/dive tact/i, 'Dive-bombing tactics: practicing coordinated dive attacks with the rest of the flight.'],
+  [/strafing/i, 'Strafing practice: firing the forward guns at targets on the ground.'],
+  [/rockets/i, 'Rocket and gunnery practice against targets on a range.'],
+  [/^gunnery/i, 'Aerial gunnery practice, typically shooting at a cloth sleeve towed behind another plane.'],
+  [/^b\. ?& ?r/i, 'Probably "bombing and rockets": weapons practice on a target range.'],
+  [/\bdiv(ision)?\.? ?tac/i, 'Division tactics: maneuvering and attacking as a division, a formation of two or more two-plane sections.'],
+  [/\bsec(t|tion)?\.? ?tac/i, 'Section tactics: flying and fighting as a two-plane section, a leader and his wingman.'],
+  [/sqdn\.? ?tac/i, 'Squadron tactics: the whole squadron practicing attacks together.'],
+  [/battle prob/i, 'Battle problem: a full-scale mock combat exercise against a simulated enemy.'],
+  [/parade/i, 'Formation flyover for a parade or review.'],
+  [/oxygen/i, 'Oxygen hop: a high-altitude flight to practice breathing from the oxygen mask.'],
+  [/engine time/i, 'Engine time: flying to put hours on an engine, usually breaking in a newly installed or overhauled one.'],
+  [/radar & zb/i, 'Testing the radar and the ZB receiver, the homing set that picked up a carrier\'s or airfield\'s beacon to find the way back.'],
+  [/^navigation/i, 'Navigation training: finding the way between checkpoints with chart, compass and clock.'],
+  [/ni(gh)?te? flying/i, 'Night flying practice.'],
+  [/instrument/i, 'Instrument flying: flying by the gauges alone, often under a hood with a safety pilot watching.'],
+  [/link trainer/i, 'The Link Trainer was a ground flight simulator used to practice instrument flying.'],
+  [/^a\/s\b/i, 'Artillery spotting: circling over enemy positions in a light observation plane and radioing corrections to Marine artillery until the shells landed on target.'],
+  [/^recon/i, 'Reconnaissance over the right and left sectors of the Marine line, watching for enemy movement and positions.'],
+  [/\bTAO\b/, 'Tactical air observer: from a light plane over the front, he found targets and directed fighter-bomber strikes onto them.'],
+  [/photo mission/i, 'Photo mission: photographing enemy positions for intelligence.'],
+  [/taxi/i, 'Air taxi: flying a passenger, often an officer or courier, between airstrips.'],
+  [/mail/i, 'Mail run between the squadron\'s airstrips.'],
+  [/ferry/i, 'Ferry flight: delivering an aircraft to another field.'],
+  [/^test\b/i, 'Test flight, checking out an aircraft after maintenance.'],
+  [/^([A-DFIV])[-.] ?(\d|I+)$/i, (f, _, stage, n) => `Numbered syllabus flight (stage ${stage.toUpperCase()}, no. ${/^\d$/.test(n) ? n : n.length}) ${f.date < '1951-12'
+    ? 'in his summer 1951 refresher training, getting current again after six years out of the cockpit.'
+    : 'in the twin-engine SNB-5 course he flew at Cherry Point in the winter of 1951–52.'}`],
+  [/^solo$/i, 'Solo: alone in the aircraft, with no instructor aboard.'],
+  [/^aero/i, 'Aerobatics: loops, rolls and spins to build confidence handling the plane.'],
+  [/slow flight/i, 'Slow flight: handling the plane just above stalling speed, as on a landing approach.'],
+  [/gca/i, 'GCA (ground-controlled approach): a radar operator on the ground talks the pilot down to the runway by voice, the way to land in bad weather.'],
+  [/^(hunter|killer)$/i, 'Probably hunter-killer practice: antisubmarine teamwork in which a radar plane (the hunter) finds the submarine and an attack plane (the killer) goes after it.'],
+  [/carrier qual/i, 'Carrier qualification: the arrested landings aboard USS Bennington that qualified him to fly from a carrier.'],
+  [/radar checkout/i, 'Checking out the AD-4W\'s search radar, carried in the big radome under the belly.'],
+  [/^passenger$/i, 'He rode as a passenger, not the pilot.'],
+  [/^local$/i, 'Local flight around the home field.'],
+];
+const FCL = 'Field carrier landing practice: touch-and-go landings on a runway marked out like a carrier deck, following a landing signal officer\'s paddle signals.';
+
+function explain(f) {
+  const r = (f.remarks || '').replace(/\?$/, '').trim();
+  for (const [re, text] of GLOSSARY) {
+    const m = r.match(re);
+    if (m) return typeof text === 'function' ? text(f, ...m) : text;
+  }
+  return /FCL/.test(`${f.code} ${f.notes}`) ? FCL : '';
+}
+
 const $ = (s, el = document) => el.querySelector(s);
 const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -18,7 +76,7 @@ Promise.all(['data/journey.json', 'data/events.json', 'data/aircraft-photos.json
   .then(([journey, events, photos]) => { J = journey; J.events = events; J.photos = photos; init(); });
 
 function init() {
-  J.flights.forEach(f => (f.combat = COMBAT.has(f.type)));
+  J.flights.forEach(f => { f.combat = COMBAT.has(f.type); f.gloss = explain(f); });
   J.byChapter = {};
   J.flights.forEach(f => (J.byChapter[f.chapter] ??= []).push(f));
   renderChapters();
@@ -26,6 +84,7 @@ function init() {
   renderTotals();
   initMap();
   initTimeline();
+  initSheet();
 }
 
 /* ---------- Logbook panel ---------- */
@@ -54,7 +113,7 @@ function renderChapters() {
             <td class="date">${f.date_from ? `${esc(f.date_from.slice(5).replace('-', '/'))}–<br>` : ''}${esc(f.date.slice(5).replace('-', '/'))}</td>
             <td class="ac">${esc(f.aircraft)}</td>
             <td class="hrs">${f.hours.toFixed(1)}</td>
-            <td class="rem">${esc(f.remarks) || '<span class="q">local</span>'}</td>
+            <td class="rem${f.gloss && f.remarks ? ' glossed' : ''}"${f.gloss ? ` title="${esc(f.gloss)}"` : ''}>${esc(f.remarks) || '<span class="q">local</span>'}</td>
           </tr>`).join('')}</tbody>
       </table>` : '<p class="summary">Logged as a single summary page, not flight by flight.</p>'}`;
     root.append(sec);
@@ -118,16 +177,10 @@ function renderPhotoCredits() {
   $('#photo-credits').insertAdjacentHTML('beforeend', items.join(''));
 }
 
-function watchPanelScroll() {
-  $('#log').addEventListener('scroll', () => {
-    if (innerWidth < 760 && !state.playing && !autoScrolling()) $('#card').hidden = true;
-  }, { passive: true });
-}
-
 function watchChapters() {
-  watchPanelScroll();
   const io = new IntersectionObserver(entries => {
-    if (state.playing || autoScrolling()) return;
+    // On small screens an open flight card covers the logbook, so the log isn't what the reader is looking at
+    if (state.playing || autoScrolling() || (mobile() && !$('#card').hidden)) return;
     const hit = entries.filter(e => e.isIntersecting).map(e => e.target.dataset.id)[0];
     if (hit && hit !== state.chapter) activateChapter(hit);
   }, { root: $('#log'), rootMargin: '-30% 0px -65% 0px' });
@@ -136,6 +189,71 @@ function watchChapters() {
 
 function markChapter(id) {
   document.querySelectorAll('.chapter').forEach(s => s.classList.toggle('active', s.dataset.id === id));
+  const c = J.chapters.find(x => x.id === id);
+  if (c) { $('#sheet-title').textContent = c.title; $('#sheet-sub').textContent = c.subtitle; }
+}
+
+/* ---------- Bottom sheet (small screens) ---------- */
+const mobile = () => innerWidth <= 760;
+
+function sheetSnaps() {
+  const full = $('#sheet').offsetHeight;
+  return { peek: $('#sheet-head').offsetHeight, half: Math.round((innerHeight - $('#timeline').offsetHeight) * 0.5), full };
+}
+
+// How much of the sheet is showing, so the map can frame flights in the part left visible
+function sheetVisible() {
+  return mobile() ? sheetSnaps()[state.sheet] : 0;
+}
+
+function setSheet(snap) {
+  state.sheet = snap;
+  const s = sheetSnaps();
+  $('#sheet').style.setProperty('--sheet-y', `${s.full - s[snap]}px`);
+}
+
+function initSheet() {
+  const sheet = $('#sheet'), head = $('#sheet-head');
+  setSheet('half');
+  addEventListener('resize', () => setSheet(state.sheet));
+  const toggle = () => setSheet(state.sheet === 'full' ? 'half' : 'full');
+  head.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+
+  let drag = null;
+  head.addEventListener('pointerdown', e => {
+    if (!mobile()) return;
+    const s = sheetSnaps();
+    drag = { y0: e.clientY, t0: e.timeStamp, start: s.full - s[state.sheet], last: e.clientY, lastT: e.timeStamp, v: 0, s };
+    head.setPointerCapture(e.pointerId);
+    sheet.classList.add('dragging');
+  });
+  head.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dt = e.timeStamp - drag.lastT;
+    if (dt > 0) drag.v = (e.clientY - drag.last) / dt;
+    drag.last = e.clientY; drag.lastT = e.timeStamp;
+    const y = Math.min(drag.s.full - drag.s.peek, Math.max(0, drag.start + e.clientY - drag.y0));
+    sheet.style.setProperty('--sheet-y', `${y}px`);
+  });
+  const end = e => {
+    if (!drag) return;
+    sheet.classList.remove('dragging');
+    const moved = e.clientY - drag.y0, s = drag.s;
+    if (Math.abs(moved) < 6) { drag = null; return toggle(); }
+    // Snap to whichever stop the flick would carry it nearest to
+    const aim = drag.start + moved + drag.v * 180;
+    const snap = ['peek', 'half', 'full'].reduce((a, b) => (Math.abs(s.full - s[b] - aim) < Math.abs(s.full - s[a] - aim) ? b : a));
+    drag = null;
+    setSheet(snap);
+  };
+  head.addEventListener('pointerup', end);
+  head.addEventListener('pointercancel', end);
+}
+
+// Make sure the map is showing before moving it to something the reader asked for
+function revealMap(snap = 'half') {
+  if (!mobile()) return;
+  if (snap === 'peek' || state.sheet === 'full') setSheet(snap);
 }
 
 /* ---------- Map ---------- */
@@ -232,6 +350,7 @@ function initMap() {
   map.on('click', 'places', e => showPlace(e.features[0].properties.code, e.lngLat));
   map.on('click', 'events', e => {
     const p = e.features[0].properties;
+    revealMap('peek');
     popup.setLngLat(e.lngLat).setHTML(`<div class="pop"><h3>${esc(p.title)}</h3>
       <p class="rec">${esc(fmtDate(p.date))}</p><p class="note">${esc(p.text)}${p.approximate ? ' Position approximate.' : ''}</p></div>`).addTo(map);
   });
@@ -355,7 +474,7 @@ function frame(c, fl) {
   const pts = fl.flatMap(f => f.coords);
   const opts = { duration: REDUCED ? 0 : 2200, essential: false };
   if (pts.length > 1 && c.id !== 'vmsb474') {
-    map.fitBounds(bounds(pts), { ...opts, padding: innerWidth < 760 ? 30 : 70, maxZoom: Math.max(c.zoom, 6) });
+    map.fitBounds(bounds(pts), { ...opts, padding: mobile() ? mobilePadding() : 70, maxZoom: Math.max(c.zoom, 6) });
   } else {
     map.flyTo({ ...opts, center: c.center, zoom: c.zoom });
   }
@@ -461,6 +580,7 @@ function showThrough(i) {
 function startPlay() {
   cancelAnimationFrame(state.anim);
   state.playing = true;
+  revealMap();
   $('#play').textContent = 'Pause';
   let i = state.flight ? state.flight.id + 1 : Math.max(0, state.max + 1);
   if (i >= J.flights.length) i = 0;
@@ -494,6 +614,7 @@ function stopPlay() {
 function selectFlight(id) {
   const f = J.flights[id];
   popup.remove();
+  revealMap();
   if (f.chapter !== state.chapter) { state.chapter = f.chapter; markChapter(f.chapter); }
   setChapterLayers(f.chapter);
   cancelAnimationFrame(state.anim);
@@ -509,8 +630,13 @@ function selectFlight(id) {
 }
 
 function cardPadding() {
-  if (innerWidth < 760) return 30;
+  if (mobile()) return mobilePadding();
   return { top: 60, left: 60, bottom: 60, right: Math.min(380, innerWidth * 0.3) + 40 };
+}
+
+function mobilePadding() {
+  const room = $('#map').offsetHeight;
+  return { top: 30, left: 30, right: 30, bottom: Math.min(sheetVisible(), room * 0.6) + 30 };
 }
 
 function highlightRow(f) {
@@ -532,13 +658,19 @@ function highlightRow(f) {
 
 function inPanel(el) {
   const box = $('#log').getBoundingClientRect(), r = el.getBoundingClientRect();
-  return r.top >= box.top + 8 && r.bottom <= box.bottom - 8;
+  // On small screens part of the sheet can be pushed below the timeline bar
+  const bottom = Math.min(box.bottom, $('#timeline').getBoundingClientRect().top);
+  return r.top >= box.top + 8 && r.bottom <= bottom - 8;
 }
 
 // Programmatic scrolls shouldn't count as the reader choosing a chapter
 function panelScroll(el, block, smooth) {
   state.autoScrollUntil = performance.now() + (smooth ? 1200 : 800);
-  el.scrollIntoView({ block, behavior: smooth ? 'smooth' : 'auto' });
+  const log = $('#log'), box = log.getBoundingClientRect(), r = el.getBoundingClientRect();
+  // Center within the part of the sheet that's on screen, not the whole (partly hidden) panel
+  const visible = Math.min(box.bottom, $('#timeline').getBoundingClientRect().top) - box.top;
+  const top = log.scrollTop + r.top - box.top - (block === 'center' ? (visible - r.height) / 2 : 0);
+  log.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
 }
 
 const autoScrolling = () => performance.now() < (state.autoScrollUntil || 0);
@@ -566,7 +698,8 @@ function showCard(f) {
   ].filter(Boolean);
 
   card.innerHTML = `
-    <button type="button" class="card-close" aria-label="Close flight card">Close</button>
+    ${mobile() ? '<button type="button" class="card-close">← Back to logbook</button>'
+      : '<button type="button" class="card-close" aria-label="Close flight card">Close</button>'}
     ${photo ? `<figure>
       <img src="${esc(photo.src)}" alt="${esc(photo.alt || AIRCRAFT[fam].name)}">
       <figcaption>${exact ? `<strong>His aircraft, bureau no. ${esc(f.bureau)}</strong>, ${esc(photo.caption)}` : esc(photo.caption)}
@@ -576,6 +709,7 @@ function showCard(f) {
       ${J.squadrons?.[f.squadron]?.insignia ? `<img class="card-patch" src="${esc(J.squadrons[f.squadron].insignia)}" alt="${esc(f.squadron)} insignia">` : ''}
       <p class="card-date">${f.date_from ? `${esc(fmtDate(f.date_from))} to ` : ''}${esc(fmtDate(f.date))}${f.squadron ? `, ${esc(f.squadron)}${J.squadrons[f.squadron]?.nickname ? ` "${esc(J.squadrons[f.squadron].nickname)}"` : ''}` : ''}</p>
       <h3>${esc(f.remarks || TYPE_LABEL[f.type])}</h3>
+      ${f.gloss ? `<p class="gloss">${esc(f.gloss)}</p>` : ''}
       <p class="card-type">${esc(AIRCRAFT[fam].name)}${J.squadrons?.[f.squadron] ? `<br>${esc(J.squadrons[f.squadron].name)}` : ''}</p>
       <p class="rec">${rec.map(esc).join('<br>')}</p>
       <p class="note">${esc(route)}</p>
@@ -589,6 +723,8 @@ function showCard(f) {
         <button type="button" class="page">View ${log === 'wwii' ? 'WWII' : 'Korea-era'} logbook ${esc(page.replace('p-', 'page '))}</button>
       </div>
     </div>`;
+  if (card.hidden || state.cardFor !== f.id) card.scrollTop = 0;
+  state.cardFor = f.id;
   card.hidden = false;
   $('.card-close', card).onclick = () => { card.hidden = true; state.flight = null; map.getSource('plane').setData(emptyFC()); map.getSource('flown').setData(emptyFC()); };
   $('.replay', card).onclick = () => { stopPlay(); flyFlight(f); };
@@ -611,6 +747,7 @@ function peopleHTML(f) {
 
 function showPlace(code, lngLat) {
   const p = J.places[code];
+  revealMap('peek');
   const fl = J.flights.slice(Math.max(state.min, 0), state.max + 1).filter(f => f.places.includes(code));
   popup.setLngLat(lngLat).setHTML(`<div class="pop">
       <h3>${esc(shortName(p))}</h3>
