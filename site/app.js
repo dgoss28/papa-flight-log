@@ -108,6 +108,7 @@ function renderChapters() {
       ${sq ? `<p class="unit">${esc(sq.name)} (${esc(c.squadron)})${sq.nickname ? `, “${esc(sq.nickname)}”` : ''}</p>` : ''}
       <p class="story">${esc(c.text)}</p>
       ${fl.length ? `<p class="summary">${fl.length} ${fl.length === 1 ? 'entry' : 'flights'}, ${hours.toFixed(1)} hours${combat ? `, ${combat} combat missions` : ''}</p>
+      <p class="entries-hint">${matchMedia('(hover: none)').matches ? 'Tap' : 'Click'} a logbook entry for details on that flight.</p>
       <table class="entries">
         <thead><tr><th>Date</th><th>Aircraft</th><th>Hrs</th><th>Remarks</th></tr></thead>
         <tbody>${fl.map(f => `
@@ -589,34 +590,48 @@ function initStepper() {
   $('#prev-flight').addEventListener('click', () => stepFlight(-1));
   $('#next-flight').addEventListener('click', () => stepFlight(1));
   $('#next-chapter').addEventListener('click', () => { const c = nextChapter(); if (c) goToChapter(c.id); });
+  $('#prev-chapter').addEventListener('click', () => { const c = prevChapter(); if (c) goToChapter(c.id); });
   document.addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey || $('#scan').open) return;
     if (e.target.closest?.('input, select, textarea, .maplibregl-canvas-container')) return;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); stepFlight(e.key === 'ArrowRight' ? 1 : -1); }
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    // Follow whichever button the bar is showing
+    const ids = e.key === 'ArrowRight' ? ['#next-flight', '#next-chapter'] : ['#prev-flight', '#prev-chapter'];
+    const btn = ids.map(id => $(id)).find(b => !b.hidden);
+    if (btn) { e.preventDefault(); btn.click(); }
   });
   updateStepper();
 }
 
-// From the open flight; otherwise from the start of the chapter being read
+// The flight buttons only show while a flight is open and has a neighbor in its chapter
 function stepFlight(d) {
-  const fl = J.byChapter[state.chapter] || [];
-  let id = state.flight ? state.flight.id + d : fl.length ? (d > 0 ? fl[0].id : fl[0].id - 1) : 0;
-  id = Math.max(0, Math.min(J.flights.length - 1, id));
-  selectFlight(id);
+  selectFlight(state.flight.id + d);
 }
 
 function nextChapter() {
   return J.chapters[J.chapters.findIndex(c => c.id === state.chapter) + 1];
 }
 
+// Before the first chapter comes the cover
+function prevChapter() {
+  const i = J.chapters.findIndex(c => c.id === state.chapter);
+  return i > 0 ? J.chapters[i - 1] : i === 0 ? { id: INTRO, title: 'Introduction' } : null;
+}
+
 function updateStepper() {
-  const next = nextChapter(), at = state.flight?.id;
+  const next = nextChapter(), prev = prevChapter(), f = state.flight;
+  // With a flight open, step through that chapter's flights; at either end (or with no
+  // flight open) the bar offers the neighboring chapters instead
+  const fl = f ? J.byChapter[f.chapter] : [], i = fl.indexOf(f);
+  const hasPrev = i > 0, hasNext = i >= 0 && i < fl.length - 1;
+  $('#prev-flight').hidden = !hasPrev;
+  $('#next-flight').hidden = !hasNext;
+  $('#prev-chapter').hidden = hasPrev || !prev;
+  $('#next-chapter').hidden = hasNext || !next;
+  $('#prev-chapter').innerHTML = prev
+    ? `<span class="nc-label">‹ Previous chapter</span> <span class="nc-name">${esc(prev.title)}</span>` : '';
   $('#next-chapter').innerHTML = next
-    ? `<span class="nc-label">Next chapter</span> <span class="nc-name">${esc(next.title)} ›</span>`
-    : '<span class="nc-name">Last chapter</span>';
-  $('#next-chapter').disabled = !next;
-  $('#prev-flight').disabled = at === 0 || (at == null && !state.chapter);
-  $('#next-flight').disabled = at === J.flights.length - 1;
+    ? `<span class="nc-label">Next chapter</span> <span class="nc-name">${esc(next.title)} ›</span>` : '';
 }
 
 /* ---------- Selection and the flight card ---------- */
@@ -747,6 +762,7 @@ function showCard(f) {
 function closeCard() {
   $('#card').hidden = true;
   state.flight = null;
+  document.querySelectorAll('tr.selected').forEach(r => r.classList.remove('selected'));
   updateStepper();
   map.getSource('plane')?.setData(emptyFC());
   map.getSource('flown')?.setData(emptyFC());

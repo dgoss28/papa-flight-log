@@ -73,6 +73,7 @@ h1 {
 .card-body { position: relative; }
 .card-patch { float: right; width: 52px; height: auto; margin: 0 0 .3rem .6rem; }
 .chapter .summary { font-size: .85rem; color: var(--pencil); margin: 0 0 .5rem; }
+.entries-hint { font-size: .8rem; font-style: italic; color: var(--route); margin: -.2rem 0 .5rem; }
 
 /* Ruled log rows, like the printed columns in the book */
 .entries { width: 100%; border-collapse: collapse; font-family: var(--type); font-size: .82rem; }
@@ -120,8 +121,9 @@ h1 {
 #prev-flight { font-size: 1.2rem !important; line-height: 1; padding: .35rem .75rem !important; }
 #timeline button:disabled { opacity: .35; cursor: default; }
 #timeline button:focus-visible, .close:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
-#next-chapter { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+:is(#prev-chapter, #next-chapter) { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .nc-label::after { content: ":"; }
+#timeline button[hidden] { display: none !important; }
 #when { font-family: var(--type); flex: 1; }
 #totals { display: flex; gap: 1.1rem; margin: 0; }
 #totals div { text-align: right; }
@@ -278,8 +280,9 @@ img.zoom:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
   #prev-flight { padding: .35rem .6rem !important; }
   #when { flex: 1; min-width: 0; font-size: .72rem; text-align: center; white-space: nowrap; }
   /* Stacked so the date fits beside it */
-  #next-chapter { flex: none; max-width: 40%; display: flex; flex-direction: column; align-items: flex-end;
+  :is(#prev-chapter, #next-chapter) { flex: none; max-width: 40%; display: flex; flex-direction: column; align-items: flex-end;
     line-height: 1.15; padding: .3rem .6rem !important; }
+  #prev-chapter { align-items: flex-start; }
   .nc-label { font-size: .66rem; opacity: .75; }
   .nc-label::after { content: none; }
   .nc-name { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
