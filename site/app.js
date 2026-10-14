@@ -242,35 +242,79 @@ function initSheet() {
   $('.chap-step[data-step="-1"]').disabled = true;
   head.addEventListener('keydown', e => { if (e.target !== head) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 
-  let drag = null;
-  head.addEventListener('pointerdown', e => {
-    if (!mobile() || e.target.closest('button, select')) return;
+  // Dragging works from the whole header and from the logbook itself, the way Apple Maps'
+  // sheets do: swiping up on the content expands the sheet before it scrolls, and pulling
+  // down once the content is at its top shrinks the sheet
+  let drag = null, swallowClicksUntil = 0;
+  const startDrag = (y, t) => {
     const s = sheetSnaps();
-    drag = { y0: e.clientY, t0: e.timeStamp, start: s.full - s[state.sheet], last: e.clientY, lastT: e.timeStamp, v: 0, s };
-    head.setPointerCapture(e.pointerId);
+    drag = { y0: y, start: s.full - s[state.sheet], last: y, lastT: t, v: 0, s };
     sheet.classList.add('dragging');
+  };
+  const moveDrag = (y, t) => {
+    const dt = t - drag.lastT;
+    if (dt > 0) drag.v = (y - drag.last) / dt;
+    drag.last = y; drag.lastT = t;
+    const pos = Math.min(drag.s.full - drag.s.peek, Math.max(0, drag.start + y - drag.y0));
+    sheet.style.setProperty('--sheet-y', `${pos}px`);
+  };
+  const endDrag = () => {
+    const d = drag, s = d.s;
+    drag = null;
+    sheet.classList.remove('dragging');
+    // Snap to whichever stop the flick would carry it nearest to
+    const aim = d.start + d.last - d.y0 + d.v * 180;
+    setSheet(['peek', 'half', 'full'].reduce((a, b) => (Math.abs(s.full - s[b] - aim) < Math.abs(s.full - s[a] - aim) ? b : a)));
+  };
+
+  // Header: a drag can start anywhere on it; a tap still presses the arrows or opens the picker
+  let press = null;
+  head.addEventListener('pointerdown', e => {
+    if (mobile()) press = { id: e.pointerId, y: e.clientY, t: e.timeStamp };
   });
   head.addEventListener('pointermove', e => {
-    if (!drag) return;
-    const dt = e.timeStamp - drag.lastT;
-    if (dt > 0) drag.v = (e.clientY - drag.last) / dt;
-    drag.last = e.clientY; drag.lastT = e.timeStamp;
-    const y = Math.min(drag.s.full - drag.s.peek, Math.max(0, drag.start + e.clientY - drag.y0));
-    sheet.style.setProperty('--sheet-y', `${y}px`);
+    if (!press || e.pointerId !== press.id) return;
+    if (!drag) {
+      if (Math.abs(e.clientY - press.y) < 8) return;
+      startDrag(press.y, press.t);
+      head.setPointerCapture(e.pointerId);
+    }
+    moveDrag(e.clientY, e.timeStamp);
   });
-  const end = e => {
-    if (!drag) return;
-    sheet.classList.remove('dragging');
-    const moved = e.clientY - drag.y0, s = drag.s;
-    if (Math.abs(moved) < 6) { drag = null; return toggle(); }
-    // Snap to whichever stop the flick would carry it nearest to
-    const aim = drag.start + moved + drag.v * 180;
-    const snap = ['peek', 'half', 'full'].reduce((a, b) => (Math.abs(s.full - s[b] - aim) < Math.abs(s.full - s[a] - aim) ? b : a));
-    drag = null;
-    setSheet(snap);
+  const release = e => {
+    if (!press) return;
+    press = null;
+    if (drag) { endDrag(); swallowClicksUntil = e.timeStamp + 400; }
+    else if (e.type === 'pointerup' && !e.target.closest('button, select')) toggle();
   };
-  head.addEventListener('pointerup', end);
-  head.addEventListener('pointercancel', end);
+  head.addEventListener('pointerup', release);
+  head.addEventListener('pointercancel', release);
+  // The click that ends a drag shouldn't press a button
+  head.addEventListener('click', e => {
+    if (e.timeStamp < swallowClicksUntil) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  // Content: decide on the first few pixels whether this gesture moves the sheet or scrolls
+  let gesture = null;
+  const body = $('.sheet-body');
+  body.addEventListener('touchstart', e => {
+    if (!mobile() || e.touches.length !== 1) return;
+    gesture = { y: e.touches[0].clientY, t: e.timeStamp, scroller: e.target.closest('#card, #log'), mode: null };
+  }, { passive: true });
+  body.addEventListener('touchmove', e => {
+    if (!gesture) return;
+    const y = e.touches[0].clientY, dy = y - gesture.y;
+    if (!gesture.mode) {
+      if (Math.abs(dy) < 6) return;
+      const atTop = !gesture.scroller || gesture.scroller.scrollTop <= 0;
+      gesture.mode = (dy < 0 && state.sheet !== 'full') || (dy > 0 && atTop) ? 'sheet' : 'scroll';
+      if (gesture.mode === 'sheet') startDrag(gesture.y, gesture.t);
+    }
+    if (gesture.mode === 'sheet') { e.preventDefault(); moveDrag(y, e.timeStamp); }
+  }, { passive: false });
+  const lift = () => { if (gesture?.mode === 'sheet' && drag) endDrag(); gesture = null; };
+  body.addEventListener('touchend', lift);
+  body.addEventListener('touchcancel', lift);
 }
 
 // Make sure the map is showing before moving it to something the reader asked for
@@ -510,7 +554,7 @@ function homeView() {
 
 function frame(c, fl) {
   const pts = fl.flatMap(f => f.coords);
-  const opts = { duration: REDUCED ? 0 : 2200, essential: false };
+  const opts = { duration: REDUCED ? 0 : 3000, essential: false };
   if (pts.length > 1) {
     map.fitBounds(bounds(pts), { ...opts, padding: mobile() ? mobilePadding() : 70, maxZoom: Math.max(c.zoom, 6) });
   } else {
@@ -525,7 +569,7 @@ function bounds(pts) {
 function animateRange(first, last) {
   cancelAnimationFrame(state.anim);
   if (REDUCED) return setRange(first, last);
-  const total = last - first, dur = Math.min(4500, 400 + total * 45), t0 = performance.now();
+  const total = last - first, dur = Math.min(9000, 900 + total * 90), t0 = performance.now();
   const step = now => {
     const k = Math.min(1, (now - t0) / dur);
     setRange(first, first + Math.round(total * k));
