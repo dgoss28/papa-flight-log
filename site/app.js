@@ -698,7 +698,7 @@ function showCard(f) {
   ].filter(Boolean);
 
   card.innerHTML = `
-    ${mobile() ? '<button type="button" class="card-close">← Back to logbook</button>'
+    ${mobile() ? '<button type="button" class="card-close">← Logbook</button>'
       : '<button type="button" class="card-close" aria-label="Close flight card">Close</button>'}
     ${photo ? `<figure>
       <img src="${esc(photo.src)}" alt="${esc(photo.alt || AIRCRAFT[fam].name)}">

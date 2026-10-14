@@ -234,14 +234,14 @@ h1 {
 
   /* The flight card covers the logbook inside the sheet; the log keeps its scroll position underneath */
   #card { position: absolute; inset: 0; width: auto; max-height: none; box-shadow: none; overscroll-behavior: contain; }
-  /* Lead with what the flight was; the photo follows */
   #card:not([hidden]) { display: flex; flex-direction: column; }
-  #card figure { order: 1; flex: none; }
-  .card-body { flex: none; }
-  #card figure img { aspect-ratio: 2 / 1; }
+  #card > * { flex: none; }
+  #card figure img { aspect-ratio: 16 / 10; }
+  /* Floats over the photo and stays put while the card scrolls */
   .card-close {
-    position: sticky; top: 0; display: block; width: 100%; text-align: left; z-index: 2;
-    border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; padding: .7rem 1rem; font-size: .9rem;
+    position: sticky; top: .6rem; align-self: flex-start; z-index: 2; margin: .6rem 0 -2.6rem .6rem;
+    padding: .45rem .8rem; border-radius: 999px; font-size: .85rem;
+    background: var(--page); box-shadow: 0 1px 6px rgba(35, 49, 79, .3);
   }
 
   #totals { display: none; }
