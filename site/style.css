@@ -160,6 +160,9 @@ h1 {
 .card-date { font-family: var(--type); margin: 0; color: var(--pencil); font-size: .85rem; }
 #card h3 { margin: .15rem 0 .1rem; font-weight: 500; font-size: 1.2rem; line-height: 1.2; }
 .card-type { margin: 0 0 .5rem; font-size: .85rem; color: var(--pencil); }
+.card-type p { margin: 0; }
+.ac-sq { display: block; }
+.ac-thumb, .ac-exact { display: none; }
 #card .rec { font-family: var(--type); font-size: .8rem; line-height: 1.5; margin: 0 0 .5rem; }
 #card .gloss { font-size: .85rem; line-height: 1.45; margin: -.2rem 0 .6rem; padding-left: .6rem; border-left: 2px solid var(--route); }
 .entries td.rem.glossed { text-decoration: underline dotted rgba(35, 49, 79, .45); text-underline-offset: .2em; }
@@ -252,8 +255,14 @@ img.zoom:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
   #card { position: absolute; inset: 0; width: auto; max-height: none; box-shadow: none; overscroll-behavior: contain; }
   #card:not([hidden]) { display: flex; flex-direction: column; }
   #card > * { flex: none; }
-  /* Details first; the aircraft photo follows (tap it to see it full size) */
-  #card figure { order: 1; }
+  /* The aircraft photo becomes a round thumbnail beside its name; tap it for the full photo */
+  #card figure { display: none; }
+  .card-type { display: flex; align-items: center; gap: .75rem; margin: .2rem 0 .7rem; }
+  .ac-thumb {
+    display: block; flex: none; width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--page); box-shadow: 0 0 0 1px var(--ink), 0 2px 6px rgba(35, 49, 79, .25);
+  }
+  .ac-exact { display: block; font-size: .75rem; color: var(--route); font-weight: 500; }
   #card figure img { aspect-ratio: 16 / 10; }
   /* Stays put while the card scrolls */
   .card-close {

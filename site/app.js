@@ -66,6 +66,7 @@ function explain(f) {
 const $ = (s, el = document) => el.querySelector(s);
 const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const INTRO = 'intro'; // the cover counts as the first chapter
 const emptyFC = () => ({ type: 'FeatureCollection', features: [] });
 
 let J, map, popup;
@@ -177,24 +178,25 @@ function watchChapters() {
     // On small screens an open flight card covers the logbook, so the log isn't what the reader is looking at
     if (autoScrolling() || (mobile() && !$('#card').hidden)) return;
     const hit = entries.filter(e => e.isIntersecting).map(e => e.target.dataset.id)[0];
-    if (hit && hit !== state.chapter) activateChapter(hit);
+    if (hit && hit !== (state.chapter ?? INTRO)) activateChapter(hit);
   }, { root: $('#log'), rootMargin: '-30% 0px -65% 0px' });
-  document.querySelectorAll('.chapter').forEach(s => io.observe(s));
+  document.querySelectorAll('.cover, .chapter').forEach(s => io.observe(s));
 }
 
 function goToChapter(id) {
   closeCard();
-  panelScroll(document.querySelector(`.chapter[data-id="${id}"]`), 'start', !REDUCED);
+  panelScroll(document.querySelector(`[data-id="${id}"]:is(.chapter, .cover)`), 'start', !REDUCED);
   activateChapter(id);
 }
 
 function markChapter(id) {
   document.querySelectorAll('.chapter').forEach(s => s.classList.toggle('active', s.dataset.id === id));
   const c = J.chapters.find(x => x.id === id);
-  if (c) { $('#sheet-title').textContent = c.title; $('#sheet-sub').textContent = c.subtitle; }
+  $('#sheet-title').textContent = c ? c.title : 'Papa\'s Flight Log';
+  $('#sheet-sub').textContent = c ? c.subtitle : 'Introduction';
   const i = J.chapters.findIndex(x => x.id === id);
-  $('#chapter-pick').value = id || '';
-  $('.chap-step[data-step="-1"]').disabled = i <= 0;
+  $('#chapter-pick').value = id || INTRO;
+  $('.chap-step[data-step="-1"]').disabled = i < 0;
   $('.chap-step[data-step="1"]').disabled = i === J.chapters.length - 1;
   updateStepper();
 }
@@ -226,13 +228,13 @@ function initSheet() {
 
   // Chapter picker and previous / next
   const pick = $('#chapter-pick');
-  pick.innerHTML = `<option value="" disabled>Choose a chapter</option>` +
+  pick.innerHTML = `<option value="${INTRO}">Papa's Flight Log: introduction</option>` +
     J.chapters.map(c => `<option value="${esc(c.id)}">${esc(c.title)}: ${esc(c.subtitle)}</option>`).join('');
-  pick.value = '';
+  pick.value = INTRO;
   pick.addEventListener('change', () => goToChapter(pick.value));
   head.querySelectorAll('.chap-step').forEach(b => b.addEventListener('click', () => {
     const i = J.chapters.findIndex(c => c.id === state.chapter) + +b.dataset.step;
-    goToChapter(J.chapters[Math.max(0, Math.min(J.chapters.length - 1, i))].id);
+    goToChapter(i < 0 ? INTRO : J.chapters[Math.min(J.chapters.length - 1, i)].id);
   }));
   $('.chap-step[data-step="-1"]').disabled = true;
   head.addEventListener('keydown', e => { if (e.target !== head) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
@@ -476,6 +478,7 @@ function shortName(p) {
 
 /* ---------- Chapters (story mode) ---------- */
 function activateChapter(id) {
+  if (id === INTRO) return showIntro();
   state.chapter = id;
   state.panelChapter = id;
   markChapter(id);
@@ -485,6 +488,16 @@ function activateChapter(id) {
   frame(c, fl);
   if (!fl.length) return setRange(0, -1);
   animateRange(fl[0].id, fl[fl.length - 1].id);
+}
+
+// Back to the cover: the whole world, nothing flown yet
+function showIntro() {
+  cancelAnimationFrame(state.anim);
+  state.chapter = state.panelChapter = null;
+  markChapter(null);
+  setEra('wwii');
+  setRange(0, -1);
+  map.flyTo({ center: [-30, 25], zoom: 1.6, duration: REDUCED ? 0 : 2200, essential: false });
 }
 
 function frame(c, fl) {
@@ -699,7 +712,10 @@ function showCard(f) {
       <p class="card-date">${f.date_from ? `${esc(fmtDate(f.date_from))} to ` : ''}${esc(fmtDate(f.date))}${f.squadron ? `, ${esc(f.squadron)}${J.squadrons[f.squadron]?.nickname ? ` "${esc(J.squadrons[f.squadron].nickname)}"` : ''}` : ''}</p>
       <h3>${esc(f.remarks || TYPE_LABEL[f.type])}</h3>
       ${f.gloss ? `<p class="gloss">${esc(f.gloss)}</p>` : ''}
-      <p class="card-type">${esc(AIRCRAFT[fam].name)}${J.squadrons?.[f.squadron] ? `<br>${esc(J.squadrons[f.squadron].name)}` : ''}</p>
+      <div class="card-type">
+        ${photo ? `<img class="ac-thumb zoom" src="${esc(photo.src)}" alt="${esc(photo.alt || AIRCRAFT[fam].name)}" ${zoomAttrs(`${exact ? `His aircraft, bureau no. ${f.bureau}, ` : ''}${photo.caption}`, photo.page, photo.credit)}>` : ''}
+        <p>${esc(AIRCRAFT[fam].name)}${exact ? '<span class="ac-exact">His actual plane: tap the photo</span>' : ''}${J.squadrons?.[f.squadron] ? `<span class="ac-sq">${esc(J.squadrons[f.squadron].name)}</span>` : ''}</p>
+      </div>
       <p class="rec">${rec.map(esc).join('<br>')}</p>
       <p class="note">${esc(route)}</p>
       ${f.date_from ? `<p class="note">Logged as one summary page, not flight by flight, so the map shows these ${f.hours.toFixed(1)} hours as a single loop from the field.</p>`
