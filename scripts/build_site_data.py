@@ -84,7 +84,7 @@ CHAPTERS = [
               'keeping its carrier landings current with touch-and-go practice ashore. The final entry, 24 June 1953 '
               'at Edenton, reads simply: "CRASH!" After touch-and-goes with his crew, he dropped them off and took off '
               'alone; the engine failed right after takeoff and he went down in a pond. A Catholic chaplain who happened '
-              'to be out hiking pulled him out.'),
+              'to be out hiking pulled him out. He survived, but lost both legs. It was the last flight in his logbook.'),
 ]
 
 SQUADRONS = {
