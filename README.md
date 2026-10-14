@@ -81,14 +81,11 @@ The `site/` folder can be uploaded as-is to GitHub Pages or Netlify.
 
 ### Flight tracks, aircraft and people
 
-- **Tracks** (`scripts/tracks.py`): the log records where each flight went, not the path flown, so each track is generated from the flight's type and duration and labeled "illustrative" on the site. The shapes are:
-  - traffic-pattern circuits for landing practice (WWII "FCL", Korea-log "1A3")
-  - a run out to a practice area for local hops
-  - a triangle for navigation flights
-  - slow orbits over artillery-spotting targets
-  - a dive circle over strike targets
+- **Tracks** (`scripts/tracks.py`): the log records where each flight went, not the path flown, so the tracks are kept deliberately plain and labeled "illustrative" on the site:
+  - a simple ellipse out from the field for local flights, sized by flight time
+  - an ellipse out through the target and back for strikes, spotting and TAO missions, and round trips
 
-  Point-to-point routes between known fields are drawn direct. Every track is seeded by the flight's id, so it's the same on every build.
+  Transfers between known fields (and strikes that landed somewhere else) are drawn as direct legs. Every track is seeded by the flight's id, so it's the same on every build.
 - **Map icons** (`site/aircraft.js`): top-down silhouettes drawn from each type's real span and length.
 - **Photos** (`site/aircraft/`, credits in `site/data/aircraft-photos.json`): mostly public-domain period U.S. Navy photos from Wikimedia Commons, one per type. There's one exact airframe: **AD-4N bureau no. 126935**, which he flew in Jan–Jun 1953, survived as warbird NX2088G until a 2011 crash. Searching Commons for his other 235 bureau numbers was cut short by rate limiting.
 - **People** (`data/people.csv`): the officers who signed each page, plus Matson, his rear-seat gunner. To add a portrait, put the image in `site/people/`, fill in the `photo` (e.g. `people/rasmus.jpg`) and `photo_credit` columns, then rerun `scripts/build_site_data.py`.
