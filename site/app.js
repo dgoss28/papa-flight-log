@@ -85,6 +85,7 @@ function init() {
   initMap();
   initTimeline();
   initSheet();
+  initViewer();
 }
 
 /* ---------- Logbook panel ---------- */
@@ -99,7 +100,7 @@ function renderChapters() {
     sec.dataset.id = c.id;
     const sq = J.squadrons?.[c.squadron];
     sec.innerHTML = `
-      ${sq?.insignia ? `<img class="patch" src="${esc(sq.insignia)}" alt="${esc(c.squadron)} squadron insignia: ${esc(sq.alt)}">` : ''}
+      ${sq?.insignia ? `<img class="patch zoom" src="${esc(sq.insignia)}" alt="${esc(c.squadron)} squadron insignia: ${esc(sq.alt)}" ${zoomAttrs(`${c.squadron}${sq.nickname ? ` “${sq.nickname}”` : ''} insignia`, sq.page, sq.credit)}>` : ''}
       <h2><button type="button" class="chapter-title" data-id="${esc(c.id)}">${esc(c.title)}</button></h2>
       <p class="when">${esc(c.subtitle)}</p>
       ${c.rank ? `<p class="rank">${esc(c.rank)} <span>(${esc(c.rank_basis)})</span></p>` : ''}
@@ -719,12 +720,12 @@ function showCard(f) {
     ${mobile() ? '<button type="button" class="card-close">← Logbook</button>'
       : '<button type="button" class="card-close" aria-label="Close flight card">Close</button>'}
     ${photo ? `<figure>
-      <img src="${esc(photo.src)}" alt="${esc(photo.alt || AIRCRAFT[fam].name)}">
+      <img class="zoom" src="${esc(photo.src)}" alt="${esc(photo.alt || AIRCRAFT[fam].name)}" ${zoomAttrs(`${exact ? `His aircraft, bureau no. ${f.bureau}, ` : ''}${photo.caption}`, photo.page, photo.credit)}>
       <figcaption>${exact ? `<strong>His aircraft, bureau no. ${esc(f.bureau)}</strong>, ${esc(photo.caption)}` : esc(photo.caption)}
         <a href="${esc(photo.page)}" target="_blank" rel="noopener">${esc(photo.credit)}</a></figcaption>
     </figure>` : ''}
     <div class="card-body">
-      ${J.squadrons?.[f.squadron]?.insignia ? `<img class="card-patch" src="${esc(J.squadrons[f.squadron].insignia)}" alt="${esc(f.squadron)} insignia">` : ''}
+      ${J.squadrons?.[f.squadron]?.insignia ? `<img class="card-patch zoom" src="${esc(J.squadrons[f.squadron].insignia)}" alt="${esc(f.squadron)} insignia" ${zoomAttrs(`${f.squadron} insignia`, J.squadrons[f.squadron].page, J.squadrons[f.squadron].credit)}>` : ''}
       <p class="card-date">${f.date_from ? `${esc(fmtDate(f.date_from))} to ` : ''}${esc(fmtDate(f.date))}${f.squadron ? `, ${esc(f.squadron)}${J.squadrons[f.squadron]?.nickname ? ` "${esc(J.squadrons[f.squadron].nickname)}"` : ''}` : ''}</p>
       <h3>${esc(f.remarks || TYPE_LABEL[f.type])}</h3>
       ${f.gloss ? `<p class="gloss">${esc(f.gloss)}</p>` : ''}
@@ -762,7 +763,7 @@ function peopleHTML(f) {
     const p = J.people[id];
     const initials = p.name.replace(/\(.*\)/, '').split(/[\s.]+/).filter(w => /^[A-Z]/.test(w)).map(w => w[0]).filter((_, i, a) => i === 0 || i === a.length - 1).join('');
     const face = p.photo
-      ? `<img src="${esc(p.photo)}" alt="Portrait of ${esc(p.name)}">`
+      ? `<img class="zoom" src="${esc(p.photo)}" alt="Portrait of ${esc(p.name)}" ${zoomAttrs(p.name, '', p.photo_credit)}>`
       : `<span class="initials" aria-hidden="true">${esc(initials)}</span>`;
     const why = id === 'matson' ? 'In the rear seat' : id === 'wasson' ? 'Signed his carrier qualification' : 'Signed this page';
     return `<li>${face}<span><strong>${esc(p.name)}</strong><br>${esc(p.role)}, ${esc(p.unit)}<br><em>${why}.</em>
@@ -787,12 +788,41 @@ function showPlace(code, lngLat) {
 }
 
 function openScan(f) {
-  const dlg = $('#scan'), frameEl = $('.scan-frame', dlg), img = $('img', dlg);
   const [log, page] = f.page.split('/');
-  img.src = `scans/${f.page}.jpg`;
-  img.alt = `Logbook page with the entry for ${fmtDate(f.date)}`;
-  $('.scan-caption', dlg).textContent = `${log === 'wwii' ? 'WWII logbook' : 'Korea-era logbook'}, ${page.replace('p-', 'page ')}: entry of ${fmtDate(f.date)}`;
+  openViewer({
+    src: `scans/${f.page}.jpg`, alt: `Logbook page with the entry for ${fmtDate(f.date)}`, zoom: true,
+    caption: `${log === 'wwii' ? 'WWII logbook' : 'Korea-era logbook'}, ${page.replace('p-', 'page ')}: entry of ${fmtDate(f.date)}`,
+  });
+}
+
+/* ---------- Picture viewer: logbook scans, aircraft photos, insignia, portraits ---------- */
+// Data attributes that make an <img> open full size when clicked
+function zoomAttrs(caption, link, credit) {
+  return `tabindex="0" role="button" data-caption="${esc(caption)}" data-link="${esc(link || '')}" data-credit="${esc(credit || '')}"`;
+}
+
+function openViewer({ src, alt, caption, link, credit, zoom }) {
+  const dlg = $('#scan'), frameEl = $('.scan-frame', dlg), img = $('img', dlg);
+  img.src = src;
+  img.alt = alt || '';
+  $('.scan-caption', dlg).innerHTML = esc(caption) + (credit || link
+    ? ` <span class="scan-credit">${link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(credit || 'Source')}</a>` : esc(credit)}</span>` : '');
   frameEl.classList.remove('zoomed');
-  img.onclick = () => frameEl.classList.toggle('zoomed');
+  frameEl.classList.toggle('photo', !zoom);
+  img.onclick = zoom ? () => frameEl.classList.toggle('zoomed') : null;
   dlg.showModal();
+}
+
+function initViewer() {
+  const open = img => openViewer({ src: img.currentSrc || img.src, alt: img.alt, caption: img.dataset.caption || img.alt,
+    link: img.dataset.link, credit: img.dataset.credit });
+  document.addEventListener('click', e => {
+    const img = e.target.closest('img.zoom');
+    if (img) { e.stopPropagation(); open(img); }
+  }, true);
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('img.zoom')) { e.preventDefault(); open(e.target); }
+  });
+  // Tap the dimmed backdrop to close
+  $('#scan').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 }
